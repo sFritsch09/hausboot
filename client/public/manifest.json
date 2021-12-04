@@ -1,0 +1,22 @@
+{
+	"theme_color": "#ffb703",
+	"background_color": "#219ebc",
+	"display": "browser",
+	"scope": "/",
+	"start_url": "/",
+	"name": "Teichland-Kapit\u00e4ne",
+	"short_name": "TK",
+	"description": "Hausboot Booking",
+	"icons": [
+		{
+			"src": "/logo192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/logo512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
