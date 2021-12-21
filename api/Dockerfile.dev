@@ -1,5 +1,5 @@
 # pull the Node.js Docker image
-FROM --platform=linux/arm64 node:14.5.0-alpine
+FROM node:14.5.0-alpine
 
 # create the directory inside the container
 WORKDIR /app
