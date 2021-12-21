@@ -33,7 +33,7 @@ jobs:
         
     - name: Start containers
       run: docker-compose -f "docker-compose.yml" up -d --build
-    - run: docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:${{ github.sha }} 
+    - run: docker-compose push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:latest
 ## This section should be commented for now as we haven't created the Azure web app yet
     # - uses: azure/login@v1
     #   with:
