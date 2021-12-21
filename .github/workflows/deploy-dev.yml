@@ -24,8 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: checkout
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - uses: azure/docker-login@v1
+      - name: 'Login to Container Registry'
+        uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
@@ -33,8 +38,6 @@ jobs:
 
       - name: Build containers
         run: docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}/hausbootdev:latest -f "docker-compose.yml" up -d --build
-      - name: List containers
-        run: docker-compose ps
       - name: List images
         run: docker image ls
       - name: Push Multi-Container
