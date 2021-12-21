@@ -36,12 +36,12 @@ jobs:
         #run: docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}/hausbootdev:latest -f "docker-compose.yml" up -d --build
         run: |
           docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api ./api
-          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client ./client
-          docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client ./nginx
+        # docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client ./client
+        # docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
       - name: List images
         run: docker image ls
       - name: Push Multi-Container
-        run: docker push --all-tags ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev
+        run: docker push --all-tags ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/*
 ## This section should be commented for now as we haven't created the Azure web app yet
 # - uses: azure/login@v1
 #   with:
