@@ -24,10 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: checkout
-      - name: 'Login via Azure CLI'
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: 'Login to Container Registry'
         uses: azure/docker-login@v1
@@ -37,11 +33,15 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Build containers
-        run: docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}/hausbootdev:latest -f "docker-compose.yml" up -d --build
+        #run: docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}/hausbootdev:latest -f "docker-compose.yml" up -d --build
+        run: |
+          docker build ./api -f Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api
+          docker build ./client -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client
+          docker build ./nginx -f Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client
       - name: List images
         run: docker image ls
       - name: Push Multi-Container
-        run: docker push --all-tags ${{ secrets.REGISTRY_SERVERNAME }}/hausbootdev
+        run: docker push --all-tags ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev
 ## This section should be commented for now as we haven't created the Azure web app yet
 # - uses: azure/login@v1
 #   with:
