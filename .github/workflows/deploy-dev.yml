@@ -30,10 +30,10 @@ jobs:
         login-server: ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-
-    - run: |
-        docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:${{ github.sha }} .
-        docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:${{ github.sha }} 
+        
+    - name: Start containers
+      run: docker-compose -f "docker-compose.yml" up -d --build
+    - run: docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:${{ github.sha }} 
 ## This section should be commented for now as we haven't created the Azure web app yet
     # - uses: azure/login@v1
     #   with:
