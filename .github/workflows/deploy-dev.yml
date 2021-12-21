@@ -35,9 +35,9 @@ jobs:
       - name: Build containers
         #run: docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}/hausbootdev:latest -f "docker-compose.yml" up -d --build
         run: |
-          docker build -f Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api ./api
+          docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api ./api
           docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client ./client
-          docker build -f Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client ./nginx
+          docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client ./nginx
       - name: List images
         run: docker image ls
       - name: Push Multi-Container
