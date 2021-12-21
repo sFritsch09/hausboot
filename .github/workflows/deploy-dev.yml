@@ -36,7 +36,7 @@ jobs:
       - name: List containers
         run: docker-compose ps
       - name: List images
-        run: docker images
+        run: docker image ls
       - name: Push Multi-Container
         run: docker push --all-tags ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev
 ## This section should be commented for now as we haven't created the Azure web app yet
