@@ -30,8 +30,9 @@ jobs:
           login-server: ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+
         name: Build and push containers
-        run: |
+      - run: |
           docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:latest -f "docker-compose.yml" up -d --build
           docker-compose push
 
