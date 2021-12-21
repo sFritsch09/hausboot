@@ -32,8 +32,11 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Start containers
-        run: docker-compose -f "docker-compose.yml" -p ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:latest up -d --build
-      - run: docker-compose push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:latest
+        run: docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev:latest -f "docker-compose.yml" up -d --build
+      - name: Show Docker Images
+        run: docker images
+      - name: Push Mulit-Container
+        run: docker-compose push
 ## This section should be commented for now as we haven't created the Azure web app yet
 # - uses: azure/login@v1
 #   with:
