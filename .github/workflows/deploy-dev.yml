@@ -36,7 +36,7 @@ jobs:
         #run: docker-compose -p ${{ secrets.REGISTRY_SERVERNAME }}/hausbootdev:latest -f "docker-compose.yml" up -d --build
         run: |
           docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api ./api
-          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client ./client
+          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_API_KEY,src=${{ secrets.REACT_APP_GOOGLE_API_KEY}} id=REACT_APP_GOOGLE_CALENDAR_ID,src=${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID}} ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
 
       - name: List images
