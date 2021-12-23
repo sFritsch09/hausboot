@@ -12,8 +12,8 @@ COPY . .
 RUN yarn run build
 
 
-RUN --mount=type=secret,id=client_env \
-    export client_env=$(cat /run/secrets/client_env)
+RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
+    export REACT_APP_GOOGLE_API_KEY=$(cat /run/secrets/REACT_APP_GOOGLE_API_KEY)
 
 FROM nginx
 EXPOSE 3000
