@@ -38,20 +38,23 @@ jobs:
 
       - name: Build containers
         env:
-          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+          GOOGLE_AUTH: ${{ secrets.GOOGLE_AUTH}}
+          client_env: ${{ secrets.CLIENT_ENV}}
+          #REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+          #REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID }}
         run: |
-          docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api ./api
-          docker buildx build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_API_KEY ./client
+          docker buildx build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=GOOGLE_AUTH ./api
+          docker buildx build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=client_env ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
 
       - name: List images
         run: |
           docker image ls
-          docker buildx image ls
+          docker buildx ls
 
       - name: Push Multi-Container
         run: |
-          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api
+          docker buildx push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api
           docker buildx push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client
           docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server
 

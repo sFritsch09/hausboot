@@ -10,6 +10,9 @@ COPY package*.json ./
 # run npm install in our local machine
 RUN npm install
 
+RUN --mount=type=secret,id=GOOGLE_AUTH \
+    export GOOGLE_AUTH=$(cat /run/secrets/GOOGLE_AUTH)
+
 # copy the generated modules and all other files to the container
 COPY . .
 
