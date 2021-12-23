@@ -39,7 +39,7 @@ jobs:
       - name: Build containers
         run: |
           docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api ./api
-          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=client_env,src=${{secrets.CLIENT_ENV}} ./client
+          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=client_env,src=${{ secrets.CLIENT_ENV }} ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
 
       - name: List images
