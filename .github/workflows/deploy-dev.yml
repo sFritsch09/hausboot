@@ -37,6 +37,7 @@ jobs:
         id: buildx
         with:
           install: true
+        run: docker buildx build --help
 
       - name: Build containers
         run: |
