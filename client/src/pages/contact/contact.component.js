@@ -22,7 +22,7 @@ const ContactPage = () => {
 			</ContactContainer>
 			<MapsContainer>
 				<GoogleMaps
-					apiKey={process.env.client_env.REACT_APP_GOOGLE_API_KEY}
+					apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
 					style={{
 						width: '100%',
 						color: '#242f3e',

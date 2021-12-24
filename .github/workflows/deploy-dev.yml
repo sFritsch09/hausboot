@@ -39,12 +39,12 @@ jobs:
       - name: Build containers
         env:
           GOOGLE_AUTH: ${{ secrets.GOOGLE_AUTH}}
-          client_env: ${{ secrets.CLIENT_ENV}}
-          #REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
-          #REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID }}
+          # client_env: ${{ secrets.CLIENT_ENV}}
+          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+          REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID }}
         run: |
           docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=GOOGLE_AUTH ./api
-          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=client_env ./client
+          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_CALENDAR_ID --secret id=REACT_APP_GOOGLE_API_KEY./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
 
       - name: List images
@@ -56,16 +56,3 @@ jobs:
           docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api
           docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client
           docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server
-
-## This section should be commented for now as we haven't created the Azure web app yet
-# - uses: azure/login@v1
-#   with:
-#    creds: ${{ secrets.AZURE_CREDENTIALS }}
-# - uses: azure/webapps-container-deploy@v1
-#   with:
-#    app-name: 'GithubDotNetCoreContainer'
-#    images: '${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/githubwebapp:${{ github.sha }}'
-#
-# - name: Azure logout
-#   run: |
-#     az logout
