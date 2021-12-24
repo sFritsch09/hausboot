@@ -48,7 +48,7 @@ jobs:
           export REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY
           export REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID
           docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=GOOGLE_AUTH,src=./service.json ./api
-          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_CALENDAR_IDD --secret id=REACT_APP_GOOGLE_API_KEY ./client
+          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_CALENDAR_ID --secret id=REACT_APP_GOOGLE_API_KEY ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
         env:
           REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
