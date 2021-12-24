@@ -38,8 +38,8 @@ jobs:
 
       - name: Build containers
         run: |
-          docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=$GOOGLE_AUTH ./api
-          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=$REACT_APP_GOOGLE_CALENDAR_ID --secret id=$REACT_APP_GOOGLE_API_KEY ./client
+          docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=GOOGLE_AUTH,env=$GOOGLE_AUTH ./api
+          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_CALENDAR_ID,env=$REACT_APP_GOOGLE_CALENDAR_ID --secret id=REACT_APP_GOOGLE_API_KEY,env=$REACT_APP_GOOGLE_API_KEY ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
         env:
           GOOGLE_AUTH: ${{ secrets.GOOGLE_AUTH}}
