@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hausboot-311709",
+  "private_key_id": "47d2848c02696416eae6d41574e58a28aebc9f7f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1mfa7dBEIPcLk\n+9D0vMIAnhho6vJyzqxvu9CrdcTaIHs3nm4JRCsKQQgm852OvX7gIJ/1CpTGPL6X\nLouKK9yRLfwRZ2j8O9lsq+m9SupUtCPtAH5LHcH3hbCKx8mMva5hUBuQLjgt+l+T\nvXncTgjFA/aaySaUcLYS+SFlIACZJE5pns8lrM5RvVxrav6uO0QXtzAiM//0i2Nm\nx68jLxoOr0CClGj+PZo458jrmJ8wz9AsS4IJuygerzoB4ZnvXcKYwZI3BcWJAIYR\nPnVD/JuE9Xxs4LEowLDT+5viCbw7xEwNHKbF0hlO43Wpo57e0DSKpiS/6qIOUUZB\nWt0MvHf/AgMBAAECggEAA8LT2QkFca7ALEVJpa/wTEDGwtfob1erB/tgGuHEn6Hf\n+2rOeGZ1hiMkdWFC25oLS4s31N4Q7u22IspsSgKWvfKX9fWDndAdgVv3UM80fQGb\nShH72GsEdK+Ybh9gilSPwBf/iIpntnTcT69MzuYjPCiIJ6eDCYli2ly96mq+jtPB\n84JoW+X3TMAGrs8rAQxbO+lPcQ6yWTp9YzPHkjMH8J6vxvx/HKqUQiIjLnm+B4Gz\n8aJJs4Bre6lXexQ8k3PvwYbHcBJnZCga2Z65OPJuWCbc6Uv2VWGMnYM3vP6MDCKR\nG3/FsmoXfHvkxk+bXeYxcgL/S901L3VCY8ejUtxfVQKBgQD3cfEqXnA+qpz8edcv\nZM6Jv2a2u6umEyETvhEnwxcFMlE1gt042KM8dpxqyPPfzrZsWeljtzUEGKmQUY5C\nRFgX8X1m86ygBUVaCoHihwuWGaATuRpiwnRF+GLTd8xzrqKsEnOmlqDgKRYozaR5\nObmVyi6DU2HVeg4mxYg9KVOHVQKBgQC74UKmvRp/owdb4cMl8y5R/khVzA3UPuu2\nmo37lPEuyPkn+XVrkOLJqQWA/OrHCBHWBJ93cUNurcRW3cb3/QIoJHV1n051ljwH\nZMN34rW+JZptoe/oaP+15NnwHXWJrn5k4BHs0Q8t1e301ZZg56gCzvHKpHmpzlOi\n3KGCinZaAwKBgGq91UnwqTzvPn9PU/tW4h3b2kQzmu0uTVOF50KeztxoA04xIJs4\nINqhVAJgo4tFUb5V3u8sBgu5U9Q0ykhd0R6rBuyVaz8wZuVbqQH+PYpHjZ1UeURn\nG99fMcqFYEX67KOL5iXTzpxEPRHm++9rblpmeEAghRCg8V/aUFYJ8MVtAoGAZyqr\nocmHSn0oJlETCry9O7Lo34v8MAcZAh1eR76irXEYN9YonxdhISEZ75lyBjatLJs/\nQaRFRfpPLO/9OOGKlKZohV0kBTeo4Np451TrPW2Cnh7lEPbPK39uGQbkKuVRbG0K\nCsNFlYK6ds3uFGpAfMJMTV0Bnbe5f12tpnQHxycCgYEAv0y2b0qiDgCgiHEqVbIH\nGEjFYhz9AHEfRSZ0pvLrfDHsZtXN/3znFMCopLEEJBMmto9UERClgiG93+czZEO/\nTbAUGLW9AfDZ/KcarDjGCZQR8keaLPRQ5lScf4pPokY+IAdkn1q5+USHP5UP1tAB\nrHdzzFUfG4AMlAVzCjF1Yak=\n-----END PRIVATE KEY-----\n",
+  "client_email": "hausboot@hausboot-311709.iam.gserviceaccount.com",
+  "client_id": "114274832158203437479",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hausboot%40hausboot-311709.iam.gserviceaccount.com"
+}

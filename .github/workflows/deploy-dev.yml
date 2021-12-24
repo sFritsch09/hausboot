@@ -36,14 +36,19 @@ jobs:
         uses: docker/setup-buildx-action@v1
         id: buildx
 
+      - name: create-json
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: 'service.json'
+          json: ${{ secrets.GOOGLE_AUTH }}
+
       - name: Build containers
         run: |
-          docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=GOOGLE_AUTH ./api
+          docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=GOOGLE_AUTH,src=service.json ./api
           docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_CALENDAR_ID,env=$REACT_APP_GOOGLE_CALENDAR_ID --secret id=REACT_APP_GOOGLE_API_KEY,env=$EEACT_APP_GOOGLE_API_KEY ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
         env:
-          GOOGLE_AUTH: ${{ secrets.GOOGLE_AUTH}}
-          # client_env: ${{ secrets.CLIENT_ENV}}
           REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
           REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
 
