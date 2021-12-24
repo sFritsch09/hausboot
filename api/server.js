@@ -37,5 +37,8 @@ app.get('/', (req, res) => {
 	res.json({ test: process.env.GOOGLE_AUTH });
 });
 app.get('/test', (req, res) => {
-	res.send(process.env.NODE_ENV);
+	res.send(process.env.GOOGLE_AUTH);
+});
+app.get('/test2', (req, res) => {
+	res.json(process.env.GOOGLE_AUTH);
 });
