@@ -3,7 +3,7 @@ import { getEvents } from '../../fetch';
 
 import BookingCalendar from 'react-booking-calendar';
 import BookingForm from '../../components/form/booking-form.component';
-import PriceListComp from 'components/priceList.component';
+import PriceListComp from 'components/pricelist/priceList.component';
 import {
 	CalendarWrapper,
 	BookingContainer,

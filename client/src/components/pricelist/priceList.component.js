@@ -27,7 +27,7 @@ const PriceListComp = ({
 		grill: 0,
 		laundry: 0,
 		parking: 0,
-		dog: 0,
+		dog: 50,
 		gas: 0,
 		gasoline: 50,
 	});
@@ -55,7 +55,7 @@ const PriceListComp = ({
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active2={price.dayPrice}
+							active={price.dayPrice === weekendDayprice}
 							clickable
 							onClick={() =>
 								setPrice({
@@ -76,7 +76,7 @@ const PriceListComp = ({
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active={price.dayPrice}
+							active={price.dayPrice === dayPrice}
 							clickable
 							onClick={() =>
 								setPrice({
@@ -106,7 +106,7 @@ const PriceListComp = ({
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active={price.weekPrice}
+							active={price.weekPrice === weekPrice}
 							clickable
 							onClick={() =>
 								setPrice({
@@ -128,7 +128,7 @@ const PriceListComp = ({
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active2={price.weekPrice}
+							active={price.weekPrice === weekendWeekPrice}
 							clickable
 							onClick={() =>
 								setPrice({

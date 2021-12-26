@@ -9,12 +9,6 @@ import {
 	InfoContainer,
 	InfoWrapper,
 	CalendarLegend,
-	PriceListContainer,
-	PriceListWrapper,
-	PriceListItem,
-	PriceListSeason,
-	PriceListHeader,
-	PriceList,
 	PriceListTitle,
 	InfoList,
 	InfoListItem,
@@ -24,6 +18,7 @@ import {
 	InfoItem,
 	InfoSectionWrapper,
 } from './floßboot.styles';
+import PriceListComp from 'components/pricelist/priceList.component';
 
 const HausbootRot = () => {
 	const equip = [
@@ -131,16 +126,6 @@ const HausbootRot = () => {
 	//Kugelgrill
 	//Wäschepaket
 	//Parkplatz
-	const [price, setPrice] = useState({
-		dayPrice: 0,
-		weekPrice: 0,
-		grill: 0,
-		laundry: 0,
-		parking: 0,
-		cleaning: 20,
-		gas: 0,
-		gasoline: 0,
-	});
 	return (
 		<div className="main">
 			<PriceListTitle>Floßboot</PriceListTitle>
@@ -209,200 +194,16 @@ const HausbootRot = () => {
 					<MenuLink to="#">Speisekarte</MenuLink>
 				</div>
 			</InfoContainer>
-			<PriceListContainer>
-				<PriceListTitle>Preisliste 2022</PriceListTitle>
-				<span className="padding">
-					Wähle zur vollständigen Berechnung das zutreffende aus (kann je nach Verbrauch abweichen):{' '}
-				</span>
-				<PriceListWrapper>
-					<PriceList>
-						<PriceListHeader>
-							<span className="price-header">Preise</span>
-							<span className="season-header">Summe</span>
-						</PriceListHeader>
-						<PriceListItem className="padding">
-							<div className="week-header">
-								Tagespreis
-								<p className="week-sub">Tagespreis ab 10:00 Uhr bis 19:00 Uhr</p>
-							</div>
-							<PriceListSeason />
-						</PriceListItem>
-						<PriceListItem
-							className="border"
-							active2={price.dayPrice}
-							clickable
-							onClick={() =>
-								setPrice({
-									...price,
-									dayPrice: 250,
-									weekPrice: 0,
-									gas: 2,
-								})
-							}
-						>
-							<div className="week">
-								<span className="item">Freitag bis Sonntag inkl. 20 L Sprit</span>
-							</div>
-							<PriceListSeason>250,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem
-							className="border"
-							active={price.dayPrice}
-							clickable
-							onClick={() =>
-								setPrice({
-									...price,
-									dayPrice: 179,
-									weekPrice: 0,
-									gas: 2,
-								})
-							}
-						>
-							<div className="week">
-								<span className="item">Montag bis Donnerstag inkl. 20 L Sprit</span>
-							</div>
-							<PriceListSeason>179,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem className="padding">
-							<div className="week-header">
-								Wochenendpreis
-								<p className="week-sub">Wochenendpreis ab 10:00 Uhr bis nächsten Tag 10:00 Uhr</p>
-								<p className="week-sub">1 Woche ab 15 Uhr bis nächste Woche 10:00 Uhr</p>
-							</div>
-							<PriceListSeason />
-						</PriceListItem>
-						<PriceListItem
-							className="border"
-							active={price.weekPrice}
-							clickable
-							onClick={() =>
-								setPrice({
-									...price,
-									weekPrice: 450,
-									dayPrice: 0,
-									gas: 6,
-								})
-							}
-						>
-							<div className="week">
-								<span className="item">Freitag bis Sonntag</span>
-							</div>
-							<PriceListSeason>450,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem
-							className="border"
-							active2={price.weekPrice}
-							clickable
-							onClick={() =>
-								setPrice({
-									...price,
-									weekPrice: 750,
-									dayPrice: 0,
-									gas: 14,
-								})
-							}
-						>
-							<div className="week">
-								<span className="item">1 Woche von Samstag bis Samstag</span>
-							</div>
-							<PriceListSeason>750,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem className="padding">
-							<div className="week">Zusatzkosten</div>
-							<PriceListSeason />
-						</PriceListItem>
-
-						<PriceListItem
-							className="border"
-							active={price.grill}
-							clickable
-							onClick={() =>
-								price.grill === 20
-									? setPrice({ ...price, grill: 0 })
-									: setPrice({ ...price, grill: 20 })
-							}
-						>
-							<div className="week">
-								<span className="item">Großer Gasgrill eimalig 20,00 Euro</span>
-							</div>
-							<PriceListSeason>20,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem
-							className="border"
-							active={price.laundry}
-							clickable
-							onClick={() =>
-								price.laundry === 20
-									? setPrice({ ...price, laundry: 0 })
-									: setPrice({ ...price, laundry: 20 })
-							}
-						>
-							<div className="week">
-								<span className="item">Wäschepaket p.P. 20,00 Euro</span>
-							</div>
-							<PriceListSeason>20,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem
-							className="border"
-							active={price.parking}
-							clickable
-							onClick={() =>
-								price.parking === 3
-									? setPrice({ ...price, parking: 0 })
-									: setPrice({ ...price, parking: 3 })
-							}
-						>
-							<div className="week">
-								<span className="item">Parkplatz (eingezäunt) 3,00 Euro/Tag</span>
-							</div>
-							<PriceListSeason>{price.dayPrice !== 0 ? '3,- Euro' : '9,- Euro'}</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem className="border">
-							<div className="week">
-								<span className="item">Benzin nach Verbrauch 2,40 Euro/Liter</span>
-							</div>
-							<PriceListSeason />
-						</PriceListItem>
-						<PriceListItem className="border">
-							<div className="week">
-								<span className="item">Gasflasche 2,00 Euro/Tag</span>
-							</div>
-							<PriceListSeason>
-								{price.gas === 14 ? '14,- Euro' : price.gas === 6 ? '6,- Euro' : '2,- Euro'}
-							</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem className="border">
-							<div className="week">
-								<span className="item">Endreinigung</span>
-							</div>
-							<PriceListSeason>20,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem className="border">
-							<div className="week">
-								<span className="item">Fäkalientankentleerung 25,00 Euro</span>
-							</div>
-							<PriceListSeason>25,- Euro</PriceListSeason>
-						</PriceListItem>
-						<PriceListItem>
-							<div className="week"></div>
-							<PriceListSeason>
-								<h3 className="total">
-									{price.dayPrice +
-										price.weekPrice +
-										price.grill +
-										price.laundry +
-										price.parking +
-										price.cleaning +
-										price.gas +
-										price.gasoline +
-										25}{' '}
-									Euro
-								</h3>
-							</PriceListSeason>
-						</PriceListItem>
-					</PriceList>
-				</PriceListWrapper>
-			</PriceListContainer>
+			<PriceListComp
+				weekendDayprice={150}
+				weekendDayprice2={230}
+				dayPrice={130}
+				dayPrice2={200}
+				weekPrice={420}
+				weekPrice2={590}
+				weekendWeekPrice={710}
+				weekendWeekPrice2={1190}
+			/>
 			<BookingContainer>
 				<CalendarWrapper>
 					<CalendarLegend>

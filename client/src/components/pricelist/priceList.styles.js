@@ -117,16 +117,7 @@ export const PriceListItem = styled.div`
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	background-color: ${(props) =>
-		props.active === 130 ||
-		props.active === 420 ||
-		props.active === 5 ||
-		props.active === 20 ||
-		props.active === 3 ||
-		props.active2 === 150 ||
-		props.active2 === 710
-			? props.theme.lightColor
-			: null};
+	background-color: ${(props) => (props.active ? props.theme.lightColor : null)};
 	cursor: ${(props) => (props.clickable ? 'pointer' : null)};
 	&:hover {
 		color: ${(props) => (props.clickable ? props.theme.priceColor : null)};
