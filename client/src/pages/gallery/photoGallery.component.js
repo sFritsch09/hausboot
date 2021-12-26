@@ -3,8 +3,10 @@ import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import { photos } from './photos';
 import { GalleryContainer } from './photoGallery.styles';
+import UnderlinedMenu from 'components/underlinedMenu/underlinedMenu.component';
 
 const PhotoGallery = () => {
+	const [selected, setSelected] = useState('Rot');
 	const [currentImage, setCurrentImage] = useState(0);
 	const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -18,16 +20,25 @@ const PhotoGallery = () => {
 		setViewerIsOpen(false);
 	};
 
+	const photoSwitch = (photo) =>
+		({
+			Rot: photos.rot,
+			Blau: photos.blau,
+			'Floß S': photos.floßS,
+			'Floß L': photos.floßL,
+		}[photo]);
+
 	return (
 		<div>
+			<UnderlinedMenu selected={selected} setSelected={setSelected} />
 			<GalleryContainer>
-				<Gallery photos={photos} onClick={openLightbox} />
+				<Gallery photos={photoSwitch(selected)} onClick={openLightbox} />
 				<ModalGateway>
 					{viewerIsOpen ? (
 						<Modal onClose={closeLightbox}>
 							<Carousel
 								currentIndex={currentImage}
-								views={photos.map((x) => ({
+								views={photoSwitch(selected).map((x) => ({
 									...x,
 									srcset: x.srcSet,
 									caption: x.title,

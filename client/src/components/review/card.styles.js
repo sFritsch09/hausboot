@@ -7,6 +7,7 @@ export const LayoutContainer = styled.div`
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	gap: 1.5rem;
+
 	.dim-layer {
 		position: absolute;
 		height: 100%;
@@ -45,6 +46,11 @@ export const LayoutContainer = styled.div`
 			&:first-child {
 				margin-left: 0;
 			}
+		}
+
+		@media screen and (max-width: 900px) {
+			width: 100%;
+			border-radius: 1em;
 		}
 	}
 	.card {
@@ -86,6 +92,11 @@ export const LayoutContainer = styled.div`
 			display: none;
 		}
 	}
+
+	@media screen and (max-width: 900px) {
+		padding: 1rem;
+		line-height: 2em;
+	}
 `;
 export const ConvoContainer = styled.div`
 	.convo {
@@ -99,6 +110,11 @@ export const ConvoContainer = styled.div`
 
 		& > *:not(:last-child) {
 			margin-bottom: 10px;
+		}
+
+		@media screen and (max-width: 900px) {
+			width: 100%;
+			padding: 1em 0.5em;
 		}
 	}
 
@@ -152,6 +168,11 @@ export const ConvoContainer = styled.div`
 			font-size: inherit;
 			font-weight: inherit;
 			color: white;
+
+			@media screen and (max-width: 900px) {
+				border-radius: 1.5em;
+				padding: 0.5em 0.7em;
+			}
 		}
 	}
 
@@ -182,6 +203,11 @@ export const ConvoContainer = styled.div`
 			font-size: inherit;
 			font-weight: inherit;
 			color: white;
+
+			@media screen and (max-width: 900px) {
+				border-radius: 1.5em;
+				padding: 1em 1.2em;
+			}
 
 			&:hover {
 				cursor: pointer;
