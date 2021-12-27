@@ -3,11 +3,8 @@ FROM node:14.15.3-alpine as builder
 
 RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
     --mount=type=secret,id=REACT_APP_GOOGLE_CALENDAR_ID \
-    export key1=$(cat run/secrets/REACT_APP_GOOGLE_API_KEY) && \
-    export key2=$(cat run/secrets/REACT_APP_GOOGLE_CALENDAR_ID)
-
-ENV REACT_APP_GOOGLE_API_KEY=$key1
-ENV REACT_APP_GOOGLE_CALENDAR_ID=$key2
+    REACT_APP_GOOGLE_API_KEY=$(cat run/secrets/REACT_APP_GOOGLE_API_KEY) \
+    REACT_APP_GOOGLE_CALENDAR_ID=$(cat run/secrets/REACT_APP_GOOGLE_CALENDAR_ID)
 
 # Set working directory
 WORKDIR /app
