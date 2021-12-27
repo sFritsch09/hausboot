@@ -45,14 +45,12 @@ jobs:
 
       - name: Build containers
         run: |
-          # docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --secret id=GOOGLE_AUTH,src=./service.json ./api
-          # docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --secret id=REACT_APP_GOOGLE_CALENDAR_ID --secret id=REACT_APP_GOOGLE_API_KEY ./client
-          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client:1.0.0 ./client
-          docker run -e REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY -e REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client:1.0.0
-          docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
+          docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api:$version --secret id=GOOGLE_AUTH,src=./service.json ./api
+          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client:$version --secret id=_env,src=$CLIENT_ENV ./client
+          docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server:$version ./nginx
         env:
-          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
-          REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
+          CLIENT_ENV: ${{ secrets.CLIENT_ENV }}
+          version: 1.0.0
 
       - name: List images
         run: |
@@ -60,6 +58,6 @@ jobs:
 
       - name: Push Multi-Container
         run: |
-          # docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api
-          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client
-          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server
+          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api:$version
+          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client:$version
+          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server:$version
