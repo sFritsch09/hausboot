@@ -1,7 +1,7 @@
 # pull the Node.js Docker image
 FROM node:14.5.0-alpine
 
-RUN --mount=type=secret,id=GOOGLE_AUTH,dst=/app cat /etc/secrets/GOOGLE_AUTH
+RUN --mount=type=secret,id=GOOGLE_AUTH,dst=/app
 
 # create the directory inside the container
 WORKDIR /app
