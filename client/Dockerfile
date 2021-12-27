@@ -1,3 +1,18 @@
+# Node
+FROM node:14.15.3-alpine as builder
+
+# Set working directory
+WORKDIR /app
+
+COPY package.json /app
+
+RUN yarn install
+
+COPY . .
+
+RUN yarn run build
+
+# gen env file
 FROM ubuntu:22.04 as init
 
 WORKDIR /app/build
@@ -13,21 +28,6 @@ RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
     export REACT_APP_GOOGLE_API_KEY=$(cat run/secrets/REACT_APP_GOOGLE_API_KEY) && \
     export REACT_APP_GOOGLE_CALENDAR_ID=$(cat run/secrets/REACT_APP_GOOGLE_CALENDAR_ID) && \
     python genenv.py
-
-# Node
-FROM node:14.15.3-alpine as builder
-
-# Set working directory
-WORKDIR /app
-
-COPY package.json /app
-
-RUN yarn install
-
-COPY . .
-
-RUN yarn run build
-
 
 FROM nginx
 EXPOSE 3000
