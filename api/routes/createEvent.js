@@ -6,7 +6,7 @@ const createEvent = (app) => {
 	const scopes = ['https://www.googleapis.com/auth/calendar'];
 
 	const client = new google.auth.GoogleAuth({
-		keyFile: './service.json',
+		keyFile: './serviceGoogle.json',
 		scopes,
 	});
 
