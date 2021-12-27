@@ -3,7 +3,7 @@ FROM node:14.15.3-alpine as builder
 
 RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
     --mount=type=secret,id=REACT_APP_GOOGLE_CALENDAR_ID \
-    -e REACT_APP_GOOGLE_API_KEY=cat run/secrets/REACT_APP_GOOGLE_API_KEY
+    cat run/secrets/REACT_APP_GOOGLE_API_KEY
 
 # Set working directory
 WORKDIR /app
