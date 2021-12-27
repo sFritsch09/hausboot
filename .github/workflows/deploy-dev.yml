@@ -45,12 +45,14 @@ jobs:
 
       - name: Build containers
         run: |
-          export client_env=$CLIENT_ENV
+          export REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY
+          export REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_API_KEY
           docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api:$version --secret id=GOOGLE_AUTH,src=./service.json ./api
-          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client:$version --secret id=_env,src=$client_env ./client
+          docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client:$version --secret id=REACT_APP_GOOGLE_API_KEY --secret id=REACT_APP_GOOGLE_CALENDAR_ID ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server:$version ./nginx
         env:
-          CLIENT_ENV: ${{ secrets.CLIENT_ENV }}
+          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
+          REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
           version: 1.0.0
 
       - name: List images
