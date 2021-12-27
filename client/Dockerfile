@@ -1,6 +1,9 @@
 # Name the node stage "builder"
 FROM node:14.15.3-alpine as builder
 
+RUN apt-get update && apt-get install -y \
+    python-pip
+
 # install package
 RUN pip install pipenv && pipenv sync
 
