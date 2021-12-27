@@ -34,5 +34,5 @@ app.get('/event', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	res.json({ test: process.env.GOOGLE_AUTH });
+	res.send('Hello from Hausboot Api!');
 });

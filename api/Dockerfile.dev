@@ -8,7 +8,7 @@ ENV GOOGLE_CALENDAR_ID=$GOOGLE_CALENDAR_ID
 # create the directory inside the container
 WORKDIR /app
 
-ADD $SERVICE .
+ADD $SERVICE ./
 
 # copy the package.json files from local machine to the workdir in container
 COPY package*.json ./
