@@ -1,10 +1,14 @@
 # Name the node stage "builder"
 FROM node:14.15.3-alpine as builder
 
+# install package
+RUN pip install pipenv && pipenv sync
+
 RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
     --mount=type=secret,id=REACT_APP_GOOGLE_CALENDAR_ID \
     export REACT_APP_GOOGLE_API_KEY=$(cat run/secrets/REACT_APP_GOOGLE_API_KEY) && \
-    export REACT_APP_GOOGLE_CALENDAR_ID=$(cat run/secrets/REACT_APP_GOOGLE_CALENDAR_ID)
+    export REACT_APP_GOOGLE_CALENDAR_ID=$(cat run/secrets/REACT_APP_GOOGLE_CALENDAR_ID) && \
+    python genenv.py
 
 # Set working directory
 WORKDIR /app
