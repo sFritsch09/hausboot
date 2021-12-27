@@ -6,9 +6,6 @@ RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
     export REACT_APP_GOOGLE_API_KEY=$(cat run/secrets/REACT_APP_GOOGLE_API_KEY) && \
     export REACT_APP_GOOGLE_CALENDAR_ID=$(cat run/secrets/REACT_APP_GOOGLE_CALENDAR_ID)
 
-ENV REACT_APP_GOOGLE_API_KEY=
-ENV REACT_APP_GOOGLE_CALENDAR_ID=
-
 # Set working directory
 WORKDIR /app
 
