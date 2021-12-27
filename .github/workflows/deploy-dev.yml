@@ -38,11 +38,11 @@ jobs:
         with:
           name: 'service.json'
           json: ${{ secrets.GOOGLE_AUTH }}
-          dir: 'api/'
+          dir: 'src/api/'
 
       - name: Build containers
         run: |
-          docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --build-arg SERVICE=api/service.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
+          docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --build-arg SERVICE=src/api/service.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
           docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --build-arg REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY --build-arg REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
         env:
