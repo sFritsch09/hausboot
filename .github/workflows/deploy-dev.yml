@@ -45,7 +45,7 @@ jobs:
 
       - name: Build containers
         run: |
-          docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api:$version --secret id=GOOGLE_AUTH,src=./service.json ./api
+          docker buildx build --load -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api:$version --secret id=GOOGLE_AUTH,src=service.json ./api
           docker buildx build --load -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client:$version --secret id=_env,src=$CLIENT_ENV ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server:$version ./nginx
         env:
