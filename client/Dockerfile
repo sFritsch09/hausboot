@@ -1,11 +1,14 @@
-# Name the node stage "builder"
-FROM node:14.15.3-alpine as builder
+FROM ubuntu:14.04
 
 RUN apt-get update && apt-get install -y \
     python-pip
 
 # install package
 RUN pip install pipenv && pipenv sync
+
+# Node
+FROM node:14.15.3-alpine as builder
+
 
 RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
     --mount=type=secret,id=REACT_APP_GOOGLE_CALENDAR_ID \
