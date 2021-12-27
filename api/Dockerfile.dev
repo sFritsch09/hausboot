@@ -5,8 +5,6 @@ ARG GOOGLE_CALENDAR_ID
 ARG SERVICE
 ENV GOOGLE_CALENDAR_ID=$GOOGLE_CALENDAR_ID
 
-RUN --mount=type=secret,id=GOOGLE_AUTH,dst=/etc/service.json
-
 # create the directory inside the container
 WORKDIR /app
 
