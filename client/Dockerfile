@@ -1,4 +1,6 @@
-FROM ubuntu:14.04
+FROM ubuntu:22.04
+
+WORKDIR /app/build
 
 RUN apt-get update && apt-get install -y \
     python-pip
