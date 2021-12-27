@@ -5,7 +5,7 @@ ARG GOOGLE_CALENDAR_ID
 ENV GOOGLE_CALENDAR_ID=$GOOGLE_CALENDAR_ID
 
 ARG SERVICE
-ADD SERVICE ./
+ADD $SERVICE .
 # create the directory inside the container
 WORKDIR /app
 
