@@ -5,10 +5,11 @@ ARG GOOGLE_CALENDAR_ID
 ARG SERVICE
 ENV GOOGLE_CALENDAR_ID=$GOOGLE_CALENDAR_ID
 
+ADD $SERVICE ./
+
 # create the directory inside the container
 WORKDIR /app
 
-ADD $SERVICE ./
 
 # copy the package.json files from local machine to the workdir in container
 COPY package*.json ./
