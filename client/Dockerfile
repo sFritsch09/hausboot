@@ -1,11 +1,7 @@
 # Name the node stage "builder"
 FROM node:14.15.3-alpine as builder
 
-ENV REACT_APP_GOOGLE_API_KEY= 
-ENV REACT_APP_GOOGLE_CALENDAR_ID=
-
-#RUN --mount=type=secret,id=REACT_APP_GOOGLE_API_KEY \
-#     --mount=type=secret,id=REACT_APP_GOOGLE_CALENDAR_ID
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env
 
 # Set working directory
 WORKDIR /app
