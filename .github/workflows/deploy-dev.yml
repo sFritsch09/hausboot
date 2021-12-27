@@ -41,7 +41,8 @@ jobs:
 
       - name: Build containers
         run: |
-          docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --build-arg SERVICE=./service.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
+          echo service.json
+          docker build -f ./api/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --build-arg SERVICE=service.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
           docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --build-arg REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY --build-arg REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./client
           docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx
         env:
