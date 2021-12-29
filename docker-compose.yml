@@ -1,19 +1,26 @@
-version: '3.8'
+version: '3'
 services:
   api:
     container_name: Hausboot-Api
     build:
+      network: host
       dockerfile: Dockerfile.dev
       context: ./api
     ports:
       - '3100:3100'
+    networks:
+      - subnet
   client:
     container_name: Hausboot-Frontend
+    env_file: ./client/.env
     build:
-      dockerfile: Dockerfile.dev
+      network: host
+      dockerfile: Dockerfile
       context: ./client
     ports:
       - '3000:3000'
+    networks:
+      - subnet
   nginx:
     depends_on:
       - api
@@ -21,7 +28,13 @@ services:
     container_name: Hausboot-Server
     restart: always
     build:
+      network: host
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
       - '80:80'
+    networks:
+      - subnet
+networks:
+  subnet:
+    name: subnet
