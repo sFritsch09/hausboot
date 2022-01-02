@@ -17,11 +17,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //routes
-// require('./routes/createEvent')(app);
-app.post('/api/event', (req, res) => {
-	console.log(req.body);
-	res.status(200).send({ success: 'Server reached!' });
-});
+require('./routes/createEvent')(app);
+// app.post('/api/event', (req, res) => {
+// 	console.log(req.body);
+// 	res.status(200).send({ success: 'Server reached!' });
+// });
 
 const port = process.env.PORT || 3100;
 app.listen(port, (error) => {
