@@ -55,6 +55,6 @@ jobs:
 
       - name: Push Multi-Container
         run: |
-          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api
-          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client
-          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server
+          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootprod/api
+          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootprod/client
+          docker push ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootprod/server
