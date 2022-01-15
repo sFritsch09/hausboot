@@ -42,9 +42,9 @@ jobs:
 
       - name: Build containers
         run: |
-          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/api --build-arg SERVICE=serviceGoogle.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
-          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/client --build-arg REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY --build-arg REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./client
-          docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootdev/server ./nginx --build-arg DOMAIN_LIST=xn--teichland-kapitne-4qb.de
+          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootprod/api --build-arg SERVICE=serviceGoogle.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
+          docker build -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootprod/client --build-arg REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY --build-arg REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./client
+          docker build -f ./nginx/Dockerfile.dev -t ${{ secrets.REGISTRY_SERVERNAME }}.azurecr.io/hausbootprod/server ./nginx --build-arg DOMAIN_LIST=xn--teichland-kapitne-4qb.de
         env:
           REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
           REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
