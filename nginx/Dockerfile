@@ -3,7 +3,7 @@ FROM nginx:stable
 
 # COPY nginx.conf /etc/nginx/nginx.conf
 # COPY --from=build /app/build /usr/share/nginx/html
-ARG CERTBOT_EMAIL=admin@teichland-kapitäne.de
+ARG CERTBOT_EMAIL=admin@xn--teichland-kapitne-4qb.de
 ARG DOMAIN_LIST
 
 RUN  apt-get update \
