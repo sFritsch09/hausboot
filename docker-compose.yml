@@ -25,10 +25,7 @@ services:
     restart: always
     build:
       network: host
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./nginx
-      args:
-        - DOMAIN_LIST=teichland-kapitäne.de,www.teichland-kapitäne.de
     ports:
       - '80:80'
-      - '443:443'
