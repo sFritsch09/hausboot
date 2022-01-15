@@ -2,7 +2,7 @@ import React from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { MenuContainer, MenuWrapper, MenuUnderline } from './underlinedMenu.styles';
 
-const menuItems = ['Rot', 'Blau', 'Floß S', 'Floß L'];
+const menuItems = ['Tour', 'Rot', 'Blau', 'Floß S', 'Floß L'];
 
 const MenuItem = ({ text, selected, onClick }) => (
 	<MenuWrapper onClick={onClick} animate={{ opacity: selected ? 1 : 0.5 }}>

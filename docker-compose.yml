@@ -13,7 +13,7 @@ services:
     env_file: ./client/.env
     build:
       network: host
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./client
     ports:
       - '3000:3000'
@@ -25,7 +25,10 @@ services:
     restart: always
     build:
       network: host
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./nginx
+      args:
+        - DOMAIN_LIST=teichland-kapitäne.de,www.teichland-kapitäne.de
     ports:
       - '80:80'
+      - '443:443'

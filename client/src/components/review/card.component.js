@@ -4,10 +4,10 @@ import { LayoutContainer, DisplayCard } from './card.styles';
 import Convo from './convo.component';
 
 const cards = [
-	{ id: 0, name: 'Manuel' },
-	{ id: 1, name: 'Christian' },
-	{ id: 2, name: 'Thomas' },
-	{ id: 3, name: 'Stefan' },
+	{ id: 0, name: 'Manuel', question: 'test1', answer: 'answer1' },
+	{ id: 1, name: 'Christian', question: 'test2', answer: 'answer2' },
+	{ id: 2, name: 'Thomas', question: 'test3', answer: 'answer3' },
+	{ id: 3, name: 'Stefan', question: 'test4', answer: 'answer4' },
 ];
 
 const LayoutCards = () => {
@@ -26,6 +26,7 @@ const LayoutCards = () => {
 			setHide(true);
 		}
 	};
+
 	return (
 		<div style={{ height: '200px' }}>
 			<LayoutContainer>
@@ -41,7 +42,7 @@ const LayoutCards = () => {
 						<DisplayCard hide={hide}>Click to see review by {card.name}</DisplayCard>
 						{selectedId === card && (
 							<React.Fragment>
-								<Convo className="convo-div" />
+								<Convo className="convo-div" question={card.question} answer={card.answer} />
 							</React.Fragment>
 						)}
 					</motion.div>

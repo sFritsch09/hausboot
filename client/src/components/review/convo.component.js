@@ -50,7 +50,7 @@ const goodVariant = {
 	clicked: { backgroundColor: '#FF008C' },
 };
 
-const Convo = () => {
+const Convo = ({ question, answer }) => {
 	const [userVisible, setUserVisible] = useState(false);
 	const [responseVisible, setResponseVisible] = useState(false);
 
@@ -120,7 +120,7 @@ const Convo = () => {
 							animate={questionAnim}
 							className="question"
 						>
-							How are you today?
+							{question}
 						</motion.h3>
 					</div>
 				</div>
@@ -138,7 +138,7 @@ const Convo = () => {
 						animate={responseVisible ? 'clicked' : 'notClicked'}
 						onClick={() => setResponseVisible(true)}
 					>
-						{responseVisible ? "I'm good!" : 'Click for good.'}
+						{answer}
 					</motion.button>
 				</motion.div>
 			</motion.section>

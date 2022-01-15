@@ -18,7 +18,7 @@ export const Angle = styled.div`
 		background: inherit;
 		content: '';
 		display: block;
-		height: 160px;
+		height: 180px;
 		left: 0;
 		position: absolute;
 		right: 0;
@@ -35,7 +35,7 @@ export const Imgage = styled.img`
 	background-image: url(${(props) => props.imageSrc});
 	width: 100%;
 	height: 600px;
-	background-position: 50% 15%;
+	background-position: 50% 45%;
 	background-size: cover;
 	background-repeat: no-repeat;
 	transition: all 0.5s ease;

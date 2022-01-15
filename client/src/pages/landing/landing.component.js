@@ -9,7 +9,6 @@ import {
 	BookedWrapper,
 	GifWrapper,
 } from './landing.styles';
-import Titanic from '../../assets/Titanic.gif';
 
 const LandingPage = () => {
 	const location = useLocation();
@@ -18,7 +17,11 @@ const LandingPage = () => {
 		<div className="main">
 			<BookedContainer>
 				<BookedWrapper>
-					<GifWrapper src={Titanic} alt="Nice gif!" style={{ margin: '10px' }} />
+					<GifWrapper
+						src={'https://hausbootprod.blob.core.windows.net/hausboot-images/Titanic.gif'}
+						alt="Nice gif!"
+						style={{ margin: '10px' }}
+					/>
 					<h2 style={{ textAlign: 'center' }}>Deine Buchung wurde bestätigt! ⚓</h2>
 					<BookedDetails>Details:</BookedDetails>
 					{location.state ? (

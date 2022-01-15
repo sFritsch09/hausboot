@@ -6,7 +6,7 @@ import { GalleryContainer } from './photoGallery.styles';
 import UnderlinedMenu from 'components/underlinedMenu/underlinedMenu.component';
 
 const PhotoGallery = () => {
-	const [selected, setSelected] = useState('Rot');
+	const [selected, setSelected] = useState('Tour');
 	const [currentImage, setCurrentImage] = useState(0);
 	const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -22,6 +22,7 @@ const PhotoGallery = () => {
 
 	const photoSwitch = (photo) =>
 		({
+			Tour: photos.general,
 			Rot: photos.rot,
 			Blau: photos.blau,
 			'Floß S': photos.floßS,
@@ -32,7 +33,7 @@ const PhotoGallery = () => {
 		<div>
 			<UnderlinedMenu selected={selected} setSelected={setSelected} />
 			<GalleryContainer>
-				<Gallery photos={photoSwitch(selected)} onClick={openLightbox} />
+				<Gallery photos={photoSwitch(selected)} direction="row" onClick={openLightbox} />
 				<ModalGateway>
 					{viewerIsOpen ? (
 						<Modal onClose={closeLightbox}>

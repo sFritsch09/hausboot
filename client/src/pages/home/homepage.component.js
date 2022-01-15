@@ -5,9 +5,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import { SliderWrapper, Imgage, Angle, ReviewContainer } from './homepage.styles';
 import LayoutCards from '../../components/review/card.component';
 
-import HouseboatBlue from 'assets/houseboatBlue.jpeg';
-import HouseboatGang from 'assets/houseboatGang.jpeg';
-
 const HomePage = () => {
 	const settings = {
 		dots: false,
@@ -27,11 +24,38 @@ const HomePage = () => {
 				<Slider {...settings}>
 					<div>
 						<div>
-							<Imgage imageSrc={HouseboatBlue} />
+							<Imgage
+								imageSrc={
+									'https://hausbootprod.blob.core.windows.net/hausboot-images/Hausboot-blau-dock.jpeg'
+								}
+							/>
 						</div>
 					</div>
 					<div>
-						<Imgage imageSrc={HouseboatGang} />
+						<Imgage
+							imageSrc={
+								'https://hausbootprod.blob.core.windows.net/hausboot-images/Hausboot-sunset.jpeg'
+							}
+						/>
+					</div>
+					<div>
+						<Imgage
+							imageSrc={
+								'https://hausbootprod.blob.core.windows.net/hausboot-images/View-river2.jpg'
+							}
+						/>
+					</div>
+					<div>
+						<Imgage
+							imageSrc={'https://hausbootprod.blob.core.windows.net/hausboot-images/View-pond.jpg'}
+						/>
+					</div>
+					<div>
+						<Imgage
+							imageSrc={
+								'https://hausbootprod.blob.core.windows.net/hausboot-images/View-sluice.jpg'
+							}
+						/>
 					</div>
 				</Slider>
 			</SliderWrapper>
