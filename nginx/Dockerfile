@@ -5,8 +5,8 @@ FROM nginx:1.21.4-alpine
 ARG CERTBOT_EMAIL=admin@teichland-kapitäne.de
 ARG DOMAIN_LIST
 
-RUN  apt-get update \
-      && apt-get install -y cron certbot python-certbot-nginx bash wget \
+RUN  apk --update \
+      && apk add -y cron certbot python-certbot-nginx bash wget \
       && certbot certonly --standalone --agree-tos -m "${CERTBOT_EMAIL}" -n -d ${DOMAIN_LIST} \
       && rm -rf /var/lib/apt/lists/* \
       && echo "PATH=$PATH" > /etc/cron.d/certbot-renew  \
