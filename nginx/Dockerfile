@@ -11,7 +11,7 @@ ARG DOMAIN_LIST
       # && echo "@monthly certbot renew --nginx >> /var/log/cron.log 2>&1" >>/etc/cron.d/certbot-renew \
       # && crontab /etc/cron.d/certbot-renew
 RUN  apk update \
-      && apk add -y cron certbot python-certbot-nginx bash wget
+      && apk add -i cron certbot python-certbot-nginx bash wget
 
 VOLUME /etc/letsencrypt
 
