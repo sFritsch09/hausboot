@@ -11,6 +11,7 @@ import {
 	MastercardIcon,
 	SepaIcon,
 	WaveWrapper,
+	WaveContainer,
 } from './footer.styles';
 
 const Footer = () => {
@@ -30,7 +31,7 @@ const Footer = () => {
 	];
 	return (
 		<div>
-			<div style={{ marginBottom: '-5px' }}>
+			<WaveContainer>
 				<WaveWrapper
 					fill={theme.wave}
 					paused={false}
@@ -41,7 +42,7 @@ const Footer = () => {
 						points: 4,
 					}}
 				/>
-			</div>
+			</WaveContainer>
 			<FooterContainer>
 				<IconContainer>
 					<div className="grid">

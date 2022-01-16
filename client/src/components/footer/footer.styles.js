@@ -37,6 +37,12 @@ export const WaveWrapper = styled(Wave)`
 		}
 	}
 `;
+export const WaveContainer = styled.div`
+	margin-bottom: -5px;
+	background-color: ${(props) =>
+		props.theme.mode === 'Dark' ? props.theme.contrastColor : props.theme.darkColor};
+`;
+
 export const FooterContainer = styled.div`
 	display: flex;
 	background: ${(props) =>
@@ -46,7 +52,7 @@ export const FooterContainer = styled.div`
 	flex-direction: column;
 
 	@media screen and (max-width: 980px) {
-		padding-bottom: 100px;
+		padding-bottom: 10em;
 	}
 `;
 

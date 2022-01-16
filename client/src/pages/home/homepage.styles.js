@@ -10,7 +10,8 @@ export const Angle = styled.div`
 	position: relative;
 	height: 20px;
 	padding-bottom: 90px;
-	background-color: ${(props) => props.theme.darkColor};
+	background-color: ${(props) =>
+		props.theme.mode === 'Dark' ? props.theme.contrastColor : props.theme.darkColor};
 	&:before {
 		top: -50px;
 		transform: skewY(2.4deg);
@@ -52,6 +53,7 @@ export const Imgage = styled.img`
 
 export const ReviewContainer = styled.div`
 	height: 20rem;
-	background-color: ${(props) => props.theme.contrastColor};
+	background-color: ${(props) =>
+		props.theme.mode === 'Dark' ? props.theme.darkColor : props.theme.contrastColor};
 	position: relative;
 `;

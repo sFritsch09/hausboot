@@ -6,21 +6,32 @@ import BookingForm from '../../components/form/booking-form.component';
 import {
 	CalendarWrapper,
 	BookingContainer,
-	InfoContainer,
-	InfoWrapper,
 	CalendarLegend,
 	PriceListTitle,
-	InfoList,
-	InfoListItem,
 	MenuLink,
-	Button,
-	InfoSection,
-	InfoItem,
-	InfoSectionWrapper,
+	MenuWrapper,
 } from './floßboot.styles';
 import PriceListComp from 'components/pricelist/priceList.component';
+import InfoListComp from 'components/infoList/infoList.component';
 
 const HausbootRot = () => {
+	const infoListArray = [
+		{
+			service: [
+				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
+				'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
+				'Einweisungsfahrt',
+				'Informationsmaterial und Reiseunterlagen',
+			],
+			insurance: [
+				'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
+				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
+				'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag',
+			],
+			mainSeason: '22.05.2021 - 25.09.2021 und 21.05.2022 - 03.09.2022',
+			lowSeason: '27.03.2021 - 29.05.2021 und 26.09.2021 - 20.05.2022 (ohne Himmelfahrt)',
+		},
+	];
 	const equip = [
 		{
 			text: 'Töpfe, Teller, Besteck',
@@ -129,60 +140,8 @@ const HausbootRot = () => {
 	return (
 		<div className="main">
 			<PriceListTitle>Floßboot</PriceListTitle>
-			<InfoContainer>
-				<Button primary onClick={goToBooking}>
-					Direkt Buchen
-				</Button>
-				<InfoWrapper>
-					Ausstattung:
-					<span className="week-sub">
-						<InfoSection>
-							<InfoSectionWrapper>
-								{equip.map((item) => (
-									<InfoItem key={item.text} icon={item.icon}>
-										<div>{item.text}</div>
-									</InfoItem>
-								))}
-							</InfoSectionWrapper>
-						</InfoSection>
-					</span>
-					Ausstattung:
-					<span className="week-sub">
-						Töpfe, Teller, Besteck und dergleichen sind in der Campingküche an Bord. Auch ein
-						Gasherd mit zwei Kochplatten und eine Kühlbox 50L. Das Floß kann im vorderen Bereich mit
-						2 Zelten für jeweils 2-3 Personen umgebaut werden. Zelte und Luftmatratzen sind an Bord.
-						Im hinteren Bereich befindet sich die Lobby, die ringsum mit Bootsplane verschlossen
-						werden kann. Auch ein WC mit Waschbecken ist an Bord.
-						<br />
-						<br />
-						Das Hausboot hat im hinteren Bereich 1Doppelbett 180x200cm. Im vorderen Bereich befindet
-						sich auf der linke Seite die Küche und rechts bietet das ausziehbare Sofa 2 weitere
-						Schlafplätze.
-					</span>
-					Inklusiv-Leistungen
-					<InfoList>
-						<InfoListItem>Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung</InfoListItem>
-						<InfoListItem>intensive Einweisung im Umgang mit dem Boot, Routenberatung</InfoListItem>
-						<InfoListItem>Einweisungsfahrt</InfoListItem>
-						<InfoListItem>Informationsmaterial und Reiseunterlagen</InfoListItem>
-					</InfoList>
-					<span className="week-sub">
-						Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag
-					</span>
-					<span className="week-sub">
-						Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag
-					</span>
-					<span className="week-sub">
-						Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag
-					</span>
-					Saison:
-					<span className="week-sub">27.03.2021 - 26.09.2021</span>
-					<span className="driver-license">
-						Ein Führerschein wird nicht benötigt, da das Hausboot mit einem 15 PS Motor betrieben
-						wird und dieser Führerscheinfrei ist. Optimale Besetzung bis zu 18 Personen für das
-						Große und 10 Personen für das Kleine.
-					</span>
-				</InfoWrapper>
+			<InfoListComp infoArray={equip} goToBooking={goToBooking} infoListArray={infoListArray} />
+			<MenuWrapper>
 				<h2>Auswahl der Speisekarte:</h2>
 				<br />
 				Gern stellen wir Ihnen für Ihre Feier auch ein Catering zur Verfügung. Alle Speisen und
@@ -190,10 +149,12 @@ const HausbootRot = () => {
 				Menüvorschlägen. Weitere Infos zu unserem Menülieferanten und Partner unter:
 				Facebook/Gasthofzumfloesser. Link zur Speisekarte:
 				<br />
-				<div style={{ display: 'flex', padding: '20px' }}>
+				<div
+					style={{ paddingTop: '2.5em', display: 'flex', justifyContent: 'center', margin: 'auto' }}
+				>
 					<MenuLink to="#">Speisekarte</MenuLink>
 				</div>
-			</InfoContainer>
+			</MenuWrapper>
 			<PriceListComp
 				weekendDayprice={150}
 				weekendDayprice2={230}

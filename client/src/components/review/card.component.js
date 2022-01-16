@@ -4,7 +4,12 @@ import { LayoutContainer, DisplayCard } from './card.styles';
 import Convo from './convo.component';
 
 const cards = [
-	{ id: 0, name: 'Manuel', question: 'test1', answer: 'answer1' },
+	{
+		id: 0,
+		name: 'Manuel',
+		question: 'test1',
+		answer: 'answer1 for testing',
+	},
 	{ id: 1, name: 'Christian', question: 'test2', answer: 'answer2' },
 	{ id: 2, name: 'Thomas', question: 'test3', answer: 'answer3' },
 	{ id: 3, name: 'Stefan', question: 'test4', answer: 'answer4' },

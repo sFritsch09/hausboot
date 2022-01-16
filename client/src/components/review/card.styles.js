@@ -113,7 +113,7 @@ export const ConvoContainer = styled.div`
 		}
 
 		@media screen and (max-width: 900px) {
-			width: 100%;
+			width: 80vw;
 			padding: 1em 0.5em;
 		}
 	}

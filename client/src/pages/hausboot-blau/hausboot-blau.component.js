@@ -6,20 +6,30 @@ import BookingForm from '../../components/form/booking-form.component';
 import {
 	CalendarWrapper,
 	BookingContainer,
-	InfoContainer,
-	InfoWrapper,
 	CalendarLegend,
 	PriceListTitle,
-	InfoList,
-	InfoListItem,
-	Button,
-	InfoSection,
-	InfoSectionWrapper,
-	InfoItem,
 } from './hausboot-blau.styles';
 import PriceListComp from 'components/pricelist/priceList.component';
+import InfoListComp from 'components/infoList/infoList.component';
 
 const HausbootRot = () => {
+	const infoListArray = [
+		{
+			service: [
+				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
+				'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
+				'Einweisungsfahrt',
+				'Informationsmaterial und Reiseunterlagen',
+			],
+			insurance: [
+				'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
+				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
+				'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag',
+			],
+			mainSeason: '22.05.2021 - 25.09.2021 und 21.05.2022 - 03.09.2022',
+			lowSeason: '27.03.2021 - 29.05.2021 und 26.09.2021 - 20.05.2022 (ohne Himmelfahrt)',
+		},
+	];
 	const equip = [
 		{
 			text: 'Töpfe, Teller, Besteck',
@@ -119,50 +129,7 @@ const HausbootRot = () => {
 	return (
 		<div className="main">
 			<PriceListTitle>Hausboot Blau</PriceListTitle>
-			<InfoContainer>
-				<Button primary onClick={goToBooking}>
-					Direkt Buchen
-				</Button>
-				<InfoWrapper>
-					Ausstattung:
-					<span className="week-sub">
-						<InfoSection>
-							<InfoSectionWrapper>
-								{equip.map((item) => (
-									<InfoItem key={item.text} icon={item.icon}>
-										<div>{item.text}</div>
-									</InfoItem>
-								))}
-							</InfoSectionWrapper>
-						</InfoSection>
-					</span>
-					<span className="driver-license">
-						Ein Führerschein wird nicht benötigt, da das Hausboot mit einem 15 PS Motor betrieben
-						wird und dieser Führerscheinfrei ist. Inklusiv-Leistungen
-					</span>
-					<InfoList>
-						<InfoListItem>Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung</InfoListItem>
-						<InfoListItem>intensive Einweisung im Umgang mit dem Boot, Routenberatung</InfoListItem>
-						<InfoListItem>Einweisungsfahrt</InfoListItem>
-						<InfoListItem>Informationsmaterial und Reiseunterlagen</InfoListItem>
-					</InfoList>
-					<span className="week-sub">
-						Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag
-					</span>
-					<span className="week-sub">
-						Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag
-					</span>
-					<span className="week-sub">
-						Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag
-					</span>
-					Nebensaison:
-					<span className="week-sub">
-						27.03.2021 - 29.05.2021 und 26.09.2021 - 20.05.2022 (ohne Himmelfahrt)
-					</span>
-					Hauptsaison:
-					<span className="week-sub">22.05. 2021 - 25.09.2021 und 21.05.2022 - 03.09.2022</span>
-				</InfoWrapper>
-			</InfoContainer>
+			<InfoListComp infoListArray={infoListArray} infoArray={equip} goToBooking={goToBooking} />
 			<PriceListComp
 				weekendDayprice={150}
 				weekendDayprice2={230}

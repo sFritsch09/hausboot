@@ -3,7 +3,6 @@ services:
   api:
     container_name: Hausboot-Api
     build:
-      network: host
       dockerfile: Dockerfile.dev
       context: ./api
     ports:
@@ -12,7 +11,6 @@ services:
     container_name: Hausboot-Frontend
     env_file: ./client/.env
     build:
-      network: host
       dockerfile: Dockerfile.dev
       context: ./client
     ports:
@@ -24,7 +22,6 @@ services:
     container_name: Hausboot-Server
     restart: always
     build:
-      network: host
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:

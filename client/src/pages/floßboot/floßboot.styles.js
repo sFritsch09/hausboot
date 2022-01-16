@@ -225,3 +225,12 @@ export const Button = styled.button`
 		width: 100%;
 	}
 `;
+
+export const MenuWrapper = styled.div`
+	padding: 1em;
+
+	@media screen and (max-width: 980px) {
+		font-size: 0.8em;
+		padding: 1.5em;
+	}
+`;
