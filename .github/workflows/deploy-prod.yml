@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [master]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+        name: checkout
+
+      - name: create-json
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: 'serviceGoogle.json'
+          json: ${{ secrets.GOOGLE_AUTH }}
+          dir: '/api/'
+
+      - name: Build containers
+        run: |
+          docker build -t hausbootprod/api --build-arg SERVICE=serviceGoogle.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
+          docker build -t hausbootprod/client --build-arg REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY --build-arg REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./client
+          docker build -t hausbootprod/server ./nginx --build-arg DOMAIN_LIST=xn--teichland-kapitne-4qb.de,www.xn--teichland-kapitne-4qb.de
+        env:
+          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
+          REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
+
+      - name: List images
+        run: |
+          docker image ls

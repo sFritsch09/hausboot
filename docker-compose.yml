@@ -3,16 +3,20 @@ services:
   api:
     container_name: Hausboot-Api
     build:
-      dockerfile: Dockerfile.dev
       context: ./api
+      args:
+        SERVICE: serviceGoogle.json
+        REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
     ports:
       - '3100:3100'
   client:
     container_name: Hausboot-Frontend
     env_file: ./client/.env
     build:
-      dockerfile: Dockerfile.dev
       context: ./client
+      args:
+        REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
+        REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
     ports:
       - '3000:3000'
   nginx:
@@ -22,7 +26,6 @@ services:
     container_name: Hausboot-Server
     restart: always
     build:
-      dockerfile: Dockerfile
       network: host
       context: ./nginx
       args:
