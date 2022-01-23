@@ -6,7 +6,7 @@ services:
       context: ./api
       args:
         SERVICE: serviceGoogle.json
-        REACT_APP_GOOGLE_CALENDAR_ID: ${ REACT_APP_GOOGLE_CALENDAR_ID }
+        REACT_APP_GOOGLE_CALENDAR_ID: ${REACT_APP_GOOGLE_CALENDAR_ID}
     ports:
       - '3100:3100'
   client:
@@ -14,8 +14,8 @@ services:
     build:
       context: ./client
       args:
-        REACT_APP_GOOGLE_API_KEY: ${ REACT_APP_GOOGLE_API_KEY }
-        REACT_APP_GOOGLE_CALENDAR_ID: ${ REACT_APP_GOOGLE_CALENDAR_ID }
+        REACT_APP_GOOGLE_API_KEY: ${REACT_APP_GOOGLE_API_KEY}
+        REACT_APP_GOOGLE_CALENDAR_ID: ${REACT_APP_GOOGLE_CALENDAR_ID}
     ports:
       - '3000:3000'
   nginx:
