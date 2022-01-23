@@ -31,10 +31,7 @@ jobs:
           dir: '/api/'
 
       - name: Build containers
-        run: |
-          docker build -t hausbootprod/api --build-arg SERVICE=serviceGoogle.json --build-arg GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./api
-          docker build -t hausbootprod/client --build-arg REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY --build-arg REACT_APP_GOOGLE_CALENDAR_ID=$REACT_APP_GOOGLE_CALENDAR_ID ./client
-          docker build -t hausbootprod/server ./nginx --build-arg DOMAIN_LIST=xn--teichland-kapitne-4qb.de,www.xn--teichland-kapitne-4qb.de
+        run: docker-compose up --build --force-recreate
         env:
           REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
           REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
