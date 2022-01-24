@@ -3,7 +3,7 @@ services:
   api:
     container_name: Hausboot-Api
     environment:
-      - REACT_APP_GOOGLE_CALENDAR_ID
+      - REACT_APP_GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
     build:
       context: ./api
     ports:
@@ -11,8 +11,8 @@ services:
   client:
     container_name: Hausboot-Frontend
     environment:
-      - REACT_APP_GOOGLE_API_KEY
-      - REACT_APP_GOOGLE_CALENDAR_ID
+      - REACT_APP_GOOGLE_API_KEY=${REACT_APP_GOOGLE_API_KEY}
+      - REACT_APP_GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
     build:
       context: ./client
     ports:
