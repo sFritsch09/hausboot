@@ -5,7 +5,7 @@ FROM node:14.5.0-alpine
 # ENV GOOGLE_CALENDAR_ID=$GOOGLE_CALENDAR_ID
 
 # ARG SERVICE
-ADD $SERVICE .
+ADD /api/serviceGoogle.json .
 # create the directory inside the container
 WORKDIR /app
 
