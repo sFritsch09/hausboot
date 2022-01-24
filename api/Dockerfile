@@ -1,10 +1,10 @@
 # pull the Node.js Docker image
 FROM node:14.5.0-alpine
 
-ARG GOOGLE_CALENDAR_ID
-ENV GOOGLE_CALENDAR_ID=$GOOGLE_CALENDAR_ID
+# ARG GOOGLE_CALENDAR_ID
+# ENV GOOGLE_CALENDAR_ID=$GOOGLE_CALENDAR_ID
 
-ARG SERVICE
+# ARG SERVICE
 ADD $SERVICE .
 # create the directory inside the container
 WORKDIR /app
