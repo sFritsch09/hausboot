@@ -3,7 +3,6 @@ services:
   api:
     container_name: Hausboot-Api
     environment:
-      - SERVICE
       - REACT_APP_GOOGLE_CALENDAR_ID
     build:
       context: ./api
