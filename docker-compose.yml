@@ -2,20 +2,20 @@ version: '3.4'
 services:
   api:
     container_name: Hausboot-Api
+    environment:
+      - SERVICE
+      - REACT_APP_GOOGLE_CALENDAR_ID
     build:
       context: ./api
-      args:
-        - SERVICE
-        - REACT_APP_GOOGLE_CALENDAR_ID
     ports:
       - '3100:3100'
   client:
     container_name: Hausboot-Frontend
+    environment:
+      - REACT_APP_GOOGLE_API_KEY
+      - REACT_APP_GOOGLE_CALENDAR_ID
     build:
       context: ./client
-      args:
-        - REACT_APP_GOOGLE_API_KEY
-        - REACT_APP_GOOGLE_CALENDAR_ID
     ports:
       - '3000:3000'
   nginx:
