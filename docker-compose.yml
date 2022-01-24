@@ -5,8 +5,8 @@ services:
     build:
       context: ./api
       args:
-        SERVICE: serviceGoogle.json
-        REACT_APP_GOOGLE_CALENDAR_ID: $REACT_APP_GOOGLE_CALENDAR_ID
+        - SERVICE
+        - REACT_APP_GOOGLE_CALENDAR_ID
     ports:
       - '3100:3100'
   client:
@@ -38,5 +38,3 @@ services:
       - '443:443'
 volumes:
   letsencrypt:
-networks:
-  host:
