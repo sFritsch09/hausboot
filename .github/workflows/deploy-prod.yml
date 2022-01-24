@@ -38,4 +38,4 @@ jobs:
 
       - name: List images
         run: |
-          docker image ls
+          sudo docker image ls
