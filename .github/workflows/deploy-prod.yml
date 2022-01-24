@@ -23,9 +23,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-        with:
-          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
-          REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
         name: checkout
 
       - name: create-json
