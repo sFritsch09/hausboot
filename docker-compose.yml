@@ -13,7 +13,6 @@ services:
     environment:
       - REACT_APP_GOOGLE_API_KEY=${REACT_APP_GOOGLE_API_KEY}
       - REACT_APP_GOOGLE_CALENDAR_ID
-      - TEST=test
     build:
       context: ./client
     ports:
