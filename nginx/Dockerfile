@@ -18,3 +18,4 @@ VOLUME /etc/letsencrypt
 
 COPY default.conf /etc/nginx/conf.d/
 CMD [ "sh", "-c", "cron && nginx -g 'daemon off;'" ]
+
