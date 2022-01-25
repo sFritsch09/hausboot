@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.5'
 services:
   api:
     container_name: Hausboot-Api
@@ -40,8 +40,5 @@ services:
     ports:
       - '80:80'
       - '443:443'
-networks:
-  host:
-    external: true
 volumes:
   letsencrypt:
