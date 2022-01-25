@@ -1,0 +1,27 @@
+version: '3.5'
+services:
+  api:
+    container_name: Hausboot-Api
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3100:3100'
+  client:
+    container_name: Hausboot-Frontend
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+  nginx:
+    depends_on:
+      - api
+      - client
+    container_name: Hausboot-Server
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - '80:80'
