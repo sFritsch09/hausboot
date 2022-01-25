@@ -2,24 +2,24 @@ version: '3.5'
 services:
   api:
     container_name: Hausboot-Api
-    environment:
-      - REACT_APP_GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
+    # environment:
+    #   - REACT_APP_GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
     build:
       context: ./api
-      # args:
-      #   REACT_APP_GOOGLE_CALENDAR_ID: ${REACT_APP_GOOGLE_CALENDAR_ID}
+      args:
+        REACT_APP_GOOGLE_CALENDAR_ID: ${REACT_APP_GOOGLE_CALENDAR_ID}
     ports:
       - '3100:3100'
   client:
     container_name: Hausboot-Frontend
-    environment:
-      - REACT_APP_GOOGLE_API_KEY=${REACT_APP_GOOGLE_API_KEY}
-      - REACT_APP_GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
+    # environment:
+    #   - REACT_APP_GOOGLE_API_KEY=${REACT_APP_GOOGLE_API_KEY}
+    #   - REACT_APP_GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
     build:
       context: ./client
-      # args:
-      #   REACT_APP_GOOGLE_CALENDAR_ID: ${REACT_APP_GOOGLE_CALENDAR_ID}
-      #   REACT_APP_GOOGLE_API_KEY: ${REACT_APP_GOOGLE_API_KEY}
+      args:
+        REACT_APP_GOOGLE_CALENDAR_ID: ${REACT_APP_GOOGLE_CALENDAR_ID}
+        REACT_APP_GOOGLE_API_KEY: ${REACT_APP_GOOGLE_API_KEY}
     ports:
       - '3000:3000'
   nginx:
