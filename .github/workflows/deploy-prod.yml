@@ -37,7 +37,7 @@ jobs:
         run: |
           export REACT_APP_GOOGLE_CALENDAR_ID=${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
           export REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
-          docker-compose up -d
+          docker-compose up -d --force-recreate --build
 
       - name: List images
         run: docker image ls
