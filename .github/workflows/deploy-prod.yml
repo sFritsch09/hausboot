@@ -35,7 +35,7 @@ jobs:
 
       - name: Build containers
         run: |
-          docker-compose up -d --force-recreate --build
+          docker-compose up -d
 
       - name: List images
         run: docker image ls

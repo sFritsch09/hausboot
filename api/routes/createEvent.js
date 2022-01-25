@@ -1,5 +1,4 @@
 const createEvent = (app) => {
-	const { addMinutes } = require('date-fns');
 	require('dotenv').config();
 	const { google } = require('googleapis');
 

@@ -3,7 +3,7 @@ services:
   api:
     container_name: Hausboot-Api
     # environment:
-    #   - REACT_APP_GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
+    #   - GOOGLE_CALENDAR_ID=${REACT_APP_GOOGLE_CALENDAR_ID}
     build:
       context: ./api
       args:
