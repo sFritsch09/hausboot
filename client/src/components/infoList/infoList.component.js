@@ -10,7 +10,7 @@ import {
 	Button,
 } from './infoList.styles';
 
-const InfoListComp = ({ title, infoArray, infoListArray, goToBooking }) => {
+const InfoListComp = ({ infoArray, infoListArray, goToBooking }) => {
 	return (
 		<div>
 			<InfoContainer>
@@ -22,27 +22,33 @@ const InfoListComp = ({ title, infoArray, infoListArray, goToBooking }) => {
 					<InfoSection>
 						<InfoSectionWrapper>
 							{infoArray.map((item) => (
-								<InfoItem key={item.text} icon={item.icon}>
-									<div>{item.text}</div>
+								<InfoItem key={item.icon} icon={item.icon}>
+									<div key={item.text}>{item.text}</div>
 								</InfoItem>
 							))}
 						</InfoSectionWrapper>
 					</InfoSection>
 					Inklusiv-Leistungen
 					{infoListArray.map((item) => (
-						<React.Fragment>
+						<React.Fragment key={item}>
 							{item.service.map((serv) => (
-								<InfoList>
-									<InfoListItem>{serv}</InfoListItem>
+								<InfoList key={serv}>
+									<InfoListItem key={serv}>{serv}</InfoListItem>
 								</InfoList>
 							))}
 							{item.insurance.map((ins) => (
-								<span className="week-sub">{ins}</span>
+								<span key={ins} className="week-sub">
+									{ins}
+								</span>
 							))}
 							{item.mainSeason && 'Hauptsaison:'}
-							<span className="week-sub">{item.mainSeason}</span>
+							<span key={item.mainSeason} className="week-sub">
+								{item.mainSeason}
+							</span>
 							{item.lowSeason && 'Nebensaison:'}
-							<span className="week-sub">{item.lowSeason}</span>
+							<span key={item.lowSeason} className="week-sub">
+								{item.lowSeason}
+							</span>
 						</React.Fragment>
 					))}
 					<span className="driver-license">

@@ -1,5 +1,4 @@
 const createEvent = (app) => {
-	require('dotenv').config();
 	const { google } = require('googleapis');
 
 	const scopes = ['https://www.googleapis.com/auth/calendar'];

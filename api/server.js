@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 // const cors = require('cors');
 const path = require('path');
 
@@ -18,6 +19,16 @@ if (process.env.NODE_ENV === 'production') {
 
 //routes
 require('./routes/createEvent')(app);
+require('./routes/getEvents')(app);
+// app.get('/api/event', async (req, res, next) => {
+// 	try {
+// 		const test = 'test';
+// 		res.send(test);
+// 	} catch (err) {
+// 		next(err);
+// 	}
+// });
+
 // app.post('/api/event', (req, res) => {
 // 	console.log(req.body);
 // 	res.status(200).send({ success: 'Server reached!' });

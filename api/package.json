@@ -8,6 +8,7 @@
 		"express": "^4.17.1",
 		"googleapis": "^85.0.0",
 		"nodemon": "^2.0.13",
+		"superagent": "^7.1.1",
 		"use-media": "^1.4.0"
 	},
 	"name": "hausboot",

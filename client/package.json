@@ -30,7 +30,6 @@
 		"simple-react-google-maps": "^1.1.2",
 		"slick-carousel": "^1.8.1",
 		"styled-components": "^5.2.3",
-		"superagent": "^6.1.0",
 		"use-media": "^1.4.0",
 		"web-vitals": "^1.0.1",
 		"yup": "^0.32.9"

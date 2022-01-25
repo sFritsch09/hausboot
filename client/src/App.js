@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import GlobalStyle, { theme, invertTheme } from './globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './components/hooks/DarkModeContext';
+
 import NavBar from './components/navbar/navbar.component';
 import Footer from './components/footer/footer.component';
-
 import HomePage from './pages/home/homepage.component';
 import HausbootRot from './pages/hausboot-rot/hausboot-rot.component';
 import HausbootBlau from './pages/hausboot-blau/hausboot-blau.component';

@@ -107,18 +107,19 @@ const HausbootRot = () => {
 	};
 
 	useEffect(() => {
-		const fetchData = () => {
+		const fetchData = async () => {
+			const eventList = await getEvents();
 			// getEvents((events) => setStartDate(events.map((event) => event.start))); //fetch start date
 			// getEvents((events) => setEndDate(events.map((event) => event.end))); //fetch end date
-			getEvents((events) =>
-				setStartDate(
-					events.filter((ev) => ev.description.includes('Hausboot Rot')).map((event) => event.start)
-				)
+
+			setStartDate(
+				eventList
+					.filter((ev) => ev.description.includes('Hausboot Rot'))
+					.map((event) => event.start)
 			);
-			getEvents((events) =>
-				setEndDate(
-					events.filter((ev) => ev.description.includes('Hausboot Rot')).map((event) => event.end)
-				)
+
+			setEndDate(
+				eventList.filter((ev) => ev.description.includes('Hausboot Rot')).map((event) => event.end)
 			);
 		};
 		fetchData();
