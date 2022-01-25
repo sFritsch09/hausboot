@@ -17,7 +17,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: self-hosted
     env:
-      REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
+      REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
       REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -35,8 +35,6 @@ jobs:
 
       - name: Build containers
         run: |
-          export REACT_APP_GOOGLE_CALENDAR_ID=${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
-          export REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
           docker-compose up -d --force-recreate --build
 
       - name: List images
