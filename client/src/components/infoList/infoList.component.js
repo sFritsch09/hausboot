@@ -8,9 +8,10 @@ import {
 	InfoList,
 	InfoItem,
 	Button,
+	InfoPlace,
 } from './infoList.styles';
 
-const InfoListComp = ({ infoArray, infoListArray, goToBooking }) => {
+const InfoListComp = ({ infoArray, infoListArray, goToBooking, place }) => {
 	return (
 		<div>
 			<InfoContainer>
@@ -51,10 +52,20 @@ const InfoListComp = ({ infoArray, infoListArray, goToBooking }) => {
 							</span>
 						</React.Fragment>
 					))}
-					<span className="driver-license">
+					<span className="driver-license" style={{ marginBottom: '3em' }}>
 						Ein Führerschein wird nicht benötigt, da das Hausboot mit einem 15 PS Motor betrieben
 						wird und dieser Führerscheinfrei ist.
 					</span>
+					{place && (
+						<InfoPlace>
+							<h2 style={{ marginBottom: '1em' }}>Anfahrt Liegeplatz:</h2>
+							{place.map((el) => (
+								<div key={el} style={{ marginBottom: '0.1em' }}>
+									{el}
+								</div>
+							))}
+						</InfoPlace>
+					)}
 				</InfoWrapper>
 			</InfoContainer>
 		</div>

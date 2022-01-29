@@ -92,6 +92,8 @@ export const MobileIcon = styled.div`
 		top: 0;
 		right: 0;
 		transform: translate(-100%, 70%);
+		-webkit-transform: translate(-100%, 70%);
+		-ms-transform: translate(-100%, 70%);
 		font-size: 1.8rem;
 		cursor: pointer;
 	}
@@ -123,7 +125,8 @@ export const NavMenu = styled.ul`
 		bottom: 70px;
 		left: ${({ click }) => (click ? 0 : '-100%')};
 		opacity: 1;
-		transition: all 0.5s ease;
+		transition: left 0.3s ease-out;
+		-webkit-transition: left 0.3s ease-out;
 		background: ${(props) => props.theme.darkColor};
 	}
 `;

@@ -36,9 +36,9 @@ const Footer = () => {
 					fill={theme.wave}
 					paused={false}
 					options={{
-						height: 20,
-						amplitude: 50,
-						speed: 0.15,
+						height: 40,
+						amplitude: 70,
+						speed: 0.18,
 						points: 4,
 					}}
 				/>

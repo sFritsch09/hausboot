@@ -37,7 +37,7 @@ export const InfoWrapper = styled.div`
 export const ContactWrapper = styled.div`
 	width: 70%;
 	@media screen and (max-width: 980px) {
-		width: 70%;
+		width: 100%;
 		margin: 2em 8em;
 	}
 `;
@@ -47,4 +47,9 @@ export const MapsContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	height: 500px;
+	@media screen and (max-width: 980px) {
+		height: 20em;
+		padding: 0.5em 2em;
+		padding-bottom: 4em;
+	}
 `;

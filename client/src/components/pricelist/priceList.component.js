@@ -62,6 +62,7 @@ const PriceListComp = ({
 									...price,
 									dayPrice: weekendDayprice,
 									dayPrice2: weekendDayprice2,
+									parking: 3,
 									weekPrice: 0,
 									weekPrice2: 0,
 									gas: 2,
@@ -83,6 +84,7 @@ const PriceListComp = ({
 									...price,
 									dayPrice: dayPrice,
 									dayPrice2: dayPrice2,
+									parking: 3,
 									weekPrice: 0,
 									weekPrice2: 0,
 									gas: 2,
@@ -113,6 +115,7 @@ const PriceListComp = ({
 									...price,
 									weekPrice: weekPrice,
 									weekPrice2: weekPrice2,
+									parking: 9,
 									dayPrice: 0,
 									dayPrice2: 0,
 									gas: 6,
@@ -135,6 +138,7 @@ const PriceListComp = ({
 									...price,
 									weekPrice: weekendWeekPrice,
 									weekPrice2: weekendWeekPrice2,
+									parking: 21,
 									dayPrice: 0,
 									dayPrice2: 0,
 									gas: 14,
@@ -159,16 +163,16 @@ const PriceListComp = ({
 							active={price.grill}
 							clickable
 							onClick={() =>
-								price.grill === 5
+								price.grill === 10
 									? setPrice({ ...price, grill: 0 })
-									: setPrice({ ...price, grill: 5 })
+									: setPrice({ ...price, grill: 10 })
 							}
 						>
 							<div className="week">
-								<span className="item">Kugelgrill eimalig 5,00 Euro</span>
+								<span className="item">Gasgrill eimalig 10,00 Euro</span>
 							</div>
-							<PriceListSeason>5,- Euro</PriceListSeason>
-							<PriceListSeason>5,- Euro</PriceListSeason>
+							<PriceListSeason>10,- Euro</PriceListSeason>
+							<PriceListSeason>10,- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem
 							className="border"
@@ -191,16 +195,20 @@ const PriceListComp = ({
 							active={price.parking}
 							clickable
 							onClick={() =>
-								price.parking === 3
+								price.parking
 									? setPrice({ ...price, parking: 0 })
+									: price.weekPrice === weekendWeekPrice
+									? setPrice({ ...price, parking: 21 })
+									: price.weekPrice === weekPrice
+									? setPrice({ ...price, parking: 9 })
 									: setPrice({ ...price, parking: 3 })
 							}
 						>
 							<div className="week">
 								<span className="item">Parkplatz (eingezäunt) 3,00 Euro/Tag</span>
 							</div>
-							<PriceListSeason>{price.dayPrice !== 0 ? '3,- Euro' : '9,- Euro'}</PriceListSeason>
-							<PriceListSeason>{price.dayPrice !== 0 ? '3,- Euro' : '9,- Euro'}</PriceListSeason>
+							<PriceListSeason>{`${price.parking},- Euro`}</PriceListSeason>
+							<PriceListSeason>{`${price.parking},- Euro`}</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem
 							className="border"

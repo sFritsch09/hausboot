@@ -39,6 +39,7 @@ export const WaveWrapper = styled(Wave)`
 `;
 export const WaveContainer = styled.div`
 	margin-bottom: -5px;
+	padding-top: 4em;
 	background-color: ${(props) =>
 		props.theme.mode === 'Dark' ? props.theme.contrastColor : props.theme.darkColor};
 `;
@@ -48,7 +49,7 @@ export const FooterContainer = styled.div`
 	background: ${(props) =>
 		props.theme.mode === 'Dark' ? props.theme.darkColor : props.theme.contrastLight};
 	color: ${(props) => props.theme.color};
-	padding-top: 20px;
+	padding-top: 2em;
 	flex-direction: column;
 
 	@media screen and (max-width: 980px) {

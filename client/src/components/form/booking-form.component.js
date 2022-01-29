@@ -37,7 +37,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	// 	.required('The terms and conditions must be accepted.'),
 });
 
-const BookingForm = ({ hausboot, booked }) => {
+const BookingForm = ({ hausboot, booked, floß }) => {
 	const INITIAL_FORM_STATE = {
 		name: '',
 		email: '',
@@ -48,6 +48,7 @@ const BookingForm = ({ hausboot, booked }) => {
 		arrivalDate: new Date(),
 		departureDate: new Date(),
 		color: hausboot,
+		type: '',
 		// termsOfService: false,
 	};
 	const [state, setState] = useState(INITIAL_FORM_STATE);
@@ -72,8 +73,8 @@ const BookingForm = ({ hausboot, booked }) => {
 		const week = daysBetween.filter((day) => ![0, 5, 6].includes(day.getDay()));
 		const Season = () => {
 			if (
-				new Date('2021-05-21') <= state.arrivalDate &&
-				new Date('2021-09-03') >= state.departureDate
+				new Date('2022-05-23') <= state.arrivalDate &&
+				new Date('2022-09-10') >= state.departureDate
 			) {
 				return 'Hauptsaison';
 			} else {
@@ -82,10 +83,14 @@ const BookingForm = ({ hausboot, booked }) => {
 		};
 		// Wochen Preis
 		if (Math.round((state.departureDate - state.arrivalDate) / (1000 * 60 * 60 * 24)) === 7) {
-			if (Season === 'Nebensaison') {
-				setbookingPrice(710);
+			if (floß) {
+				setbookingPrice(750);
 			} else {
-				setbookingPrice(1190);
+				if (Season === 'Nebensaison') {
+					setbookingPrice(790);
+				} else {
+					setbookingPrice(1270);
+				}
 			}
 		}
 		// Wochenend Preis
@@ -94,21 +99,29 @@ const BookingForm = ({ hausboot, booked }) => {
 			state.arrivalDate.getDay() === 5 &&
 			state.departureDate.getDay() === 0
 		) {
-			if (Season === 'Nebensaison') {
-				setbookingPrice(420);
+			if (floß) {
+				setbookingPrice(450);
 			} else {
-				setbookingPrice(590);
+				if (Season === 'Nebensaison') {
+					setbookingPrice(440);
+				} else {
+					setbookingPrice(610);
+				}
 			}
 		}
 		// Tages Preis
 		else {
-			if (Season === 'Nebensaison') {
-				setbookingPrice(150 * weekEnd.length + 130 * week.length);
+			if (floß) {
+				setbookingPrice(250 * weekEnd.length + 200 * week.length);
 			} else {
-				setbookingPrice(230 * weekEnd.length + 200 * week.length);
+				if (Season === 'Nebensaison') {
+					setbookingPrice(160 * weekEnd.length + 140 * week.length);
+				} else {
+					setbookingPrice(230 * weekEnd.length + 200 * week.length);
+				}
 			}
 		}
-	}, [state.arrivalDate, state.departureDate]);
+	}, [state.arrivalDate, state.departureDate, floß]);
 	return (
 		<Container>
 			<FormWrapper>
@@ -152,7 +165,9 @@ const BookingForm = ({ hausboot, booked }) => {
 									label="Hausboot"
 									disabled
 								/>
-								<h2>{bookingPrice / 2} €</h2>
+								{floß && (
+									<RadioButton name="type" options={['Floß S', 'Floß L']} label="Floßboot" />
+								)}
 								<Button>Buchen</Button>
 							</Form>
 						</Formik>

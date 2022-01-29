@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
 import GoogleMaps from 'simple-react-google-maps';
 import ContactForm from '../../components/form/contact-form.component';
 import { ContactContainer, ContactWrapper, InfoWrapper, MapsContainer } from './contact.styles';
 
 const ContactPage = () => {
+	const theme = useTheme();
 	return (
 		<div className="main">
 			<ContactContainer>
@@ -29,9 +31,9 @@ const ContactPage = () => {
 						backgroundColor: '#242f3e',
 					}}
 					zoom={17}
-					center={{ lat: 52.816940262322035, lng: 13.331603113813927 }}
+					center={{ lat: 52.873187733058565, lng: 13.373220204893478 }}
 					// markers={{ lat: 52.816640262322035, lng: 13.331743113813927 }}
-					// mapId="af3ac2372aa62406"
+					mapId={theme.mode ? '62e7e33d6172cf8e' : ''}
 				/>
 			</MapsContainer>
 		</div>

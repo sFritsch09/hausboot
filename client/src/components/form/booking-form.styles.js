@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	padding: 20px;
+	padding: 3em;
 	display: flex;
 	justify-content: center;
+	padding-bottom: 5em;
 
 	@media screen and (max-width: 980px) {
 		padding: 0 4em;

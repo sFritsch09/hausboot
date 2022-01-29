@@ -13,6 +13,13 @@ import PriceListComp from 'components/pricelist/priceList.component';
 import InfoListComp from 'components/infoList/infoList.component';
 
 const HausbootRot = () => {
+	const place = [
+		'Schiffswerft Liebenwalde',
+		'Hafenmeister Andre Schumacher',
+		'Neuholländer Chaussee 5',
+		'16559 Liebenwalde',
+		'0173-2324128',
+	];
 	const infoListArray = [
 		{
 			service: [
@@ -22,8 +29,8 @@ const HausbootRot = () => {
 				'Informationsmaterial und Reiseunterlagen',
 			],
 			insurance: [
-				'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
 				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
+				'Haftungsreduzierung der Selbstbeteiligung auf 400 Euro 18-Euro/Tag',
 				'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag',
 			],
 			mainSeason: '22.05.2021 - 25.09.2021 und 21.05.2022 - 03.09.2022',
@@ -108,20 +115,17 @@ const HausbootRot = () => {
 	};
 
 	useEffect(() => {
-		const fetchData = () => {
+		const fetchData = async () => {
 			// getEvents((events) => setStartDate(events.map((event) => event.start))); //fetch start date
 			// getEvents((events) => setEndDate(events.map((event) => event.end))); //fetch end date
-			getEvents((events) =>
-				setStartDate(
-					events
-						.filter((ev) => ev.description.includes('Hausboot Blau'))
-						.map((event) => event.start)
-				)
+			const eventList = await getEvents();
+			setStartDate(
+				eventList
+					.filter((ev) => ev.description.includes('Hausboot Blau'))
+					.map((event) => event.start)
 			);
-			getEvents((events) =>
-				setEndDate(
-					events.filter((ev) => ev.description.includes('Hausboot Blau')).map((event) => event.end)
-				)
+			setEndDate(
+				eventList.filter((ev) => ev.description.includes('Hausboot Blau')).map((event) => event.end)
 			);
 		};
 		fetchData();
@@ -129,7 +133,12 @@ const HausbootRot = () => {
 	return (
 		<div className="main">
 			<PriceListTitle>Hausboot Blau</PriceListTitle>
-			<InfoListComp infoListArray={infoListArray} infoArray={equip} goToBooking={goToBooking} />
+			<InfoListComp
+				infoListArray={infoListArray}
+				infoArray={equip}
+				goToBooking={goToBooking}
+				place={place}
+			/>
 			<PriceListComp
 				weekendDayprice={150}
 				weekendDayprice2={230}

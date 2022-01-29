@@ -13,6 +13,13 @@ import {
 } from './hausboot-rot.styles';
 
 const HausbootRot = () => {
+	const place = [
+		'Schiffswerft Liebenwalde',
+		'Hafenmeister Andre Schumacher',
+		'Neuholländer Chaussee 5',
+		'16559 Liebenwalde',
+		'0173-2324128',
+	];
 	const infoListArray = [
 		{
 			service: [
@@ -22,12 +29,12 @@ const HausbootRot = () => {
 				'Informationsmaterial und Reiseunterlagen',
 			],
 			insurance: [
-				'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
 				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
+				'Haftungsreduzierung der Selbstbeteiligung auf 400 Euro 18-Euro/Tag',
 				'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag',
 			],
-			mainSeason: '22.05.2021 - 25.09.2021 und 21.05.2022 - 03.09.2022',
-			lowSeason: '27.03.2021 - 29.05.2021 und 26.09.2021 - 20.05.2022 (ohne Himmelfahrt)',
+			mainSeason: '23.05.2022 - 10.09.2022 und 27.05.2023 - 10.09.2022',
+			lowSeason: '04.03.2022 - 22.05.2022 und 11.09.2022 - 26.05.2023 (ohne Himmelfahrt)',
 		},
 	];
 	const equip = [
@@ -109,8 +116,6 @@ const HausbootRot = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const eventList = await getEvents();
-			// getEvents((events) => setStartDate(events.map((event) => event.start))); //fetch start date
-			// getEvents((events) => setEndDate(events.map((event) => event.end))); //fetch end date
 
 			setStartDate(
 				eventList
@@ -130,16 +135,21 @@ const HausbootRot = () => {
 	return (
 		<div className="main">
 			<PriceListTitle>Hausboot Rot</PriceListTitle>
-			<InfoListComp infoArray={equip} goToBooking={goToBooking} infoListArray={infoListArray} />
+			<InfoListComp
+				infoArray={equip}
+				goToBooking={goToBooking}
+				infoListArray={infoListArray}
+				place={place}
+			/>
 			<PriceListComp
-				weekendDayprice={150}
+				weekendDayprice={160}
 				weekendDayprice2={230}
-				dayPrice={130}
+				dayPrice={140}
 				dayPrice2={200}
-				weekPrice={420}
-				weekPrice2={590}
-				weekendWeekPrice={710}
-				weekendWeekPrice2={1190}
+				weekPrice={440}
+				weekPrice2={610}
+				weekendWeekPrice={790}
+				weekendWeekPrice2={1270}
 			/>
 			<BookingContainer>
 				<CalendarWrapper>

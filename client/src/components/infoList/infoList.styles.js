@@ -47,7 +47,7 @@ export const InfoWrapper = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-	padding: 20px;
+	padding: 2em;
 	max-width: 80%;
 	margin: 0 15%;
 
@@ -57,7 +57,7 @@ export const InfoContainer = styled.div`
 `;
 export const InfoSection = styled.div`
 	margin: 0 auto;
-	padding: 10px;
+	padding: 2em;
 
 	@media screen and (max-width: 900px) {
 		padding: 0;
@@ -72,6 +72,15 @@ export const InfoSectionWrapper = styled.div`
 
 	@media screen and (max-width: 900px) {
 		/* justify-content: space-evenly; */
+	}
+`;
+export const InfoPlace = styled.div`
+	display: flex;
+	flex-direction: column;
+	@media screen and (max-width: 900px) {
+		h2 {
+			font-size: 1.5em;
+		}
 	}
 `;
 
