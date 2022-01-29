@@ -31,7 +31,7 @@ const ContactPage = () => {
 					zoom={17}
 					center={{ lat: 52.816940262322035, lng: 13.331603113813927 }}
 					// markers={{ lat: 52.816640262322035, lng: 13.331743113813927 }}
-					mapId="af3ac2372aa62406"
+					// mapId="af3ac2372aa62406"
 				/>
 			</MapsContainer>
 		</div>
