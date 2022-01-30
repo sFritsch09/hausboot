@@ -1,11 +1,16 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
 import GoogleMaps from 'simple-react-google-maps';
 import ContactForm from '../../components/form/contact-form.component';
-import { ContactContainer, ContactWrapper, InfoWrapper, MapsContainer } from './contact.styles';
+import {
+	ContactContainer,
+	ContactWrapper,
+	InfoWrapper,
+	MapsContainer,
+	Button,
+	ImgButton,
+} from './contact.styles';
 
 const ContactPage = () => {
-	const theme = useTheme();
 	return (
 		<div className="main">
 			<ContactContainer>
@@ -22,6 +27,26 @@ const ContactPage = () => {
 					<ContactForm contact />
 				</ContactWrapper>
 			</ContactContainer>
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
+				<Button
+					to={{ pathname: 'https://goo.gl/maps/DLCabCZqPKq7an6q6' }}
+					primary="true"
+					target="_blank"
+					style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}
+				>
+					<div
+						style={{
+							width: '15%',
+						}}
+					>
+						<ImgButton
+							alt="Maps"
+							src="https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-google-maps-social-media-justicon-flat-justicon.png"
+						/>
+					</div>
+					<div>Maps Öffnen</div>
+				</Button>
+			</div>
 			<MapsContainer>
 				<GoogleMaps
 					apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
@@ -33,7 +58,6 @@ const ContactPage = () => {
 					zoom={17}
 					center={{ lat: 52.873187733058565, lng: 13.373220204893478 }}
 					// markers={{ lat: 52.816640262322035, lng: 13.331743113813927 }}
-					mapId={theme.mode ? '62e7e33d6172cf8e' : ''}
 				/>
 			</MapsContainer>
 		</div>

@@ -7,8 +7,9 @@ import { useField, useFormikContext } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const ReactDatePicker = ({ name, name2, booked }) => {
+	const date = new Date();
 	const [startDate, setStartDate] = useState(new Date());
-	const [endDate, setEndDate] = useState(new Date());
+	const [endDate, setEndDate] = useState(date.setDate(date.getDate() + 1));
 	const [focusStart, setFocusStart] = useState(false);
 	const [focusEnd, setFocusEnd] = useState(false);
 	const isMobile = useMedia({ maxWidth: '900px' });
@@ -92,7 +93,7 @@ const ReactDatePicker = ({ name, name2, booked }) => {
 					selectsEnd
 					startDate={startDate}
 					endDate={endDate}
-					minDate={startDate}
+					minDate={endDate}
 					maxDate={shouldDisableDates()}
 					excludeDates={bookedDates}
 					withPortal={isMobile}

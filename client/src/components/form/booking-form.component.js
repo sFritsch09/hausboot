@@ -32,12 +32,15 @@ const FORM_VALIDATION = Yup.object().shape({
 	// 		arrivalDate && schema.min(arrivalDate, 'Expiry date must be greater than issue date')
 	// ),
 	color: Yup.string().required('Required'),
+	type: Yup.string().required('Required'),
 	// termsOfService: Yup.boolean()
 	// 	.oneOf([true], 'The terms and conditions must be accepted.')
 	// 	.required('The terms and conditions must be accepted.'),
 });
 
 const BookingForm = ({ hausboot, booked, floß }) => {
+	const date = new Date();
+	date.setDate(date.getDate() + 1);
 	const INITIAL_FORM_STATE = {
 		name: '',
 		email: '',
@@ -46,7 +49,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		child: '0',
 		dog: '0',
 		arrivalDate: new Date(),
-		departureDate: new Date(),
+		departureDate: date,
 		color: hausboot,
 		type: '',
 		// termsOfService: false,

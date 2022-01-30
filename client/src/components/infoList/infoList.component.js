@@ -11,7 +11,7 @@ import {
 	InfoPlace,
 } from './infoList.styles';
 
-const InfoListComp = ({ infoArray, infoListArray, goToBooking, place }) => {
+const InfoListComp = ({ infoArray, infoArray2, infoListArray, goToBooking, place, floß }) => {
 	return (
 		<div>
 			<InfoContainer>
@@ -21,13 +21,28 @@ const InfoListComp = ({ infoArray, infoListArray, goToBooking, place }) => {
 				<InfoWrapper>
 					Ausstattung:
 					<InfoSection>
-						<InfoSectionWrapper>
-							{infoArray.map((item) => (
-								<InfoItem key={item.icon} icon={item.icon}>
-									<div key={item.text}>{item.text}</div>
-								</InfoItem>
-							))}
-						</InfoSectionWrapper>
+						<React.Fragment>
+							{floß && <h2 style={{ margin: '1em 0' }}>Floßboot S</h2>}
+							<InfoSectionWrapper>
+								{infoArray.map((item) => (
+									<InfoItem key={item.icon} icon={item.icon}>
+										<div key={item.text}>{item.text}</div>
+									</InfoItem>
+								))}
+							</InfoSectionWrapper>
+						</React.Fragment>
+						{floß && (
+							<React.Fragment>
+								<h2 style={{ margin: '1em 0' }}>Floßboot L</h2>
+								<InfoSectionWrapper>
+									{infoArray2.map((item) => (
+										<InfoItem key={item.icon} icon={item.icon}>
+											<div key={item.text}>{item.text}</div>
+										</InfoItem>
+									))}
+								</InfoSectionWrapper>
+							</React.Fragment>
+						)}
 					</InfoSection>
 					Inklusiv-Leistungen
 					{infoListArray.map((item) => (
@@ -45,6 +60,10 @@ const InfoListComp = ({ infoArray, infoListArray, goToBooking, place }) => {
 							{item.mainSeason && 'Hauptsaison:'}
 							<span key={item.mainSeason} className="week-sub">
 								{item.mainSeason}
+							</span>
+							{item.season && 'Saison:'}
+							<span key={item.season} className="week-sub">
+								{item.season}
 							</span>
 							{item.lowSeason && 'Nebensaison:'}
 							<span key={item.lowSeason} className="week-sub">

@@ -227,7 +227,7 @@ export const Button = styled.button`
 `;
 
 export const MenuWrapper = styled.div`
-	padding: 1em;
+	padding: 2rem 9rem;
 
 	@media screen and (max-width: 980px) {
 		font-size: 0.8em;

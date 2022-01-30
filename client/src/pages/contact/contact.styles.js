@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ContactContainer = styled.div`
@@ -52,4 +53,27 @@ export const MapsContainer = styled.div`
 		padding: 0.5em 2em;
 		padding-bottom: 4em;
 	}
+`;
+export const Button = styled(Link)`
+	text-decoration: none;
+	border-radius: 4px;
+	background: ${(props) => (props.primary ? props.theme.contrastColor : props.theme.Darkcolor)};
+	white-space: nowrap;
+	padding: ${({ big }) => (big ? '12px 64px' : '10px 20px')};
+	color: ${(props) => props.theme.color};
+	font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+	outline: none;
+	border: none;
+	display: flex;
+	cursor: pointer;
+	&:hover {
+		transition: all 0.3s ease-out;
+		color: ${(props) => props.theme.darkColor};
+		background: ${(props) => (props.primary ? props.theme.lightColor : props.theme.Darkcolor)};
+	}
+`;
+
+export const ImgButton = styled.img`
+	background-image: url(${({ src }) => src});
+	width: 100%;
 `;

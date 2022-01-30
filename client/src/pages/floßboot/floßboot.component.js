@@ -18,21 +18,16 @@ const HausbootRot = () => {
 	const infoListArray = [
 		{
 			service: [
-				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
+				'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
 				'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
 				'Einweisungsfahrt',
 				'Informationsmaterial und Reiseunterlagen',
 			],
-			insurance: [
-				'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
-				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
-				'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag',
-			],
-			mainSeason: '22.05.2021 - 25.09.2021 und 21.05.2022 - 03.09.2022',
-			lowSeason: '27.03.2021 - 29.05.2021 und 26.09.2021 - 20.05.2022 (ohne Himmelfahrt)',
+			insurance: [''],
+			season: '02.04. 2022 - 04.10.2022',
 		},
 	];
-	const equip = [
+	const equipS = [
 		{
 			text: 'Töpfe, Teller, Besteck',
 			icon: '🍽',
@@ -42,40 +37,62 @@ const HausbootRot = () => {
 			icon: '🧯',
 		},
 		{
-			text: 'Kühlschrank 50L mit kleinem Gefrierfach',
+			text: 'Kühlbox 50L',
 			icon: '🧊',
 		},
 		{
-			text: 'Fernseher mit DVD',
-			icon: '📺',
+			text: 'Zwei Sitzbänke mit Tisch',
+			icon: '🪑',
 		},
 		{
-			text: 'Fernglas',
-			icon: '🔎',
-		},
-		{
-			text: 'Sonnenliege',
-			icon: '⛱',
+			text: 'Tische als Bett 2x 1,20 m x 2,00 m',
+			icon: '🛏',
 		},
 		{
 			text: 'WC',
 			icon: '🚽',
 		},
 		{
-			text: 'Stromversorgung (Solaranlage, Batterien)',
+			text: 'USB-Ladestation',
 			icon: '🔌',
 		},
 		{
-			text: 'Standheizung',
-			icon: '🌡',
+			text: 'Kann ringsum mit Bootsplanen verschlossen werden',
+			icon: '⛺',
+		},
+	];
+	const equipL = [
+		{
+			text: 'Töpfe, Teller, Besteck',
+			icon: '🍽',
 		},
 		{
-			text: 'Ein Doppelbett 180×200 cm',
+			text: 'Gasherd mit zwei Kochplatten',
+			icon: '🧯',
+		},
+		{
+			text: 'Kühlbox 50L',
+			icon: '🧊',
+		},
+		{
+			text: 'Zwei Sitzbänke mit Tisch',
+			icon: '🪑',
+		},
+		{
+			text: 'Tische als Bett 2x 1,20 m x 2,00 m',
 			icon: '🛏',
 		},
 		{
-			text: 'Sofa (2 weitere Schlafplätze)',
-			icon: '🛋',
+			text: 'WC',
+			icon: '🚽',
+		},
+		{
+			text: 'Kann ringsum mit Bootsplane verschlossen werden kann',
+			icon: '📌',
+		},
+		{
+			text: '2 Zelte für jeweils 2-3 Personen + Matratzen',
+			icon: '⛺',
 		},
 	];
 	const bookingRef = useRef();
@@ -136,7 +153,13 @@ const HausbootRot = () => {
 	return (
 		<div className="main">
 			<PriceListTitle>Floßboot</PriceListTitle>
-			<InfoListComp infoArray={equip} goToBooking={goToBooking} infoListArray={infoListArray} />
+			<InfoListComp
+				infoArray={equipS}
+				goToBooking={goToBooking}
+				infoListArray={infoListArray}
+				infoArray2={equipL}
+				floß
+			/>
 			<MenuWrapper>
 				<h2>Auswahl der Speisekarte:</h2>
 				<br />
@@ -152,14 +175,10 @@ const HausbootRot = () => {
 				</div>
 			</MenuWrapper>
 			<PriceListComp
-				weekendDayprice={150}
-				weekendDayprice2={230}
-				dayPrice={130}
+				weekendDayprice2={250}
 				dayPrice2={200}
-				weekPrice={420}
-				weekPrice2={590}
-				weekendWeekPrice={710}
-				weekendWeekPrice2={1190}
+				weekPrice2={450}
+				weekendWeekPrice2={750}
 			/>
 			<BookingContainer>
 				<CalendarWrapper>
@@ -172,7 +191,7 @@ const HausbootRot = () => {
 				</CalendarWrapper>
 			</BookingContainer>
 			<div ref={bookingRef}>
-				<BookingForm hausboot="Floß" booked={mergeDedupe(AllDates)} />
+				<BookingForm hausboot="Floß" booked={mergeDedupe(AllDates)} floß />
 			</div>
 		</div>
 	);

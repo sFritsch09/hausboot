@@ -5,7 +5,7 @@ import { FaTimes, FaBars } from 'react-icons/fa';
 
 export const Nav = styled.nav`
 	background: ${(props) => props.theme.contrastLight};
-	height: 80px;
+	height: 4em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -30,15 +30,15 @@ export const Nav = styled.nav`
 export const NavbarContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	height: 80px;
+	height: 4em;
 
 	/* Container */
 	z-index: 1;
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
-	padding-right: 20px;
-	padding-left: 20px;
+	padding-right: 2em;
+	padding-left: 2em;
 	@media screen and (max-width: 980px) {
 		padding-left: 30px;
 		padding-right: 30px;
@@ -55,7 +55,7 @@ export const NavLogo = styled(Link)`
 	justify-self: flex-start;
 	cursor: pointer;
 	text-decoration: none;
-	font-size: 2rem;
+	font-size: 1.4rem;
 	display: flex;
 	align-items: center;
 	&:hover {
@@ -66,17 +66,17 @@ export const NavLogo = styled(Link)`
 		font-size: 1.5rem;
 	}
 	@media screen and (max-width: 980px) {
-		font-size: 20px;
+		font-size: 1.2em;
 	}
 `;
 
 export const NavIcon = styled(Icon)`
 	margin-right: 0.5rem;
 	color: ${(props) => props.theme.color};
-	width: 80px;
-	height: 60px;
+	width: 4em;
+	height: 3em;
 	@media screen and (max-width: 600px) {
-		width: 40px;
+		width: 2em;
 	}
 `;
 // NavIcon.defaultProps = {
@@ -111,7 +111,7 @@ export const NavMenu = styled.ul`
 	align-items: center;
 	list-style: none;
 	text-align: center;
-	margin-right: 80px;
+	margin-right: 4em;
 	margin-bottom: 0;
 	@media screen and (max-width: 980px) {
 		display: flex;
@@ -120,9 +120,9 @@ export const NavMenu = styled.ul`
 		margin-right: 0;
 		/* height: 85vh; */
 		height: 85vmax;
-		padding-top: 100px;
+		padding-top: 5em;
 		position: absolute;
-		bottom: 70px;
+		bottom: 4em;
 		left: ${({ click }) => (click ? 0 : '-100%')};
 		opacity: 1;
 		transition: left 0.3s ease-out;
@@ -167,77 +167,6 @@ export const NavLink = styled(Link)`
 		&:hover {
 			color: ${(props) => props.theme.lightColor};
 			transition: all 0.3s ease;
-		}
-	}
-`;
-
-export const DropDown = styled.div`
-	color: ${(props) => props.theme.color};
-	text-decoration: none;
-	padding: 0.5rem 1rem;
-	height: 100%;
-	display: inline-flex;
-	align-items: center;
-	position: relative;
-	cursor: pointer;
-
-	&:hover .dropdown-content {
-		opacity: 1;
-		visibility: visible;
-		transform: translateY(0);
-
-		@media screen and (max-width: 980px) {
-			opacity: 0;
-			visibility: hidden;
-			transform: none;
-		}
-	}
-
-	@media screen and (max-width: 980px) {
-		text-align: center;
-		padding: 2rem;
-		width: 100%;
-		display: table;
-		&:hover {
-			color: ${(props) => props.theme.lightColor};
-			transition: all 0.3s ease;
-		}
-	}
-
-	.dropdown-content {
-		background: ${(props) =>
-			props.theme.mode === 'Dark' ? props.theme.color : props.theme.darkColor};
-		border-radius: 8px;
-		position: absolute;
-		top: 85px;
-		min-width: 200px;
-		box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-		visibility: hidden;
-		opacity: 0;
-		transform: translateY(-10px);
-		transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-		overflow: hidden;
-
-		& ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		& li {
-			border-bottom: 1px solid ${(props) => props.theme.lightColor};
-
-			& a {
-				text-decoration: none;
-				color: ${(props) =>
-					props.theme.mode === 'Dark' ? props.theme.darkColor : props.theme.color};
-				padding: 15px 20px;
-				display: block;
-
-				&:hover {
-					background-color: ${(props) => props.theme.lightColor};
-				}
-			}
 		}
 	}
 `;

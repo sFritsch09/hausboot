@@ -42,7 +42,8 @@ const PriceListComp = ({
 					<PriceList>
 						<PriceListHeader>
 							<span className="price-header">Preise</span>
-							<span className="season-header">Nebensaison</span>
+							{dayPrice && <span className="season-header">Nebensaison</span>}
+
 							<span className="season-header">Hauptsaison</span>
 						</PriceListHeader>
 						<PriceListItem className="padding">
@@ -50,12 +51,12 @@ const PriceListComp = ({
 								Tagespreis
 								<p className="week-sub">Tagespreis ab 10:30 Uhr bis nächsten Tag 10:00 Uhr</p>
 							</div>
-							<PriceListSeason />
+							{dayPrice && <PriceListSeason />}
 							<PriceListSeason />
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active={price.dayPrice === weekendDayprice}
+							active={price.dayPrice2 === weekendDayprice2}
 							clickable
 							onClick={() =>
 								setPrice({
@@ -72,12 +73,12 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Freitag bis Sonntag</span>
 							</div>
-							<PriceListSeason>{weekendDayprice},- Euro</PriceListSeason>
+							{dayPrice && <PriceListSeason>{weekendDayprice},- Euro</PriceListSeason>}
 							<PriceListSeason>{weekendDayprice2},- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active={price.dayPrice === dayPrice}
+							active={price.dayPrice2 === dayPrice2}
 							clickable
 							onClick={() =>
 								setPrice({
@@ -94,7 +95,7 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Montag bis Donnerstag</span>
 							</div>
-							<PriceListSeason>{dayPrice},- Euro</PriceListSeason>
+							{dayPrice && <PriceListSeason>{dayPrice},- Euro</PriceListSeason>}
 							<PriceListSeason>{dayPrice2},- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem className="padding">
@@ -103,12 +104,12 @@ const PriceListComp = ({
 								<p className="week-sub">Wochenendpreis ab 10:30 Uhr bis nächsten Tag 10:00 Uhr</p>
 								<p className="week-sub">1 Woche ab 15 Uhr bis nächste Woche 10:00 Uhr</p>
 							</div>
-							<PriceListSeason />
+							{dayPrice && <PriceListSeason />}
 							<PriceListSeason />
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active={price.weekPrice === weekPrice}
+							active={price.weekPrice2 === weekPrice2}
 							clickable
 							onClick={() =>
 								setPrice({
@@ -126,12 +127,12 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Freitag bis Sonntag</span>
 							</div>
-							<PriceListSeason>{weekPrice},- Euro</PriceListSeason>
+							{dayPrice && <PriceListSeason>{weekPrice},- Euro</PriceListSeason>}
 							<PriceListSeason>{weekPrice2},- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem
 							className="border"
-							active={price.weekPrice === weekendWeekPrice}
+							active={price.weekPrice2 === weekendWeekPrice2}
 							clickable
 							onClick={() =>
 								setPrice({
@@ -149,12 +150,12 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">1 Woche von Samstag bis Samstag</span>
 							</div>
-							<PriceListSeason>{weekendWeekPrice},- Euro</PriceListSeason>
+							{dayPrice && <PriceListSeason>{weekendWeekPrice},- Euro</PriceListSeason>}
 							<PriceListSeason>{weekendWeekPrice2},- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem className="padding">
 							<div className="week">Zusatzkosten</div>
-							<PriceListSeason />
+							{dayPrice && <PriceListSeason />}
 							<PriceListSeason />
 						</PriceListItem>
 
@@ -171,7 +172,7 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Gasgrill eimalig 10,00 Euro</span>
 							</div>
-							<PriceListSeason>10,- Euro</PriceListSeason>
+							{dayPrice && <PriceListSeason>10,- Euro</PriceListSeason>}
 							<PriceListSeason>10,- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem
@@ -187,7 +188,8 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Wäschepaket p.P. 20,00 Euro</span>
 							</div>
-							<PriceListSeason>20,- Euro</PriceListSeason>
+
+							{dayPrice && <PriceListSeason>20,- Euro</PriceListSeason>}
 							<PriceListSeason>20,- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem
@@ -207,7 +209,7 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Parkplatz (eingezäunt) 3,00 Euro/Tag</span>
 							</div>
-							<PriceListSeason>{`${price.parking},- Euro`}</PriceListSeason>
+							{dayPrice && <PriceListSeason>{`${price.parking},- Euro`}</PriceListSeason>}
 							<PriceListSeason>{`${price.parking},- Euro`}</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem
@@ -227,17 +229,21 @@ const PriceListComp = ({
 										: 'Endreinigung (mit Hund) 50,- (70,-) Euro'}
 								</span>
 							</div>
-							<PriceListSeason>{price.dog <= 50 ? '50,- Euro' : '70,- Euro'}</PriceListSeason>
+							{dayPrice && (
+								<PriceListSeason>{price.dog <= 50 ? '50,- Euro' : '70,- Euro'}</PriceListSeason>
+							)}
 							<PriceListSeason>{price.dog <= 50 ? '50,- Euro' : '70,- Euro'}</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem className="border">
 							<div className="week">
 								<span className="item">Benzin nach Verbrauch 2,40 Euro/Liter</span>
 							</div>
-							<PriceListSeason>
-								50,- Euro
-								<p className="week-sub">Pauschalpreis pro Tag</p>
-							</PriceListSeason>
+							{dayPrice && (
+								<PriceListSeason>
+									50,- Euro
+									<p className="week-sub">Pauschalpreis pro Tag</p>
+								</PriceListSeason>
+							)}
 							<PriceListSeason>
 								50,- Euro
 								<p className="week-sub">Pauschalpreis pro Tag</p>
@@ -247,9 +253,11 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Gasflasche 2,00 Euro/Tag</span>
 							</div>
-							<PriceListSeason>
-								{price.gas === 14 ? '14,- Euro' : price.gas === 6 ? '6,- Euro' : '2,- Euro'}
-							</PriceListSeason>
+							{dayPrice && (
+								<PriceListSeason>
+									{price.gas === 14 ? '14,- Euro' : price.gas === 6 ? '6,- Euro' : '2,- Euro'}
+								</PriceListSeason>
+							)}
 							<PriceListSeason>
 								{price.gas === 14 ? '14,- Euro' : price.gas === 6 ? '6,- Euro' : '2,- Euro'}
 							</PriceListSeason>
@@ -259,25 +267,27 @@ const PriceListComp = ({
 							<div className="week">
 								<span className="item">Fäkalientankentleerung 25,00 Euro</span>
 							</div>
-							<PriceListSeason>25,- Euro</PriceListSeason>
+							{dayPrice && <PriceListSeason>25,- Euro</PriceListSeason>}
 							<PriceListSeason>25,- Euro</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem>
 							<div className="week"></div>
-							<PriceListSeason>
-								<h3 className="total">
-									{price.dayPrice +
-										price.weekPrice +
-										price.grill +
-										price.laundry +
-										price.parking +
-										price.dog +
-										price.gas +
-										price.gasoline +
-										25}{' '}
-									Euro
-								</h3>
-							</PriceListSeason>
+							{dayPrice && (
+								<PriceListSeason>
+									<h3 className="total">
+										{price.dayPrice +
+											price.weekPrice +
+											price.grill +
+											price.laundry +
+											price.parking +
+											price.dog +
+											price.gas +
+											price.gasoline +
+											25}{' '}
+										Euro
+									</h3>
+								</PriceListSeason>
+							)}
 							<PriceListSeason>
 								<h3 className="total">
 									{price.dayPrice2 +
