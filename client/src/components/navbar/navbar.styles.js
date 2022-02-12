@@ -118,15 +118,16 @@ export const NavMenu = styled.ul`
 		flex-direction: column;
 		width: 100%;
 		margin-right: 0;
-		/* height: 85vh; */
-		height: 85vmax;
+		height: 85vh;
 		padding-top: 5em;
 		position: absolute;
 		bottom: 4em;
-		left: ${({ click }) => (click ? 0 : '-100%')};
+		left: 0;
+		transform: translateX(${({ click }) => (click ? '0' : '100%')});
+		-webkit-transform: -webkit-translateX(${({ click }) => (click ? '0' : '100%')});
 		opacity: 1;
-		transition: left 0.3s ease-out;
-		-webkit-transition: left 0.3s ease-out;
+		transition: transform 0.3s ease-out;
+		-webkit-transition: -webkit-transform 0.3s ease-out;
 		background: ${(props) => props.theme.darkColor};
 	}
 `;

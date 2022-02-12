@@ -46,7 +46,7 @@ const userVariant = {
 };
 
 const goodVariant = {
-	notClicked: { backgroundColor: 'rgb(17, 17, 17)' },
+	notClicked: { backgroundColor: '#323232' },
 	clicked: { backgroundColor: '#FF008C' },
 };
 

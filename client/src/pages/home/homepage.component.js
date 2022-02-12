@@ -2,10 +2,27 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { SliderWrapper, Imgage, Angle, ReviewContainer } from './homepage.styles';
+import { SliderWrapper, Imgage, Angle, ReviewContainer, YoutubeWrapper } from './homepage.styles';
 import LayoutCards from '../../components/review/card.component';
+import YouTube from 'react-youtube';
+import useWindowSize from '../../components/hooks/useMobile';
 
 const HomePage = () => {
+	const size = useWindowSize();
+
+	const opts = {
+		width: '100%',
+		height: size.width < 900 ? '100%' : '450px',
+		playerVars: {
+			autoplay: 1,
+			utoplay: 1,
+			controls: 0,
+			rel: 0,
+			showinfo: 0,
+			mute: 1,
+			loop: 1,
+		},
+	};
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -23,18 +40,11 @@ const HomePage = () => {
 			<SliderWrapper>
 				<Slider {...settings}>
 					<div>
-						<div>
-							<Imgage
-								imageSrc={
-									'https://hausbootprod.blob.core.windows.net/hausboot-images/Hausboot-blau-dock.jpeg'
-								}
-							/>
-						</div>
-					</div>
-					<div>
 						<Imgage
 							imageSrc={
-								'https://hausbootprod.blob.core.windows.net/hausboot-images/Hausboot-sunset.jpeg'
+								size.width < 900
+									? 'https://hausbootprod.blob.core.windows.net/hausboot-images/home-mobile.jpg'
+									: 'https://hausbootprod.blob.core.windows.net/hausboot-images/hompage-blau.jpg'
 							}
 						/>
 					</div>
@@ -60,6 +70,11 @@ const HomePage = () => {
 				</Slider>
 			</SliderWrapper>
 			<Angle />
+			<YoutubeWrapper>
+				<div className="youtube">
+					<YouTube videoId="j7-wyGGB1x0" opts={opts} />
+				</div>
+			</YoutubeWrapper>
 			<ReviewContainer>
 				<LayoutCards />
 			</ReviewContainer>

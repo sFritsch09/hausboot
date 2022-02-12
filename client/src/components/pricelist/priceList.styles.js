@@ -4,7 +4,6 @@ export const PriceListContainer = styled.div`
 	padding: 20px;
 	display: flex;
 	justify-content: center;
-	height: 950px;
 	flex-direction: column;
 	align-items: center;
 
@@ -118,10 +117,6 @@ export const PriceListItem = styled.div`
 	align-items: center;
 	display: flex;
 	background-color: ${(props) => (props.active ? props.theme.lightColor : null)};
-	cursor: ${(props) => (props.clickable ? 'pointer' : null)};
-	&:hover {
-		color: ${(props) => (props.clickable ? props.theme.priceColor : null)};
-	}
 	@media screen and (max-width: 900px) {
 		padding: 0 4px;
 	}
@@ -138,6 +133,10 @@ export const PriceListItem = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		word-break: break-word;
+		@media screen and (max-width: 900px) {
+			font-size: 10px;
+		}
 	}
 	.week-header {
 		background-color: ${(props) => props.theme.contrastColor};
@@ -152,6 +151,7 @@ export const PriceListItem = styled.div`
 		font-weight: lighter;
 		color: ${(props) => props.theme.color};
 		padding: 0 4px;
+		word-break: break-word;
 		@media screen and (max-width: 380px) {
 			font-size: 8px;
 		}
@@ -165,5 +165,53 @@ export const PriceListTitle = styled.h1`
 	@media screen and (max-width: 900px) {
 		font-size: 18px;
 		padding-top: 20px;
+	}
+`;
+export const ConfigWrapper = styled.div`
+	padding: 1em;
+	width: 100%;
+	@media screen and (max-width: 900px) {
+		font-size: 12px;
+	}
+
+	span,
+	label {
+		@media screen and (max-width: 900px) {
+			font-size: 1em;
+		}
+	}
+	.days {
+		border-bottom: 1px solid ${(props) => props.theme.darkColor};
+	}
+	.label {
+		width: 15%;
+		@media screen and (max-width: 900px) {
+			width: 50%;
+		}
+	}
+	.selector {
+		width: 40%;
+		display: flex;
+		@media screen and (max-width: 900px) {
+			width: 80%;
+			margin-bottom: 1em;
+		}
+	}
+	.flex {
+		display: flex;
+		@media screen and (max-width: 900px) {
+			flex-wrap: wrap;
+		}
+	}
+	.flex-mobile {
+		display: flex;
+		@media screen and (max-width: 900px) {
+			flex-direction: column;
+		}
+	}
+	.form-label {
+		color: ${(props) => props.theme.color};
+		margin-right: 1em;
+		margin-top: 0.5em;
 	}
 `;

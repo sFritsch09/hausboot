@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { default as RadioButton } from './forms-ui/radio-button.component';
@@ -32,7 +32,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	// 		arrivalDate && schema.min(arrivalDate, 'Expiry date must be greater than issue date')
 	// ),
 	color: Yup.string().required('Required'),
-	type: Yup.string().required('Required'),
+	type: Yup.string(),
 	// termsOfService: Yup.boolean()
 	// 	.oneOf([true], 'The terms and conditions must be accepted.')
 	// 	.required('The terms and conditions must be accepted.'),
@@ -51,7 +51,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		arrivalDate: new Date(),
 		departureDate: date,
 		color: hausboot,
-		type: '',
+		type: 'Floß S',
 		// termsOfService: false,
 	};
 	const [state, setState] = useState(INITIAL_FORM_STATE);
@@ -69,6 +69,10 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 			arr.push(new Date(dt));
 		}
 		return arr;
+	};
+	const paymentRef = useRef();
+	const goToPayment = () => {
+		paymentRef.current.scrollIntoView({ behavior: 'smooth' });
 	};
 	useEffect(() => {
 		const daysBetween = getDaysArray(state.arrivalDate, state.departureDate);
@@ -130,7 +134,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 			<FormWrapper>
 				{checkout && state.arrivalDate.getDate() !== state.departureDate.getDate() ? (
 					<React.Fragment>
-						<h2>50% Anzahlung: {bookingPrice / 2} €</h2>
+						<h2 ref={paymentRef}>50% Anzahlung: {bookingPrice / 2} €</h2>
 						<Paypal product={product} bookingState={state} />
 						<BackButton fontBig primary onClick={() => setCheckout(false)}>
 							Zurück
@@ -152,6 +156,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 								console.log(values);
 								setState(values);
 								setCheckout(true);
+								goToPayment();
 							}}
 						>
 							<Form>

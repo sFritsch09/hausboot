@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio, RadioGroup, FormControlLabel, FormLabel } from '@material-ui/core';
+import { Radio, RadioGroup, FormControlLabel, FormLabel } from '@mui/material';
 import { GroupContainer, StyledErrorMessage } from './forms-ui.styles';
 import { useField } from 'formik';
 

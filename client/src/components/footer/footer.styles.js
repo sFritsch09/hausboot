@@ -53,7 +53,7 @@ export const FooterContainer = styled.div`
 	flex-direction: column;
 
 	@media screen and (max-width: 980px) {
-		padding-bottom: 10em;
+		padding-bottom: 4em;
 	}
 `;
 
@@ -62,6 +62,10 @@ export const FooterWrapper = styled.div`
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	flex-direction: row;
+	padding: 2em;
+	@media screen and (max-width: 980px) {
+		padding: 1em;
+	}
 `;
 
 export const FooterSection = styled.div`
@@ -69,6 +73,9 @@ export const FooterSection = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	@media screen and (max-width: 980px) {
+		padding: 1em;
+	}
 
 	.header {
 		padding: 10px;

@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 //routes
 require('./routes/createEvent')(app);
 require('./routes/getEvents')(app);
+require('./routes/sendMail')(app);
 // app.get('/api/event', async (req, res, next) => {
 // 	try {
 // 		const test = 'test';

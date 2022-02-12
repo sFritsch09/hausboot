@@ -54,7 +54,7 @@ export const LayoutContainer = styled.div`
 		}
 	}
 	.card {
-		background: white;
+		background: ${(props) => (props.theme.mode === 'Dark' ? '#181818' : 'white')};
 		border-radius: 15px;
 		width: 100%;
 		height: 100%;
@@ -95,7 +95,6 @@ export const LayoutContainer = styled.div`
 
 	@media screen and (max-width: 900px) {
 		padding: 1rem;
-		line-height: 2em;
 	}
 `;
 export const ConvoContainer = styled.div`
@@ -106,7 +105,7 @@ export const ConvoContainer = styled.div`
 		margin: auto;
 		padding: 34px 22px;
 		border-radius: 12px;
-		background-color: white;
+		background-color: ${(props) => (props.theme.mode === 'Dark' ? '#181818' : 'white')};
 
 		& > *:not(:last-child) {
 			margin-bottom: 10px;
@@ -143,7 +142,7 @@ export const ConvoContainer = styled.div`
 				padding: 10px 18px;
 				list-style-type: none;
 				border-radius: 25px;
-				background-color: #0055ff;
+				background-color: #007bff;
 				transform: translateY(-50%);
 
 				.dot {
@@ -163,7 +162,7 @@ export const ConvoContainer = styled.div`
 		.answer {
 			padding: 10px 18px;
 			border-radius: 25px;
-			background-color: #0055ff;
+			background-color: #007bff;
 			font-family: inherit;
 			font-size: inherit;
 			font-weight: inherit;
@@ -220,6 +219,34 @@ export const DisplayCard = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: ${(props) => (props.theme.mode === 'Dark' ? props.theme.darkColor : props.theme.color)};
+	color: ${(props) => props.theme.color};
+	margin-top: 2em;
 	transition: opacity ease-out 0.2s;
+
+	.notify {
+		@media screen and (max-width: 900px) {
+			padding: 1em;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	@media screen and (max-width: 900px) {
+		font-size: 12px;
+		text-align: center;
+		line-height: 1.5em;
+		padding: 1em;
+	}
+`;
+
+export const Notify = styled.div`
+	background-color: red;
+	border-radius: 50%;
+	margin-right: 0.6em;
+	width: 1.4em;
+	height: 1.4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Open Sans Condensed', sans-serif;
 `;

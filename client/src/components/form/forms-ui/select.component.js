@@ -1,8 +1,9 @@
 import React from 'react';
-import { MenuItem, FormLabel } from '@material-ui/core';
+import { MenuItem, FormLabel } from '@mui/material';
 import { useField, useFormikContext } from 'formik';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
+import { makeStyles } from '@mui/styles';
+import { useTheme, ThemeProvider } from '@mui/material/styles';
+import Select from '@mui/material/Select';
 import { GroupContainer, StyledErrorMessage } from './forms-ui.styles';
 
 const SelectWrapper = ({ name, options, label, ...otherProps }) => {
@@ -13,7 +14,7 @@ const SelectWrapper = ({ name, options, label, ...otherProps }) => {
 		const { value } = evt.target;
 		setFieldValue(name, value);
 	};
-	const theme = createTheme({
+	const theme = useTheme({
 		overrides: {
 			MuiPaper: {
 				root: {
@@ -23,7 +24,7 @@ const SelectWrapper = ({ name, options, label, ...otherProps }) => {
 		},
 	});
 
-	const useStyles = makeStyles((theme) => ({
+	const useStyles = makeStyles(() => ({
 		formControl: {
 			margin: theme.spacing(1),
 			minWidth: 120,

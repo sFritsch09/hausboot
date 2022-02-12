@@ -44,33 +44,26 @@ const InfoListComp = ({ infoArray, infoArray2, infoListArray, goToBooking, place
 							</React.Fragment>
 						)}
 					</InfoSection>
-					Inklusiv-Leistungen
-					{infoListArray.map((item) => (
-						<React.Fragment key={item}>
-							{item.service.map((serv) => (
-								<InfoList key={serv}>
-									<InfoListItem key={serv}>{serv}</InfoListItem>
-								</InfoList>
-							))}
-							{item.insurance.map((ins) => (
-								<span key={ins} className="week-sub">
-									{ins}
-								</span>
-							))}
-							{item.mainSeason && 'Hauptsaison:'}
-							<span key={item.mainSeason} className="week-sub">
-								{item.mainSeason}
-							</span>
-							{item.season && 'Saison:'}
-							<span key={item.season} className="week-sub">
-								{item.season}
-							</span>
-							{item.lowSeason && 'Nebensaison:'}
-							<span key={item.lowSeason} className="week-sub">
-								{item.lowSeason}
-							</span>
-						</React.Fragment>
-					))}
+					<div style={{ marginTop: '1.5em' }}>Inklusiv-Leistungen</div>
+					<React.Fragment>
+						{infoListArray.service.map((serv) => (
+							<InfoList key={serv}>
+								<InfoListItem key={serv}>{serv}</InfoListItem>
+							</InfoList>
+						))}
+						<div style={{ marginTop: '1.5em' }}>{infoListArray.insurance && 'Zusatzkosten'}</div>
+						{infoListArray.insurance?.map((ins) => (
+							<InfoList key={ins}>
+								<InfoListItem key={ins}>{ins}</InfoListItem>
+							</InfoList>
+						))}
+						<div style={{ marginTop: '1.5em' }}>{infoListArray.mainSeason && 'Hauptsaison:'}</div>
+						<span className="week-sub">{infoListArray.mainSeason}</span>
+						{infoListArray.season && 'Saison:'}
+						<span className="week-sub">{infoListArray.season}</span>
+						{infoListArray.lowSeason && 'Nebensaison:'}
+						<span className="week-sub">{infoListArray.lowSeason}</span>
+					</React.Fragment>
 					<span className="driver-license" style={{ marginBottom: '3em' }}>
 						Ein Führerschein wird nicht benötigt, da das Hausboot mit einem 15 PS Motor betrieben
 						wird und dieser Führerscheinfrei ist.

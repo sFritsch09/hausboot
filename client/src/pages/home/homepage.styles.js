@@ -57,3 +57,16 @@ export const ReviewContainer = styled.div`
 		props.theme.mode === 'Dark' ? props.theme.darkColor : props.theme.contrastColor};
 	position: relative;
 `;
+
+export const YoutubeWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2em;
+
+	.youtube {
+		max-width: 860px;
+		width: 100%;
+		height: 100%;
+	}
+`;

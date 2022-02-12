@@ -8,28 +8,32 @@ import {
 	BookingContainer,
 	CalendarLegend,
 	PriceListTitle,
-	MenuLink,
-	MenuWrapper,
 } from './floßboot.styles';
 import PriceListComp from 'components/pricelist/priceList.component';
 import InfoListComp from 'components/infoList/infoList.component';
 
 const HausbootRot = () => {
-	const infoListArray = [
-		{
-			service: [
-				'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
-				'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
-				'Einweisungsfahrt',
-				'Informationsmaterial und Reiseunterlagen',
-			],
-			insurance: [''],
-			season: '02.04. 2022 - 04.10.2022',
-		},
+	const place = [
+		'Der Parkplatz befindet sich auf der großen Wiese hinter dem Restaurant "Zum Flößer"',
+		'Hechtweg 16',
+		'16515 Bernöwe',
+		'Der Oder-Havel-Kanal',
+		'0173-2324128',
 	];
+	const infoListArray = {
+		service: [
+			'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
+			'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
+			'Einweisungsfahrt',
+			'Informationsmaterial und Reiseunterlagen',
+		],
+		// insurance: [''],
+		season: '02.04. 2022 - 04.10.2022',
+	};
+
 	const equipS = [
 		{
-			text: 'Töpfe, Teller, Besteck',
+			text: 'Töpfe, Teller, Besteck (bei Mehrtagevermietung)',
 			icon: '🍽',
 		},
 		{
@@ -37,7 +41,7 @@ const HausbootRot = () => {
 			icon: '🧯',
 		},
 		{
-			text: 'Kühlbox 50L',
+			text: 'Kühlbox 50 L',
 			icon: '🧊',
 		},
 		{
@@ -45,7 +49,7 @@ const HausbootRot = () => {
 			icon: '🪑',
 		},
 		{
-			text: 'Tische als Bett 2x 1,20 m x 2,00 m',
+			text: 'Tische als Bett 2x 1,20 m x 2,00 m oder Liegefläche 2,40 m x 2 m',
 			icon: '🛏',
 		},
 		{
@@ -71,7 +75,7 @@ const HausbootRot = () => {
 			icon: '🧯',
 		},
 		{
-			text: 'Kühlbox 50L',
+			text: 'Kühlbox 50 L',
 			icon: '🧊',
 		},
 		{
@@ -81,6 +85,10 @@ const HausbootRot = () => {
 		{
 			text: 'Tische als Bett 2x 1,20 m x 2,00 m',
 			icon: '🛏',
+		},
+		{
+			text: 'USB-Ladestation',
+			icon: '🔌',
 		},
 		{
 			text: 'WC',
@@ -158,27 +166,14 @@ const HausbootRot = () => {
 				goToBooking={goToBooking}
 				infoListArray={infoListArray}
 				infoArray2={equipL}
+				place={place}
 				floß
 			/>
-			<MenuWrapper>
-				<h2>Auswahl der Speisekarte:</h2>
-				<br />
-				Gern stellen wir Ihnen für Ihre Feier auch ein Catering zur Verfügung. Alle Speisen und
-				Getränke werden Ihnen direkt auf das Boot gebracht, anbei die Speisekarte mit den
-				Menüvorschlägen. Weitere Infos zu unserem Menülieferanten und Partner unter:
-				Facebook/Gasthofzumfloesser. Link zur Speisekarte:
-				<br />
-				<div
-					style={{ paddingTop: '2.5em', display: 'flex', justifyContent: 'center', margin: 'auto' }}
-				>
-					<MenuLink to="#">Speisekarte</MenuLink>
-				</div>
-			</MenuWrapper>
 			<PriceListComp
 				weekendDayprice2={250}
 				dayPrice2={200}
-				weekPrice2={450}
-				weekendWeekPrice2={750}
+				weekPrice2={750}
+				weekendWeekPrice2={450}
 			/>
 			<BookingContainer>
 				<CalendarWrapper>

@@ -1,6 +1,11 @@
 export const photos = {
 	general: [
 		{
+			src: 'https://hausbootprod.blob.core.windows.net/hausboot-images/green-view.jpg',
+			width: 5,
+			height: 3,
+		},
+		{
 			src: 'https://hausbootprod.blob.core.windows.net/hausboot-images/Hausboot-sunset.jpeg',
 			width: 5,
 			height: 3,
@@ -56,6 +61,16 @@ export const photos = {
 			src: 'https://hausbootprod.blob.core.windows.net/hausboot-images/Rot-front.jpeg',
 			width: 4,
 			height: 3,
+		},
+		{
+			src: 'https://hausbootprod.blob.core.windows.net/hausboot-images/PHOTO-2021-06-07-15-05-59.jpg',
+			width: 5,
+			height: 3,
+		},
+		{
+			src: 'https://hausbootprod.blob.core.windows.net/hausboot-images/hausboot-control-rot.jpeg',
+			width: 3,
+			height: 4,
 		},
 		{
 			src: 'https://hausbootprod.blob.core.windows.net/hausboot-images/Rot-kitchen.jpeg',

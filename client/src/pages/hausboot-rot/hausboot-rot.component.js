@@ -20,34 +20,36 @@ const HausbootRot = () => {
 		'16559 Liebenwalde',
 		'0173-2324128',
 	];
-	const infoListArray = [
-		{
-			service: [
-				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
-				'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
-				'Einweisungsfahrt',
-				'Informationsmaterial und Reiseunterlagen',
-			],
-			insurance: [
-				'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12-Euro/Tag',
-				'Haftungsreduzierung der Selbstbeteiligung auf 400 Euro 18-Euro/Tag',
-				'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22 Euro/Tag',
-			],
-			mainSeason: '23.05.2022 - 10.09.2022 und 27.05.2023 - 10.09.2022',
-			lowSeason: '04.03.2022 - 22.05.2022 und 11.09.2022 - 26.05.2023 (ohne Himmelfahrt)',
-		},
-	];
+	const infoListArray = {
+		service: [
+			'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
+			'Einweisungsfahrt',
+			'Informationsmaterial und Reiseunterlagen',
+		],
+		insurance: [
+			'Haftungsreduzierung der Selbstbeteiligung auf 700 Euro 12,- Euro/Tag',
+			'Haftungsreduzierung der Selbstbeteiligung auf 400 Euro 18,- Euro/Tag',
+			'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22,- Euro/Tag',
+		],
+		mainSeason: '23.05.2022 - 10.09.2022 und 27.05.2023 - 10.09.2023',
+		lowSeason: '04.03.2022 - 22.05.2022 und 11.09.2023 - 26.05.2023 (ohne Himmelfahrt)',
+	};
+
 	const equip = [
 		{
 			text: 'Töpfe, Teller, Besteck',
 			icon: '🍽',
 		},
 		{
-			text: 'Gasherd mit drei Kochplatten',
+			text: 'Tische für 6 Personen',
+			icon: '🪑',
+		},
+		{
+			text: 'Gasherd mit zwei Kochplatten',
 			icon: '🧯',
 		},
 		{
-			text: 'Kühlschrank 50L mit kleinem Gefrierfach',
+			text: 'Kühlschrank 50 L mit kleinem Gefrierfach',
 			icon: '🧊',
 		},
 		{
@@ -75,7 +77,7 @@ const HausbootRot = () => {
 			icon: '🌡',
 		},
 		{
-			text: 'Zwei Doppelstockbetten 200×80 cm',
+			text: 'Zwei Doppelstockbetten 200 x 80 cm',
 			icon: '🛏',
 		},
 		{
@@ -146,10 +148,10 @@ const HausbootRot = () => {
 				weekendDayprice2={230}
 				dayPrice={140}
 				dayPrice2={200}
-				weekPrice={440}
-				weekPrice2={610}
-				weekendWeekPrice={790}
-				weekendWeekPrice2={1270}
+				weekPrice={790}
+				weekPrice2={1270}
+				weekendWeekPrice={440}
+				weekendWeekPrice2={610}
 			/>
 			<BookingContainer>
 				<CalendarWrapper>

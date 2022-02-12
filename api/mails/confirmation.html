@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			table {
+				border-spacing: 1;
+				border-collapse: collapse;
+				background: rgb(243, 248, 255);
+				border-radius: 6px;
+				overflow: hidden;
+				max-width: 800px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			td,
+			th {
+				padding-left: 8px;
+			}
+			tbody,
+			tr {
+				height: 40px;
+			}
+			.container {
+				font-family: sans-serif;
+			}
+			.table-header {
+				background: #ffed86;
+				font-size: 16px;
+				height: 60px;
+				text-align: left;
+			}
+			.table-wrapper {
+				width: 40em;
+			}
+			.image-wrapper {
+				display: flex;
+				display: -webkit-flex;
+				width: 50em;
+				padding: 1em;
+				align-items: center;
+			}
+			.image {
+				background-image: url('https://hausbootprod.blob.core.windows.net/hausboot-images/logo512.png');
+				width: 6%;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.hint {
+				display: flex;
+				display: -webkit-flex;
+				align-items: center;
+			}
+			.details {
+				padding-top: 1em;
+			}
+			.message {
+				padding: 1em 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Buchungsbestätigung</h1>
+			<div class="details">
+				<h3>#BOOT#</h3>
+			</div>
+			<div class="message">Ahoi #NAME#, vielen dank für deine Buchung.</div>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr class="table-header">
+							<th>Name</th>
+							<th>Email</th>
+							<th>Person</th>
+							<th>Von</th>
+							<th>Bis</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>#NAME#</td>
+							<td>sfritsch09@gmail.com</td>
+							<td>4</td>
+							<td>22.05.2022</td>
+							<td style="padding-right: 8px">28.05.2022</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="hint">
+				<span style="font-size: 20px">⚠</span>
+				<h3 style="margin: 0.5em">Hinweis:</h3>
+				<span style="margin: auto 0">Bitte nimmt den Müll zur Entsorgung mit 🗑! Wir danken 🌍</span>
+			</div>
+			<div class="image-wrapper">
+				<div class="image" />
+				<a
+					style="text-decoration: none; color: #599eff"
+					href="https://xn--teichland-kapitne-4qb.de"
+					target="_blank"
+				>
+					<h2 style="padding-left: 0.5em; color: #599eff">Teichland-Kapitäne</h2>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>
