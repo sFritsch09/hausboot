@@ -22,6 +22,7 @@ const HausbootRot = () => {
 	];
 	const infoListArray = {
 		service: [
+			'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
 			'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
 			'Einweisungsfahrt',
 			'Informationsmaterial und Reiseunterlagen',
@@ -81,7 +82,7 @@ const HausbootRot = () => {
 			icon: '🛏',
 		},
 		{
-			text: 'Sofa (2 weitere Schlafplätze)',
+			text: 'Klappofa 140 x 200 cm',
 			icon: '🛋',
 		},
 	];

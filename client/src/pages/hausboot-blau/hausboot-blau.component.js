@@ -22,6 +22,7 @@ const HausbootRot = () => {
 	];
 	const infoListArray = {
 		service: [
+			'Haftpflicht und Kasko mit 1000,- Euro Selbstbeteiligung',
 			'intensive Einweisung im Umgang mit dem Boot, Routenberatung',
 			'Einweisungsfahrt',
 			'Informationsmaterial und Reiseunterlagen',

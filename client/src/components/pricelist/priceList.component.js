@@ -53,7 +53,8 @@ const PriceListComp = ({
 	const [price, setPrice] = useState(initState);
 	const [day, setDay] = useState(false);
 	const [person, setPerson] = useState(1);
-	const [liability, setLiability] = useState(18);
+	const [personP, setPersonP] = useState(1);
+	const [liability, setLiability] = useState(0);
 	const [weekendDay, setWeekendDay] = useState(false);
 	const [offerWeek, setOfferWeek] = useState(false);
 	const [offerWeekend, setOfferWeekend] = useState(false);
@@ -65,6 +66,9 @@ const PriceListComp = ({
 
 	const handlePerson = (event) => {
 		setPerson(event.target.value);
+	};
+	const handlePersonParking = (event) => {
+		setPersonP(event.target.value);
 	};
 
 	const handleLiability = (event) => {
@@ -192,11 +196,14 @@ const PriceListComp = ({
 		if (event.target.checked === true) {
 			if (name === 'grill') {
 				setAddCost({
+					...addCost,
 					grill: true,
+					gas: true,
 				});
 				setPrice({
 					...price,
 					grill: 10,
+					gas: dayPrice ? 2 : 10,
 				});
 			}
 			if (name === 'parking') {
@@ -294,11 +301,11 @@ const PriceListComp = ({
 	};
 	const handleAddMultiDay = (name) => {
 		if (name === 'weekend') {
-			if (multiWDay < 10) {
+			if (multiWDay < 4) {
 				setMultiWDay(multiWDay + 1);
 			}
 		} else {
-			if (multiDay < 10) {
+			if (multiDay < 5) {
 				setMultiDay(multiDay + 1);
 			}
 		}
@@ -338,7 +345,7 @@ const PriceListComp = ({
 												inputProps={{ 'aria-label': 'day checkbox' }}
 											/>
 										}
-										label="Unter der Woche"
+										label="Montag bis Freitag"
 									/>
 								</div>
 								<IconButton aria-label="remove" onClick={handleRemoveMultiDay}>
@@ -427,7 +434,7 @@ const PriceListComp = ({
 							</div>
 						</div>
 						<div style={{ marginTop: '1em' }}>
-							Zusatzkosten:
+							Zusatzkosten (Standard Zusatzkosten siehe Tabelle):
 							<div className="flex">
 								<div className="label">
 									<FormControlLabel
@@ -456,21 +463,40 @@ const PriceListComp = ({
 										}
 										label="Parkplatz"
 									/>
+									<FormControl fullWidth>
+										<InputLabel>Persoen</InputLabel>
+										<Select
+											style={{ marginRight: '4em' }}
+											value={personP}
+											label="Personen"
+											onChange={handlePersonParking}
+											size="small"
+											disabled={!addCost.parking ?? false}
+										>
+											<MenuItem value={1}>Eine</MenuItem>
+											<MenuItem value={2}>Zwei</MenuItem>
+											<MenuItem value={3}>Drei</MenuItem>
+											<MenuItem value={4}>Vier</MenuItem>
+											<MenuItem value={5}>Fünf</MenuItem>
+										</Select>
+									</FormControl>
 								</div>
-								<div className="label">
-									<FormControlLabel
-										style={{ width: '100%' }}
-										control={
-											<Checkbox
-												checked={addCost.gas ?? false}
-												color="primary"
-												onChange={(e) => handleAddCosts(e, 'gas')}
-												inputProps={{ 'aria-label': 'day checkbox' }}
-											/>
-										}
-										label={dayPrice ? 'Gasflasche' : 'Kühlbox/Gasflasche'}
-									/>
-								</div>
+								{!dayPrice && (
+									<div className="label">
+										<FormControlLabel
+											style={{ width: '100%' }}
+											control={
+												<Checkbox
+													checked={addCost.gas ?? false}
+													color="primary"
+													onChange={(e) => handleAddCosts(e, 'gas')}
+													inputProps={{ 'aria-label': 'day checkbox' }}
+												/>
+											}
+											label={dayPrice ? 'Gasflasche' : 'Kühlbox/Gasflasche'}
+										/>
+									</div>
+								)}
 								{dayPrice && (
 									<div className="label">
 										<FormControlLabel
@@ -534,6 +560,7 @@ const PriceListComp = ({
 												onChange={handleLiability}
 												size="small"
 											>
+												<MenuItem value={0}>Ohne</MenuItem>
 												<MenuItem value={12}>12</MenuItem>
 												<MenuItem value={18}>18</MenuItem>
 												<MenuItem value={22}>22</MenuItem>
@@ -570,7 +597,7 @@ const PriceListComp = ({
 						</PriceListItem>
 						<PriceListItem className="border" active={price.dayPrice2 === dayPrice2}>
 							<div className="week">
-								<span className="item">Unter der Woche pro Tag</span>
+								<span className="item">Montag bis Freitag pro Tag</span>
 							</div>
 							{dayPrice && <PriceListSeason>{dayPrice},- Euro</PriceListSeason>}
 							<PriceListSeason>{dayPrice2},- Euro</PriceListSeason>
@@ -629,17 +656,17 @@ const PriceListComp = ({
 							</div>
 							{dayPrice && (
 								<PriceListSeason>{`${
-									price.parking * multiDay +
-									price.parking * multiWDay +
-									price.parking * multiWeekend +
-									price.parking * multiWeek
+									price.parking * multiDay * personP +
+									price.parking * multiWDay * personP +
+									price.parking * multiWeekend * personP +
+									price.parking * multiWeek * personP
 								},- Euro`}</PriceListSeason>
 							)}
 							<PriceListSeason>{`${
-								price.parking * multiDay +
-								price.parking * multiWDay +
-								price.parking * multiWeekend +
-								price.parking * multiWeek
+								price.parking * multiDay * personP +
+								price.parking * multiWDay * personP +
+								price.parking * multiWeekend * personP +
+								price.parking * multiWeek * personP
 							},- Euro`}</PriceListSeason>
 						</PriceListItem>
 						<PriceListItem className="border" active={price.liability}>
@@ -750,10 +777,10 @@ const PriceListComp = ({
 											  price.liability * multiWeek +
 											  price.laundry * person +
 											  price.cleaning +
-											  price.parking * multiDay +
-											  price.parking * multiWDay +
-											  price.parking * multiWeekend +
-											  price.parking * multiWeek +
+											  price.parking * multiDay * personP +
+											  price.parking * multiWDay * personP +
+											  price.parking * multiWeekend * personP +
+											  price.parking * multiWeek * personP +
 											  (price.cleaning ? price.dog : null) +
 											  price.gas * multiDay +
 											  price.gas * multiWDay +
@@ -783,10 +810,10 @@ const PriceListComp = ({
 											  price.gas * multiWeek +
 											  price.laundry * person +
 											  price.cleaning +
-											  price.parking * multiWDay +
-											  price.parking * multiDay +
-											  price.parking * multiWeekend +
-											  price.parking * multiWeek +
+											  price.parking * multiWDay * personP +
+											  price.parking * multiDay * personP +
+											  price.parking * multiWeekend * personP +
+											  price.parking * multiWeek * personP +
 											  (price.cleaning ? price.dog : null) +
 											  price.gasoline
 											: 0
@@ -798,10 +825,10 @@ const PriceListComp = ({
 										  price.laundry * person +
 										  price.cleaning +
 										  price.gas +
-										  price.parking * multiWDay +
-										  price.parking * multiDay +
-										  price.parking * multiWeekend +
-										  price.parking * multiWeek +
+										  price.parking * multiWDay * personP +
+										  price.parking * multiDay * personP +
+										  price.parking * multiWeekend * personP +
+										  price.parking * multiWeek * personP +
 										  (price.cleaning ? price.dog : null) +
 										  price.gasoline
 										: 0}{' '}

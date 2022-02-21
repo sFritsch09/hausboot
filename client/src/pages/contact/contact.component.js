@@ -19,8 +19,18 @@ const ContactPage = () => {
 					<div className="phone">René Hellwig Telefon: 0157-39100506</div>
 					<div className="phone">Carsten Hellwig Telefon: 0151-10749211</div>
 					<h3 className="title">Anfahrt</h3>
-					<div className="route">
-						Restaurant „Zum Flößer“ Hechtweg 16 16515 Bernöwe Der Oder-Havel-Kanal
+					<div className="place">
+						Standort Flöße:
+						<div className="route">
+							Restaurant „Zum Flößer“ Hechtweg 16 16515 Bernöwe Der Oder-Havel-Kanal
+						</div>
+					</div>
+					<div className="place">
+						Standort Hausboote:
+						<div className="route">
+							Schiffswerft Liebenwalde Hafenmeister Andre Schumacher Neuholländer Chaussee 5 16559
+							Liebenwalde Mobil: 01732324128
+						</div>
 					</div>
 				</InfoWrapper>
 				<ContactWrapper>

@@ -31,7 +31,10 @@ export const InfoWrapper = styled.div`
 	}
 
 	.route {
-		padding: 10px;
+		padding: 1em 0;
+	}
+	.place {
+		margin-bottom: 2em;
 	}
 `;
 
