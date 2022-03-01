@@ -15,6 +15,11 @@ const Paypal = ({ product, bookingState }) => {
 		if (res) {
 			history.push('/landing', { details: bookingState });
 		}
+		// confirmation Mail
+		axios
+			.post('api/mail', { data: bookingState })
+			.then((res) => console.log(res.data))
+			.catch((err) => console.log(err));
 	}, [history, bookingState]);
 
 	useEffect(() => {

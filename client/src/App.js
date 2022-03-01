@@ -12,6 +12,7 @@ import HausbootBlau from './pages/hausboot-blau/hausboot-blau.component';
 import Floßboot from './pages/floßboot/floßboot.component';
 import Booking from './pages/booking/booking.component';
 import ContactPage from './pages/contact/contact.component';
+import Impressum from './pages/impressum/impressum.component';
 import LandingPage from './pages/landing/landing.component';
 import PhotoGallery from 'pages/gallery/photoGallery.component';
 
@@ -34,6 +35,7 @@ function App() {
 						<Route path="/booking" component={Booking} />
 						<Route path="/landing" component={LandingPage} />
 						<Route path="/contact" component={ContactPage} />
+						<Route path="/impressum" component={Impressum} />
 						<Route path="/gallery" component={PhotoGallery} />
 					</Switch>
 				</div>

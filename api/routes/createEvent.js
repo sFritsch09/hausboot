@@ -24,6 +24,9 @@ const createEvent = (app) => {
 		if (req.body.data.dog !== 0) {
 			description += `, Hund: ${req.body.data.dog}`;
 		}
+		if (req.body.data.type) {
+			description += `, Floßart: ${req.body.data.type}`;
+		}
 		await calendar.events.insert(
 			{
 				calendarId: process.env.GOOGLE_CALENDAR_ID,

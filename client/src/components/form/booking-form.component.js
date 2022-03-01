@@ -51,7 +51,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		arrivalDate: new Date(),
 		departureDate: date,
 		color: hausboot,
-		type: 'Floß S',
+		type: hausboot === 'Floß' ? 'Floß S' : '',
 		// termsOfService: false,
 	};
 	const [state, setState] = useState(INITIAL_FORM_STATE);

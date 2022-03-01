@@ -105,7 +105,9 @@ const HausbootRot = () => {
 	];
 	const bookingRef = useRef();
 	const [startDate, setStartDate] = useState([]);
+	const [startDateL, setStartDateL] = useState([]);
 	const [endDate, setEndDate] = useState([]);
+	const [endDateL, setEndDateL] = useState([]);
 
 	const goToBooking = () => {
 		bookingRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -126,8 +128,17 @@ const HausbootRot = () => {
 		}
 		return arr;
 	};
+	const getAllDatesL = () => {
+		var arr = [];
+		for (var i in startDate) {
+			let dateRange = getDaysArray(new Date(startDateL[i]), new Date(endDateL[i]));
+			arr.push(dateRange.map((date) => date));
+		}
+		return arr;
+	};
 
 	const AllDates = getAllDates();
+	const AllDatesL = getAllDatesL();
 
 	//merge arrays in one array
 	const mergeDedupe = (arr) => {
@@ -139,12 +150,16 @@ const HausbootRot = () => {
 			const eventList = await getEvents();
 
 			setStartDate(
-				eventList
-					.filter((ev) => ev.description.includes('Hausboot Floß'))
-					.map((event) => event.start)
+				eventList.filter((ev) => ev.description.includes('Floß S')).map((event) => event.start)
 			);
 			setEndDate(
-				eventList.filter((ev) => ev.description.includes('Hausboot Floß')).map((event) => event.end)
+				eventList.filter((ev) => ev.description.includes('Floß S')).map((event) => event.end)
+			);
+			setStartDateL(
+				eventList.filter((ev) => ev.description.includes('Floß L')).map((event) => event.start)
+			);
+			setEndDateL(
+				eventList.filter((ev) => ev.description.includes('Floß L')).map((event) => event.end)
 			);
 		};
 
@@ -177,11 +192,23 @@ const HausbootRot = () => {
 			/>
 			<BookingContainer>
 				<CalendarWrapper>
+					<span className="title">Floßboot S</span>
 					<CalendarLegend>
 						<div className="free">Frei</div>
 						<div className="booked">Belegt</div>
 					</CalendarLegend>
 					<BookingCalendar bookings={mergeDedupe(AllDates)} disableHistory />
+					<div></div>
+				</CalendarWrapper>
+			</BookingContainer>
+			<BookingContainer>
+				<CalendarWrapper>
+					<span className="title">Floßboot L</span>
+					<CalendarLegend>
+						<div className="free">Frei</div>
+						<div className="booked">Belegt</div>
+					</CalendarLegend>
+					<BookingCalendar bookings={mergeDedupe(AllDatesL)} disableHistory />
 					<div></div>
 				</CalendarWrapper>
 			</BookingContainer>

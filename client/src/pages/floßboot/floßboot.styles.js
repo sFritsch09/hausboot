@@ -74,6 +74,9 @@ export const PriceListTitle = styled.h1`
 
 export const CalendarWrapper = styled.div`
 	width: 500px;
+	.title {
+		font-size: 21px;
+	}
 `;
 export const CalendarLegend = styled.div`
 	width: 100%;

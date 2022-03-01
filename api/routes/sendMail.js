@@ -10,7 +10,7 @@ const sendMail = (app) => {
 		},
 	});
 
-	app.get('/api/mail', async (req, res) => {
+	app.post('/api/mail', async (req, res) => {
 		fs.readFile('./mails/confirmation.html', { encoding: 'utf-8' }, async (err, data) => {
 			if (err) {
 				console.log(err);
@@ -18,8 +18,35 @@ const sendMail = (app) => {
 			let htmlFile = data;
 			// data replacement
 			htmlFile = htmlFile
-				.replaceAll('#NAME#', 'Sebastian Fritsch')
-				.replaceAll('#BOOT#', 'Floßboot L');
+				.replaceAll('#NAME#', req.body.data.name)
+				.replaceAll(
+					'#BOOT#',
+					`${
+						req.body.data.color === 'Blau'
+							? 'Hausboot Blau'
+							: req.body.data.color === 'Rot'
+							? 'Hausboot Rot'
+							: 'Floßboot:'
+					} ${req.body.data.type ? req.body.data.type : ''}`
+				)
+				.replaceAll('#EMAIL#', req.body.data.email)
+				.replaceAll('#PERSON#', req.body.data.person)
+				.replaceAll(
+					'#DATESTART#',
+					new Date(req.body.data.arrivalDate).toLocaleDateString('de-DE', {
+						year: 'numeric',
+						month: '2-digit',
+						day: '2-digit',
+					})
+				)
+				.replaceAll(
+					'#DATEEND#',
+					new Date(req.body.data.departureDate).toLocaleDateString('de-DE', {
+						year: 'numeric',
+						month: '2-digit',
+						day: '2-digit',
+					})
+				);
 			const mailOptions = {
 				from: '"Teichland-Kapitäne ⚓" <hausboot@xn--teichland-kapitne-4qb.de>',
 				to: 'sfritsch09@gmail.com',

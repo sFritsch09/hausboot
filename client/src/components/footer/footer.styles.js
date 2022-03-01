@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { ReactComponent as WaveLayer } from '../../assets/wave.svg';
 import { ReactComponent as paypalIcon } from '../../assets/paypal-icon.svg';
 import { ReactComponent as visaIcon } from '../../assets/visa-icon.svg';
@@ -111,6 +112,10 @@ export const IconWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+export const FooterLink = styled(Link)`
+	text-decoration: none;
+	color: inherit;
 `;
 export const PaypalIcon = styled(paypalIcon)``;
 export const VisaIcon = styled(visaIcon)``;

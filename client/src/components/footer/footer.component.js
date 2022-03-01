@@ -12,21 +12,22 @@ import {
 	SepaIcon,
 	WaveWrapper,
 	WaveContainer,
+	FooterLink,
 } from './footer.styles';
 
 const Footer = () => {
 	const footerData = [
 		{
-			title: 'Section One',
-			content: ['Content One', 'Content Two', 'Content Three'],
+			title: 'Hellwig & Hellwig GbR',
+			content: ['Friedrich-W ilhelm-Str. 69', '12103 Berlin'],
 		},
 		{
 			title: 'Kontakt',
-			content: ['email@gmail.com', 'Mobilnummer', ''],
+			content: ['hausboot@teichland-kapitäne.de', '015739100506', ''],
 		},
 		{
 			title: 'Legal',
-			content: ['Impressum', 'Datenschutz', 'AGB'],
+			content: ['Impressum', 'AGB'],
 		},
 	];
 	return (
@@ -66,7 +67,25 @@ const Footer = () => {
 							<h3 className="header">{item.title}</h3>
 							{item.content.map((sec) => (
 								<div className="content" key={sec}>
-									{sec}
+									{sec === 'AGB' ? (
+										<FooterLink
+											target="_blank"
+											to={{
+												pathname:
+													'https://hausbootprod.blob.core.windows.net/hausboot-images/AGB Boot Saison 2022.pdf',
+											}}
+										>
+											{sec}
+										</FooterLink>
+									) : sec === 'Impressum' ? (
+										<FooterLink to="/impressum">{sec}</FooterLink>
+									) : sec === '015739100506' ? (
+										<a style={{ textDecoration: 'none', color: 'inherit' }} href="tel:015739100506">
+											{sec}
+										</a>
+									) : (
+										sec
+									)}
 								</div>
 							))}
 						</FooterSection>
