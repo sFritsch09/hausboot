@@ -80,8 +80,8 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		const week = daysBetween.filter((day) => ![0, 6].includes(day.getDay()));
 		const Season = () => {
 			if (
-				new Date('2022-05-23') <= state.arrivalDate &&
-				new Date('2022-09-10') >= state.departureDate
+				new Date('2022-05-23') <= new Date(state.arrivalDate) &&
+				new Date('2022-09-10') >= new Date(state.departureDate)
 			) {
 				return 'Hauptsaison';
 			} else {
@@ -93,7 +93,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 			if (floß) {
 				setbookingPrice(750);
 			} else {
-				if (Season === 'Nebensaison') {
+				if (Season() === 'Nebensaison') {
 					setbookingPrice(790);
 				} else {
 					setbookingPrice(1270);
@@ -109,7 +109,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 			if (floß) {
 				setbookingPrice(450);
 			} else {
-				if (Season === 'Nebensaison') {
+				if (Season() === 'Nebensaison') {
 					setbookingPrice(440);
 				} else {
 					setbookingPrice(610);
@@ -121,7 +121,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 			if (floß) {
 				setbookingPrice(250 * weekEnd.length + 200 * week.length);
 			} else {
-				if (Season === 'Nebensaison') {
+				if (Season() === 'Nebensaison') {
 					setbookingPrice(160 * weekEnd.length + 140 * week.length);
 				} else {
 					setbookingPrice(230 * weekEnd.length + 200 * week.length);
