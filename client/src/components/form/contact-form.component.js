@@ -1,18 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { default as Button } from './forms-ui/submit-button.component';
+import { default as BackButton } from '@mui/material/Button';
 import Textarea from './forms-ui/textarea.component';
 import TextInput from './forms-ui/textfield.component';
 import { Container, FormTitle, FormWrapper } from './booking-form.styles';
-import emailjs from 'emailjs-com';
-
-const INITIAL_FORM_STATE = {
-	name: '',
-	email: '',
-	title: '',
-	message: '',
-};
+import SendIcon from '@mui/icons-material/Send';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const FORM_VALIDATION = Yup.object().shape({
 	name: Yup.string().required('Required'),
@@ -21,43 +17,91 @@ const FORM_VALIDATION = Yup.object().shape({
 	message: Yup.string().required('Required'),
 });
 
+const INITIAL_FORM_STATE = {
+	name: '',
+	email: '',
+	title: '',
+	message: '',
+};
 const ContactForm = ({ contact }) => {
-	const [state, setState] = useState(INITIAL_FORM_STATE);
-	const formEl = useRef(null);
+	const location = useLocation();
+	console.log(location.state);
+	let message =
+		`Anfrage für ${
+			location.state.color === 'Floß'
+				? `Floßboot ${location.state.type}${location.state.dayOnly ? ', Tagestrip' : ''}`
+				: `Hausboot ${location.state.color}`
+		} \n` +
+		`Personen: ${location.state.person}` +
+		`${location.state.dog > 0 ? `, mit Hund: ${location.state.dog}` : ''}` +
+		`${location.state.child > 0 ? `, mit Kinder: ${location.state.child}` : ''} \n` +
+		`Anreise: ${location.state.arrivalDate.toLocaleDateString('de-DE', {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+		})} \n` +
+		`Abreise: ${location.state.departureDate.toLocaleDateString('de-DE', {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+		})} \n` +
+		`Mobil: ${location.state.phone} \n`;
+	const OFFER_STATE = {
+		name: location.state.name,
+		email: location.state.email,
+		title: 'Angebot',
+		message: message,
+	};
+	const [state, setState] = useState(location.state ? OFFER_STATE : INITIAL_FORM_STATE);
 	const [sent, setSent] = useState(false);
+	const [loading, setLoading] = useState(false);
 
-	const sendEmail = (e) => {
-		e.preventDefault();
-
-		emailjs.sendForm('gmail_test', 'template_uhskhd5', e.target, 'user_9PFyIggPDjmUQJfgOVRqe').then(
-			(result) => {
-				console.log(result.text);
-			},
-			(error) => {
-				console.log(error.text);
-			}
-		);
+	const messageRef = useRef();
+	const goToMessage = () => {
+		messageRef.current.scrollIntoView({ behavior: 'smooth' });
+	};
+	const sendEmail = () => {
+		setLoading(true);
+		// booking Mail
+		axios
+			.post('api/mail/contact', { data: state, offer: location.state ? true : false })
+			.then((res) => {
+				setLoading(false);
+				setSent(true);
+				console.log(res.data);
+			})
+			.catch((err) => console.log(err));
+		goToMessage();
 	};
 
 	return (
-		<Container>
+		<Container ref={messageRef}>
 			{sent ? (
-				<div>
-					Form gesendet! <button onClick={() => setSent(false)}>Neue Nachricht senden</button>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'center',
+						marginTop: '6em',
+					}}
+				>
+					<div style={{ marginBottom: '1em', textAlign: 'center' }}>Nachricht gesendet!</div>
+					<div>
+						<BackButton variant="contained" onClick={() => setSent(false)}>
+							Neue Nachricht senden
+						</BackButton>
+					</div>
 				</div>
 			) : (
 				<FormWrapper contact>
 					<FormTitle>Kontakt</FormTitle>
 					<Formik
-						initialValues={{
-							...INITIAL_FORM_STATE,
-						}}
+						initialValues={location.state ? OFFER_STATE : INITIAL_FORM_STATE}
 						validationSchema={FORM_VALIDATION}
 						onSubmit={(values) => {
 							console.log(values);
 							setState(values);
-							formEl.current.click();
-							setSent(true);
+							sendEmail();
 						}}
 					>
 						<Form>
@@ -65,17 +109,11 @@ const ContactForm = ({ contact }) => {
 							<TextInput name="email" label="E-Mail" type="email" />
 							<TextInput name="title" label="Betreff" type="text" />
 							<Textarea name="message" label="Nachricht" type="text" />
-							<Button>Nachricht Senden</Button>
+							<Button loading={loading} endIcon={<SendIcon />}>
+								Nachricht Senden
+							</Button>
 						</Form>
 					</Formik>
-
-					<form onSubmit={sendEmail}>
-						<input name="name" hidden defaultValue={state.name} />
-						<input name="email" hidden defaultValue={state.email} />
-						<input name="title" hidden defaultValue={state.title} />
-						<input name="message" hidden defaultValue={state.message} />
-						<input type="submit" hidden ref={formEl} />
-					</form>
 				</FormWrapper>
 			)}
 		</Container>

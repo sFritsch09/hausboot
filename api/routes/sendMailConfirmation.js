@@ -10,7 +10,7 @@ const sendMail = (app) => {
 		},
 	});
 
-	app.post('/api/mail', async (req, res) => {
+	app.post('/api/mail/confirmation', async (req, res) => {
 		fs.readFile('./mails/confirmation.html', { encoding: 'utf-8' }, async (err, data) => {
 			if (err) {
 				console.log(err);
@@ -27,7 +27,11 @@ const sendMail = (app) => {
 							: req.body.data.color === 'Rot'
 							? 'Hausboot Rot'
 							: 'Floßboot:'
-					} ${req.body.data.type ? req.body.data.type : ''}`
+					} ${
+						req.body.data.type
+							? `${req.body.data.type}${req.body.data.dayOnly ? ', Tagestrip' : ''}`
+							: ''
+					}`
 				)
 				.replaceAll('#EMAIL#', req.body.data.email)
 				.replaceAll('#PERSON#', req.body.data.person)
@@ -46,11 +50,12 @@ const sendMail = (app) => {
 						month: '2-digit',
 						day: '2-digit',
 					})
-				);
+				)
+				.replaceAll('#PRICE#', req.body.price);
 			const mailOptions = {
 				from: '"Teichland-Kapitäne ⚓" <hausboot@xn--teichland-kapitne-4qb.de>',
-				to: 'sfritsch09@gmail.com',
-				subject: 'Buchungs Bestätigung',
+				to: req.body.data.email,
+				subject: 'Buchungsbestätigung',
 				html: htmlFile,
 			};
 			await transporter.sendMail(mailOptions, (err, info) => {

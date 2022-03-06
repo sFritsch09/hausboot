@@ -203,7 +203,7 @@ const PriceListComp = ({
 				setPrice({
 					...price,
 					grill: 10,
-					gas: dayPrice ? 2 : 10,
+					gas: dayPrice ? 4 : 10,
 				});
 			}
 			if (name === 'parking') {
@@ -464,7 +464,7 @@ const PriceListComp = ({
 										label="Parkplatz"
 									/>
 									<FormControl fullWidth>
-										<InputLabel>Persoen</InputLabel>
+										<InputLabel>Personen</InputLabel>
 										<Select
 											style={{ marginRight: '4em' }}
 											value={personP}
@@ -473,11 +473,11 @@ const PriceListComp = ({
 											size="small"
 											disabled={!addCost.parking ?? false}
 										>
-											<MenuItem value={1}>Eine</MenuItem>
-											<MenuItem value={2}>Zwei</MenuItem>
-											<MenuItem value={3}>Drei</MenuItem>
-											<MenuItem value={4}>Vier</MenuItem>
-											<MenuItem value={5}>Fünf</MenuItem>
+											<MenuItem value={1}>1 PKW</MenuItem>
+											<MenuItem value={2}>2 PKW</MenuItem>
+											<MenuItem value={3}>3 PKW</MenuItem>
+											<MenuItem value={4}>4 PKW</MenuItem>
+											<MenuItem value={5}>5 PKW</MenuItem>
 										</Select>
 									</FormControl>
 								</div>
@@ -532,7 +532,7 @@ const PriceListComp = ({
 											label="Wäschepacket pro Person"
 										/>
 										<FormControl fullWidth>
-											<InputLabel>Persoen</InputLabel>
+											<InputLabel>Personen</InputLabel>
 											<Select
 												value={person}
 												label="Personen"
@@ -727,7 +727,7 @@ const PriceListComp = ({
 						<PriceListItem active={price.gas} className="border">
 							<div className="week">
 								{dayPrice ? (
-									<span className="item">Gasflasche 2,00 Euro/Tag</span>
+									<span className="item">Gasflasche 4,00 Euro/Tag</span>
 								) : (
 									<span className="item">
 										Große Kühlbox 50L inkl. Gasflasche einmalig 10,- Euro

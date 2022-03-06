@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const FormWrapper = styled.div`
 	box-sizing: border-box;
-	width: ${(props) => (props.contact ? '60%' : null)};
+	width: ${(props) => (props.contact ? '60%' : '30%')};
 
 	@media screen and (max-width: 980px) {
 		width: 100%;

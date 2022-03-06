@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { useFormikContext } from 'formik';
 
-const ButtonWrapper = ({ children, disabled }) => {
+const ButtonWrapper = ({ children, disabled, ...props }) => {
 	const { submitForm } = useFormikContext();
 
 	const handleSubmit = () => {
@@ -17,9 +17,9 @@ const ButtonWrapper = ({ children, disabled }) => {
 	};
 
 	return (
-		<Button disabled={disabled} {...configButton} style={{ marginTop: '20px' }}>
+		<LoadingButton {...props} disabled={disabled} {...configButton} style={{ marginTop: '20px' }}>
 			{children}
-		</Button>
+		</LoadingButton>
 	);
 };
 

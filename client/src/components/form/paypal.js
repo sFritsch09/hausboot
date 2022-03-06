@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-const Paypal = ({ product, bookingState }) => {
+const Paypal = ({ product, bookingState, bookingPrice }) => {
 	const [paidFor, setPaidFor] = useState(false);
 	const [error, setError] = useState(null);
 	const paypalRef = useRef();
@@ -11,16 +11,22 @@ const Paypal = ({ product, bookingState }) => {
 	const handleServer = useCallback(async () => {
 		const res = await axios.post('/api/event', {
 			data: bookingState,
+			price: bookingPrice,
 		});
 		if (res) {
 			history.push('/landing', { details: bookingState });
 		}
 		// confirmation Mail
 		axios
-			.post('api/mail', { data: bookingState })
+			.post('api/mail/confirmation', { data: bookingState, price: bookingPrice })
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));
-	}, [history, bookingState]);
+		// booking Mail
+		axios
+			.post('api/mail/booking', { data: bookingState, price: bookingPrice })
+			.then((res) => console.log(res.data))
+			.catch((err) => console.log(err));
+	}, [history, bookingState, bookingPrice]);
 
 	useEffect(() => {
 		window.paypal

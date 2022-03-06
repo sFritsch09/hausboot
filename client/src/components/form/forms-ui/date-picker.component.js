@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { Calendar, FormInputLabel, GroupContainer, StyledErrorMessage } from './date-picker.styles';
 import addDays from 'date-fns/addDays';
@@ -6,10 +6,13 @@ import useMedia from 'use-media';
 import { useField, useFormikContext } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const ReactDatePicker = ({ name, name2, booked }) => {
+const ReactDatePicker = ({ name, name2, booked, dayOnly }) => {
 	const date = new Date();
+	const dateValid = new Date();
+	date.setDate(date.getDate() + 1);
+	dateValid.setDate(date.getDate() + 1);
 	const [startDate, setStartDate] = useState(new Date());
-	const [endDate, setEndDate] = useState(date.setDate(date.getDate() + 1));
+	const [endDate, setEndDate] = useState(date);
 	const [focusStart, setFocusStart] = useState(false);
 	const [focusEnd, setFocusEnd] = useState(false);
 	const isMobile = useMedia({ maxWidth: '900px' });
@@ -45,6 +48,23 @@ const ReactDatePicker = ({ name, name2, booked }) => {
 		}
 	};
 
+	const onlyWeekly = () => {
+		if (startDate.getMonth() === (6 || 7)) {
+			return addDays(startDate, 7);
+		}
+		return startDate;
+	};
+	const onlyDay = () => {
+		return addDays(startDate, 1);
+	};
+
+	useEffect(() => {
+		if (dayOnly) {
+			setEndDate(addDays(startDate, 1));
+			setFieldValue(field2.name, addDays(startDate, 1));
+		}
+	}, [dayOnly, startDate, field2.name, setFieldValue]);
+
 	return (
 		<Calendar>
 			<GroupContainer>
@@ -57,17 +77,15 @@ const ReactDatePicker = ({ name, name2, booked }) => {
 					onFocus={() => setFocusStart(true)}
 					onCalendarClose={() => setFocusStart(false)}
 					selected={(field.value && new Date(field.value)) || null}
-					// selected={startDate}
 					onChange={(val) => {
 						setStartDate(val);
 						setFieldValue(field.name, val);
 					}}
 					dateFormat="dd.MM.yyyy"
-					// onChange={(date) => setStartDate(date)}
-					selectsStart
+					selectsStart={!dayOnly}
 					startDate={startDate}
-					endDate={endDate}
-					minDate={new Date()}
+					endDate={!dayOnly ? endDate : startDate}
+					minDate={!dayOnly ? new Date() : dateValid}
 					excludeDates={bookedDates}
 					withPortal={isMobile}
 				/>
@@ -93,8 +111,8 @@ const ReactDatePicker = ({ name, name2, booked }) => {
 					selectsEnd
 					startDate={startDate}
 					endDate={endDate}
-					minDate={endDate}
-					maxDate={shouldDisableDates()}
+					minDate={!dayOnly ? onlyWeekly() : onlyDay()}
+					maxDate={!dayOnly ? shouldDisableDates() : onlyDay()}
 					excludeDates={bookedDates}
 					withPortal={isMobile}
 				/>

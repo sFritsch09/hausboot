@@ -41,14 +41,6 @@
 				padding: 1em;
 				align-items: center;
 			}
-			.image {
-				background-image: url('https://hausbootprod.blob.core.windows.net/hausboot-images/logo512.png');
-				width: 6%;
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center;
-				margin-right: 4px;
-			}
 			.hint {
 				display: flex;
 				display: -webkit-flex;
@@ -61,14 +53,6 @@
 				padding: 1em 0;
 				font-weight: bold;
 			}
-			.link {
-				padding: 10px;
-				background-color: #599eff;
-				text-decoration: none;
-				color: white !important;
-				font-weight: bold;
-				font-family: sans-serif;
-			}
 		</style>
 	</head>
 	<body>
@@ -77,11 +61,11 @@
 			<div class="details">
 				<h3>#BOOT#</h3>
 			</div>
-			<div class="message">Ahoi #NAME#, vielen dank für deine Buchung.</div>
 			<div class="message">
-				Die Anzahlung von #PRICE#€ wurde bestätigt. Wir senden dir ein Angebot mit dem Restbetrag,
-				das vor der Anreise überwiesen werden soll.
+				Eine Buchung wurde von #NAME# bestätigt und ein Angebot soll an folgende Mail gesendet
+				werden: #EMAIL#
 			</div>
+			<div class="message">Es wurde ein Anzahlung von #PRICE#€ vorgenommen.</div>
 			<div class="table-wrapper">
 				<table>
 					<thead>
@@ -103,17 +87,6 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="hint">
-				<span style="font-size: 20px">⚠</span>
-				<h3 style="margin: 0.5em">Hinweis:</h3>
-				<span style="margin: auto 0">Bitte nimmt den Müll zur Entsorgung mit 🗑! Wir danken 🌍</span>
-			</div>
-			<div class="image-wrapper">
-				<div class="image" />
-				<a href="https://xn--teichland-kapitne-4qb.de" target="_blank" class="link">
-					Teichland-Kapitäne
-				</a>
 			</div>
 		</div>
 	</body>

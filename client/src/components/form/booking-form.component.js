@@ -6,8 +6,10 @@ import { default as Button } from './forms-ui/submit-button.component';
 import ReactDatePicker from './forms-ui/date-picker.component';
 import TextInput from './forms-ui/textfield.component';
 import { default as Select } from './forms-ui/select.component';
+import { default as CheckBox } from './forms-ui/checkbox.component';
 import { Container, FormTitle, FormWrapper, BackButton } from './booking-form.styles';
 import Paypal from '../../components/form/paypal';
+import { useHistory } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -26,11 +28,6 @@ const FORM_VALIDATION = Yup.object().shape({
 		.required('Required')
 		.nullable()
 		.min(Yup.ref('arrivalDate'), 'Das Abreisedatum muss höher sein als das Anreisedatum.'),
-	// .when(
-	// 	'arrivalDate',
-	// 	(arrivalDate, schema) =>
-	// 		arrivalDate && schema.min(arrivalDate, 'Expiry date must be greater than issue date')
-	// ),
 	color: Yup.string().required('Required'),
 	type: Yup.string(),
 	// termsOfService: Yup.boolean()
@@ -38,7 +35,27 @@ const FORM_VALIDATION = Yup.object().shape({
 	// 	.required('The terms and conditions must be accepted.'),
 });
 
+const FORM_VALIDATION2 = Yup.object().shape({
+	name: Yup.string().required('Required'),
+	email: Yup.string().required('Required').email('Bitte richtige Mail angeben.'),
+	phone: Yup.number('Bitte eine Nummer angeben.')
+		.positive('Die Nummer muss positive sein.')
+		.min(10000, 'Die Nummer muss mind. 6-stellig sein.')
+		.typeError('Bitte eine Nummer angeben.')
+		.required('Required'),
+	person: Yup.string().required('Required'),
+	child: Yup.string().required('Required'),
+	dog: Yup.string().required('Required'),
+	arrivalDate: Yup.date().required('Required'),
+	departureDate: Yup.date(),
+	color: Yup.string().required('Required'),
+	type: Yup.string(),
+	dayOnly: Yup.boolean(),
+});
+
 const BookingForm = ({ hausboot, booked, floß }) => {
+	const history = useHistory();
+	const [oneDay, setOneDay] = useState(false);
 	const date = new Date();
 	date.setDate(date.getDate() + 1);
 	const INITIAL_FORM_STATE = {
@@ -52,6 +69,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		departureDate: date,
 		color: hausboot,
 		type: hausboot === 'Floß' ? 'Floß S' : '',
+		dayOnly: false,
 		// termsOfService: false,
 	};
 	const [state, setState] = useState(INITIAL_FORM_STATE);
@@ -62,7 +80,10 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		price: bookingPrice / 2,
 		name: 'Hausboot Buchen',
 	};
-
+	// contact for offer
+	const handleOffer = () => {
+		history.push('/contact', state);
+	};
 	// get the range between start and end date
 	const getDaysArray = function (start, end) {
 		for (var arr = [], dt = new Date(start); dt <= end - 1; dt.setDate(dt.getDate() + 1)) {
@@ -81,7 +102,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		const Season = () => {
 			if (
 				new Date('2022-05-23') <= new Date(state.arrivalDate) &&
-				new Date('2022-09-10') >= new Date(state.departureDate)
+				new Date('2022-09-10') >= new Date(state.arrivalDate)
 			) {
 				return 'Hauptsaison';
 			} else {
@@ -128,14 +149,35 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 				}
 			}
 		}
-	}, [state.arrivalDate, state.departureDate, floß]);
+		if (oneDay) {
+			if (Season() === 'Nebensaison') {
+				if (state.arrivalDate.getDay() === (5 || 6 || 0)) {
+					setbookingPrice(160);
+				} else {
+					setbookingPrice(140);
+				}
+			} else {
+				if (state.arrivalDate.getDay() === (5 || 6 || 0)) {
+					setbookingPrice(230);
+				} else {
+					setbookingPrice(200);
+				}
+			}
+		}
+	}, [state.arrivalDate, state.departureDate, floß, oneDay]);
 	return (
 		<Container>
 			<FormWrapper>
 				{checkout && state.arrivalDate.getDate() !== state.departureDate.getDate() ? (
 					<React.Fragment>
 						<h2 ref={paymentRef}>50% Anzahlung: {bookingPrice / 2} €</h2>
-						<Paypal product={product} bookingState={state} />
+						<Paypal product={product} bookingState={state} bookingPrice={bookingPrice / 2} />
+						<div style={{ margin: '1em 0' }}>
+							<h3>Oder ohne Zahlung:</h3>
+							<BackButton style={{ width: '100%' }} fontBig primary onClick={handleOffer}>
+								Angebot Anfrage
+							</BackButton>
+						</div>
 						<BackButton fontBig primary onClick={() => setCheckout(false)}>
 							Zurück
 						</BackButton>
@@ -148,10 +190,8 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 								: `Jetzt Hausboot ${hausboot} buchen:`}
 						</FormTitle>
 						<Formik
-							initialValues={{
-								...INITIAL_FORM_STATE,
-							}}
-							validationSchema={FORM_VALIDATION}
+							initialValues={INITIAL_FORM_STATE}
+							validationSchema={!oneDay ? FORM_VALIDATION : FORM_VALIDATION2}
 							onSubmit={(values) => {
 								console.log(values);
 								setState(values);
@@ -163,10 +203,19 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 								<TextInput name="name" label="Name" type="text" />
 								<TextInput name="email" label="E-Mail" type="email" />
 								<TextInput name="phone" label="Telefon" type="tel" />
-								<Select name="person" options={[1, 2, 3, 4, 5]} label="Erwachsene" />
+								<Select name="person" options={[0, 1, 2, 3, 4, 5]} label="Erwachsene" />
 								<Select name="child" options={[0, 1, 2, 3, 4, 5]} label="Kinder" />
 								<Select name="dog" options={[0, 1, 2, 3]} label="Hund" />
-								<ReactDatePicker name="arrivalDate" name2="departureDate" booked={booked} />
+								{floß ? (
+									<CheckBox name="dayOnly" label="Tagestrip" stateChanger={setOneDay} />
+								) : null}
+								<ReactDatePicker
+									name="arrivalDate"
+									name2="departureDate"
+									booked={booked}
+									dayOnly={oneDay}
+								/>
+
 								<RadioButton
 									name="color"
 									options={['Rot', 'Blau', 'Floß']}
