@@ -25,34 +25,35 @@ const INITIAL_FORM_STATE = {
 };
 const ContactForm = ({ contact }) => {
 	const location = useLocation();
-	console.log(location.state);
-	let message =
-		`Anfrage für ${
-			location.state.color === 'Floß'
-				? `Floßboot ${location.state.type}${location.state.dayOnly ? ', Tagestrip' : ''}`
-				: `Hausboot ${location.state.color}`
-		} \n` +
-		`Personen: ${location.state.person}` +
-		`${location.state.dog > 0 ? `, mit Hund: ${location.state.dog}` : ''}` +
-		`${location.state.child > 0 ? `, mit Kinder: ${location.state.child}` : ''} \n` +
-		`Anreise: ${location.state.arrivalDate.toLocaleDateString('de-DE', {
-			year: 'numeric',
-			month: '2-digit',
-			day: '2-digit',
-		})} \n` +
-		`Abreise: ${location.state.departureDate.toLocaleDateString('de-DE', {
-			year: 'numeric',
-			month: '2-digit',
-			day: '2-digit',
-		})} \n` +
-		`Mobil: ${location.state.phone} \n`;
+	let message = '';
+	if (location.state) {
+		message =
+			`Anfrage für ${
+				location.state.color === 'Floß'
+					? `Floßboot ${location.state.type}${location.state.dayOnly ? ', Tagestrip' : ''}`
+					: `Hausboot ${location.state.color}`
+			} \n` +
+			`Personen: ${location.state.person}` +
+			`${location.state.dog > 0 ? `, mit Hund: ${location.state.dog}` : ''}` +
+			`${location.state.child > 0 ? `, mit Kinder: ${location.state.child}` : ''} \n` +
+			`Anreise: ${location.state.arrivalDate.toLocaleDateString('de-DE', {
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+			})} \n` +
+			`Abreise: ${location.state.departureDate.toLocaleDateString('de-DE', {
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+			})} \n` +
+			`Mobil: ${location.state.phone} \n`;
+	}
 	const OFFER_STATE = {
-		name: location.state.name,
-		email: location.state.email,
+		name: location.state?.name,
+		email: location.state?.email,
 		title: 'Angebot',
 		message: message,
 	};
-	const [state, setState] = useState(location.state ? OFFER_STATE : INITIAL_FORM_STATE);
 	const [sent, setSent] = useState(false);
 	const [loading, setLoading] = useState(false);
 
@@ -60,11 +61,11 @@ const ContactForm = ({ contact }) => {
 	const goToMessage = () => {
 		messageRef.current.scrollIntoView({ behavior: 'smooth' });
 	};
-	const sendEmail = () => {
+	const sendEmail = (values) => {
 		setLoading(true);
 		// booking Mail
 		axios
-			.post('api/mail/contact', { data: state, offer: location.state ? true : false })
+			.post('api/mail/contact', { data: values, offer: location.state ? true : false })
 			.then((res) => {
 				setLoading(false);
 				setSent(true);
@@ -100,8 +101,7 @@ const ContactForm = ({ contact }) => {
 						validationSchema={FORM_VALIDATION}
 						onSubmit={(values) => {
 							console.log(values);
-							setState(values);
-							sendEmail();
+							sendEmail(values);
 						}}
 					>
 						<Form>

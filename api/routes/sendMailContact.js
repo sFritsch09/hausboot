@@ -25,7 +25,7 @@ const sendMail = (app) => {
 			const mailOptions = {
 				from: '"Admin 👨🏼‍💻" <admin@xn--teichland-kapitne-4qb.de>',
 				to: 'hausboot@xn--teichland-kapitne-4qb.de',
-				subject: req.body.offer ? 'Angebot' : 'Kontakt',
+				subject: req.body.offer ? 'Angebot' : `Kontakt: ${req.body.data.email}`,
 				html: htmlFile,
 			};
 			await transporter.sendMail(mailOptions, (err, info) => {
