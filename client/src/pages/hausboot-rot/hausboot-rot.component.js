@@ -10,6 +10,8 @@ import {
 	BookingContainer,
 	CalendarLegend,
 	PriceListTitle,
+	GroundplanWrapper,
+	Groundplan,
 } from './hausboot-rot.styles';
 
 const HausbootRot = () => {
@@ -138,6 +140,10 @@ const HausbootRot = () => {
 	return (
 		<div className="main">
 			<PriceListTitle>Hausboot Rot</PriceListTitle>
+			<GroundplanWrapper>
+				<Groundplan />
+				Grundriss
+			</GroundplanWrapper>
 			<InfoListComp
 				infoArray={equip}
 				goToBooking={goToBooking}

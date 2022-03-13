@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import groundPlanBlue from '../../assets/blau-grundriss.drawio.png';
 
 export const BookingContainer = styled.div`
 	display: flex;
@@ -63,6 +64,32 @@ export const PriceListTitle = styled.h1`
 	@media screen and (max-width: 900px) {
 		font-size: 18px;
 		padding-top: 20px;
+	}
+`;
+export const GroundplanWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2em;
+	align-items: center;
+	font-size: 24px;
+	@media screen and (max-width: 900px) {
+		font-size: 18px;
+		padding: 1em;
+	}
+`;
+export const Groundplan = styled.div`
+	background-image: url(${groundPlanBlue});
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	max-width: 800px;
+	width: 100%;
+	height: 400px;
+	margin-bottom: 1em;
+	@media screen and (max-width: 900px) {
+		margin-bottom: 0;
+		height: 200px;
 	}
 `;
 

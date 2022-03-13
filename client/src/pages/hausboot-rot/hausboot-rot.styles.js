@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import groundPlanRed from '../../assets/rot-grundriss.drawio.png';
 
 export const BookingContainer = styled.div`
 	display: flex;
@@ -61,6 +62,32 @@ export const BookingContainer = styled.div`
 	}
 `;
 
+export const GroundplanWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2em;
+	align-items: center;
+	font-size: 24px;
+	@media screen and (max-width: 900px) {
+		font-size: 18px;
+		padding: 1em;
+	}
+`;
+export const Groundplan = styled.div`
+	background-image: url(${groundPlanRed});
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	max-width: 800px;
+	width: 100%;
+	height: 400px;
+	margin-bottom: 1em;
+	@media screen and (max-width: 900px) {
+		margin-bottom: 0;
+		height: 200px;
+	}
+`;
 export const CalendarWrapper = styled.div`
 	width: 500px;
 `;

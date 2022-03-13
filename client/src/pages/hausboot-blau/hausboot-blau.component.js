@@ -8,6 +8,8 @@ import {
 	BookingContainer,
 	CalendarLegend,
 	PriceListTitle,
+	Groundplan,
+	GroundplanWrapper,
 } from './hausboot-blau.styles';
 import PriceListComp from 'components/pricelist/priceList.component';
 import InfoListComp from 'components/infoList/infoList.component';
@@ -136,6 +138,10 @@ const HausbootRot = () => {
 	return (
 		<div className="main">
 			<PriceListTitle>Hausboot Blau</PriceListTitle>
+			<GroundplanWrapper>
+				<Groundplan />
+				Grundriss
+			</GroundplanWrapper>
 			<InfoListComp
 				infoListArray={infoListArray}
 				infoArray={equip}
