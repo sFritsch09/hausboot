@@ -20,13 +20,14 @@ const sendMail = (app) => {
 			// data replacement
 			htmlFile = htmlFile
 				.replace(/#NAME#/g, req.body.data.name)
-				.replace(/#EMAIL#/g, req.body.data.email)
 				.replace(/#MESSAGE#/g, req.body.data.message)
 				.replace(/#TOPIC#/g, req.body.data.title);
 			const mailOptions = {
 				from: '"Admin 👨🏼‍💻" <admin@xn--teichland-kapitne-4qb.de>',
 				to: 'hausboot@xn--teichland-kapitne-4qb.de',
-				subject: req.body.offer ? 'Angebot' : `Kontakt: ${req.body.data.email}`,
+				subject: req.body.offer
+					? `Angebotsanfrage: ${req.body.data.email}`
+					: `Kontakt: ${req.body.data.email}`,
 				html: htmlFile,
 			};
 			await transporter.sendMail(mailOptions, (err, info) => {
