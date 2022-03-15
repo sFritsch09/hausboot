@@ -13,7 +13,7 @@ const sendMail = (app) => {
 	app.post('/api/mail/booking', async (req, res) => {
 		fs.readFile('./mails/booking.html', { encoding: 'utf-8' }, async (err, data) => {
 			if (err) {
-				console.log(err);
+				res.status(400).send({ error: "Can't read file" });
 			}
 			let htmlFile = data;
 			// data replacement
@@ -60,7 +60,7 @@ const sendMail = (app) => {
 			};
 			await transporter.sendMail(mailOptions, (err, info) => {
 				if (err) {
-					console.log(err);
+					res.status(400);
 				} else {
 					console.log('Email sent');
 					res.status(200).send({ message: 'Mail sent', message_id: info.messageId });
