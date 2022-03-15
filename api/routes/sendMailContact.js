@@ -19,10 +19,10 @@ const sendMail = (app) => {
 			let htmlFile = await data;
 			// data replacement
 			htmlFile = htmlFile
-				.replace('/#NAME#/g', req.body.data.name)
-				.replace('/#EMAIL#/g', req.body.data.email)
-				.replace('/#MESSAGE#/g', req.body.data.message)
-				.replace('/#TOPIC#/g', req.body.data.title);
+				.replace(/#NAME#/g, req.body.data.name)
+				.replace(/#EMAIL#/g, req.body.data.email)
+				.replace(/#MESSAGE#/g, req.body.data.message)
+				.replace(/#TOPIC#/g, req.body.data.title);
 			const mailOptions = {
 				from: '"Admin 👨🏼‍💻" <admin@xn--teichland-kapitne-4qb.de>',
 				to: 'hausboot@xn--teichland-kapitne-4qb.de',

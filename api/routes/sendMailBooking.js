@@ -18,9 +18,9 @@ const sendMail = (app) => {
 			let htmlFile = await data;
 			// data replacement
 			htmlFile = htmlFile
-				.replaceAll('#NAME#', req.body.data.name)
-				.replaceAll(
-					'#BOOT#',
+				.replace(/#NAME#/g, req.body.data.name)
+				.replace(
+					/#BOOT#/g,
 					`${
 						req.body.data.color === 'Blau'
 							? 'Hausboot Blau'
@@ -33,25 +33,25 @@ const sendMail = (app) => {
 							: ''
 					}`
 				)
-				.replaceAll('#EMAIL#', req.body.data.email)
-				.replaceAll('#PERSON#', req.body.data.person)
-				.replaceAll(
-					'#DATESTART#',
+				.replace(/#EMAIL#/g, req.body.data.email)
+				.replace(/#PERSON#/g, req.body.data.person)
+				.replace(
+					/#DATESTART#/g,
 					new Date(req.body.data.arrivalDate).toLocaleDateString('de-DE', {
 						year: 'numeric',
 						month: '2-digit',
 						day: '2-digit',
 					})
 				)
-				.replaceAll(
-					'#DATEEND#',
+				.replace(
+					/#DATEEND#/g,
 					new Date(req.body.data.departureDate).toLocaleDateString('de-DE', {
 						year: 'numeric',
 						month: '2-digit',
 						day: '2-digit',
 					})
 				)
-				.replaceAll('#PRICE#', req.body.price);
+				.replace(/#PRICE#/g, req.body.price);
 			const mailOptions = {
 				from: '"Admin 👨🏼‍💻" <admin@xn--teichland-kapitne-4qb.de>',
 				to: 'hausboot@xn--teichland-kapitne-4qb.de',
