@@ -10,7 +10,7 @@ const sendMail = (app) => {
 		},
 	});
 
-	app.post('/api/mail/contact', async (req, res) => {
+	app.post('api/mail/contact', async (req, res) => {
 		fs.readFile('./mails/contact.html', { encoding: 'utf-8' }, async (err, data) => {
 			if (err) {
 				console.log(err);
