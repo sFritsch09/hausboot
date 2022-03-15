@@ -65,7 +65,7 @@ const ContactForm = ({ contact }) => {
 		setLoading(true);
 		// booking Mail
 		axios
-			.post('/api/mail/contact', { data: values, offer: location.state ? true : false })
+			.post('api/mail/contact', { data: values, offer: location.state ? true : false })
 			.then((res) => {
 				setLoading(false);
 				setSent(true);
