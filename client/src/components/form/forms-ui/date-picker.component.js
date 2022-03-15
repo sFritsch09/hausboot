@@ -91,35 +91,37 @@ const ReactDatePicker = ({ name, name2, booked, dayOnly }) => {
 				/>
 				{meta.touched && meta.error ? <StyledErrorMessage>{meta.error}</StyledErrorMessage> : null}
 			</GroupContainer>
-			<GroupContainer>
-				<FormInputLabel focus={focusEnd} className={endDate ? 'shrink' : ''}>
-					Abreisedatum
-				</FormInputLabel>
-				<DatePicker
-					{...field2}
-					// {...props}
-					onFocus={() => setFocusEnd(true)}
-					onCalendarClose={() => setFocusEnd(false)}
-					// selected={endDate}
-					selected={(field2.value && new Date(field2.value)) || null}
-					onChange={(val) => {
-						setEndDate(val);
-						setFieldValue(field2.name, val);
-					}}
-					dateFormat="dd.MM.yyyy"
-					// onChange={(date) => setEndDate(date)}
-					selectsEnd
-					startDate={startDate}
-					endDate={endDate}
-					minDate={!dayOnly ? onlyWeekly() : onlyDay()}
-					maxDate={!dayOnly ? shouldDisableDates() : onlyDay()}
-					excludeDates={bookedDates}
-					withPortal={isMobile}
-				/>
-				{meta2.touched && meta2.error ? (
-					<StyledErrorMessage>{meta2.error}</StyledErrorMessage>
-				) : null}
-			</GroupContainer>
+			{!dayOnly && (
+				<GroupContainer>
+					<FormInputLabel focus={focusEnd} className={endDate ? 'shrink' : ''}>
+						Abreisedatum
+					</FormInputLabel>
+					<DatePicker
+						{...field2}
+						// {...props}
+						onFocus={() => setFocusEnd(true)}
+						onCalendarClose={() => setFocusEnd(false)}
+						// selected={endDate}
+						selected={(field2.value && new Date(field2.value)) || null}
+						onChange={(val) => {
+							setEndDate(val);
+							setFieldValue(field2.name, val);
+						}}
+						dateFormat="dd.MM.yyyy"
+						// onChange={(date) => setEndDate(date)}
+						selectsEnd
+						startDate={startDate}
+						endDate={endDate}
+						minDate={!dayOnly ? onlyWeekly() : onlyDay()}
+						maxDate={!dayOnly ? shouldDisableDates() : onlyDay()}
+						excludeDates={bookedDates}
+						withPortal={isMobile}
+					/>
+					{meta2.touched && meta2.error ? (
+						<StyledErrorMessage>{meta2.error}</StyledErrorMessage>
+					) : null}
+				</GroupContainer>
+			)}
 		</Calendar>
 	);
 };

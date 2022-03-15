@@ -18,12 +18,12 @@ const Paypal = ({ product, bookingState, bookingPrice }) => {
 		}
 		// confirmation Mail
 		axios
-			.post('api/mail/confirmation', { data: bookingState, price: bookingPrice })
+			.post('/api/mail/confirmation', { data: bookingState, price: bookingPrice })
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));
 		// booking Mail
 		axios
-			.post('api/mail/booking', { data: bookingState, price: bookingPrice })
+			.post('/api/mail/booking', { data: bookingState, price: bookingPrice })
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));
 	}, [history, bookingState, bookingPrice]);
