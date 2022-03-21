@@ -33,7 +33,7 @@ const ContactForm = ({ contact }) => {
 					? `Floßboot ${location.state.type}${location.state.dayOnly ? ', Tagestrip' : ''}`
 					: `Hausboot ${location.state.color}`
 			} \n` +
-			`Personen: ${location.state.person}` +
+			`${location.state.person ? 'Personen: ' + location.state.person : ''}` +
 			`${location.state.dog > 0 ? `, mit Hund: ${location.state.dog}` : ''}` +
 			`${location.state.child > 0 ? `, mit Kinder: ${location.state.child}` : ''} \n` +
 			`Anreise: ${location.state.arrivalDate.toLocaleDateString('de-DE', {

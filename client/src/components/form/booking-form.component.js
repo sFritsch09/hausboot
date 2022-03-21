@@ -43,8 +43,8 @@ const FORM_VALIDATION2 = Yup.object().shape({
 		.min(10000, 'Die Nummer muss mind. 6-stellig sein.')
 		.typeError('Bitte eine Nummer angeben.')
 		.required('Required'),
-	person: Yup.string().required('Required'),
-	child: Yup.string().required('Required'),
+	// person: Yup.string().required('Required'),
+	// child: Yup.string().required('Required'),
 	dog: Yup.string().required('Required'),
 	arrivalDate: Yup.date().required('Required'),
 	departureDate: Yup.date(),
@@ -62,7 +62,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		name: '',
 		email: '',
 		phone: '',
-		person: '1',
+		person: !floß ? '1' : '',
 		child: '0',
 		dog: '0',
 		arrivalDate: new Date(),
@@ -203,8 +203,12 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 								<TextInput name="name" label="Name" type="text" />
 								<TextInput name="email" label="E-Mail" type="email" />
 								<TextInput name="phone" label="Telefon" type="tel" />
-								<Select name="person" options={[0, 1, 2, 3, 4, 5]} label="Erwachsene" />
-								<Select name="child" options={[0, 1, 2, 3, 4, 5]} label="Kinder" />
+								{!floß ? (
+									<React.Fragment>
+										<Select name="person" options={[0, 1, 2, 3, 4, 5]} label="Erwachsene" />
+										<Select name="child" options={[0, 1, 2, 3, 4, 5]} label="Kinder" />
+									</React.Fragment>
+								) : null}
 								<Select name="dog" options={[0, 1, 2, 3]} label="Hund" />
 								{floß ? (
 									<CheckBox name="dayOnly" label="Tagestrip" stateChanger={setOneDay} />
@@ -223,7 +227,11 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 									disabled
 								/>
 								{floß && (
-									<RadioButton name="type" options={['Floß S', 'Floß L']} label="Floßboot" />
+									<RadioButton
+										name="type"
+										options={['Floß S', 'Floß L']}
+										label="Floßboot (S = max. 10, L = max. 18 Personen)"
+									/>
 								)}
 								<Button>Buchen</Button>
 							</Form>
