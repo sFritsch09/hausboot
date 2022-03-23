@@ -10,6 +10,7 @@ import { default as CheckBox } from './forms-ui/checkbox.component';
 import { Container, FormTitle, FormWrapper, BackButton } from './booking-form.styles';
 import Paypal from '../../components/form/paypal';
 import { useHistory } from 'react-router-dom';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 // import ReactDOM from 'react-dom';
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -165,13 +166,20 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 			}
 		}
 	}, [state.arrivalDate, state.departureDate, floß, oneDay]);
+	const initialOptions = {
+		'client-id': process.env.REACT_APP_PAYPAL_ID1,
+		'disable-funding': 'card',
+		locale: 'de_DE',
+	};
 	return (
 		<Container>
-			<FormWrapper>
+			<FormWrapper ref={paymentRef}>
 				{checkout && state.arrivalDate.getDate() !== state.departureDate.getDate() ? (
 					<React.Fragment>
-						<h2 ref={paymentRef}>50% Anzahlung: {bookingPrice / 2} €</h2>
-						<Paypal product={product} bookingState={state} bookingPrice={bookingPrice / 2} />
+						<h2 style={{ marginTop: '100px' }}>50% Anzahlung: {bookingPrice / 2} €</h2>
+						<PayPalScriptProvider options={initialOptions}>
+							<Paypal product={product} bookingState={state} bookingPrice={bookingPrice / 2} />
+						</PayPalScriptProvider>
 						<div style={{ margin: '1em 0' }}>
 							<h3>Oder ohne Zahlung:</h3>
 							<BackButton style={{ width: '100%' }} fontBig primary onClick={handleOffer}>
@@ -195,8 +203,8 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 							onSubmit={(values) => {
 								console.log(values);
 								setState(values);
-								setCheckout(true);
 								goToPayment();
+								setCheckout(true);
 							}}
 						>
 							<Form>
