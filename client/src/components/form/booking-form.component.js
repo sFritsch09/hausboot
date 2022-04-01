@@ -98,8 +98,8 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 	};
 	useEffect(() => {
 		const daysBetween = getDaysArray(state.arrivalDate, state.departureDate);
-		const weekEnd = daysBetween.filter((day) => [0, 6].includes(day.getDay()));
-		const week = daysBetween.filter((day) => ![0, 6].includes(day.getDay()));
+		const weekEnd = daysBetween.filter((day) => [0, 6, 5].includes(day.getDay()));
+		const week = daysBetween.filter((day) => ![0, 6, 5].includes(day.getDay()));
 		const Season = () => {
 			if (
 				new Date('2022-05-23') <= new Date(state.arrivalDate) &&

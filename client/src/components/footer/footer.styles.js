@@ -54,7 +54,7 @@ export const FooterContainer = styled.div`
 	flex-direction: column;
 
 	@media screen and (max-width: 980px) {
-		padding-bottom: 4em;
+		padding-bottom: 6em;
 	}
 `;
 
@@ -121,3 +121,19 @@ export const PaypalIcon = styled(paypalIcon)``;
 export const VisaIcon = styled(visaIcon)``;
 export const MastercardIcon = styled(mastercardIcon)``;
 export const SepaIcon = styled(sepaIcon)``;
+
+export const AboutWrapper = styled(Link)`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+	padding: 0.5em 0;
+
+	&:hover {
+		background-color: ${(props) => props.theme.lightColor};
+		color: ${(props) => props.theme.darkColor};
+		transition: all 0.6s ease-out;
+	}
+`;

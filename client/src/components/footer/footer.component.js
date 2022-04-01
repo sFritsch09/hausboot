@@ -13,6 +13,7 @@ import {
 	WaveWrapper,
 	WaveContainer,
 	FooterLink,
+	AboutWrapper,
 } from './footer.styles';
 
 const Footer = () => {
@@ -91,6 +92,7 @@ const Footer = () => {
 						</FooterSection>
 					))}
 				</FooterWrapper>
+				<AboutWrapper to="/about">Created By Sebastian Fritsch 💙💛</AboutWrapper>
 			</FooterContainer>
 		</div>
 	);

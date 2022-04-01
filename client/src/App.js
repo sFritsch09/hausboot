@@ -15,6 +15,7 @@ import ContactPage from './pages/contact/contact.component';
 import Impressum from './pages/impressum/impressum.component';
 import LandingPage from './pages/landing/landing.component';
 import PhotoGallery from 'pages/gallery/photoGallery.component';
+import About from 'pages/about/about.component';
 
 function App() {
 	const isDarkMode = useDarkMode();
@@ -37,6 +38,7 @@ function App() {
 						<Route path="/contact" component={ContactPage} />
 						<Route path="/impressum" component={Impressum} />
 						<Route path="/gallery" component={PhotoGallery} />
+						<Route path="/about" component={About} />
 					</Switch>
 				</div>
 				<Footer />
