@@ -20,7 +20,7 @@ const Footer = () => {
 	const footerData = [
 		{
 			title: 'Hellwig & Hellwig GbR',
-			content: ['Friedrich-W ilhelm-Str. 69', '12103 Berlin'],
+			content: ['Friedrich-Wilhelm-Str. 69', '12103 Berlin'],
 		},
 		{
 			title: 'Kontakt',

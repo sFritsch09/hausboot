@@ -16,6 +16,7 @@ import Impressum from './pages/impressum/impressum.component';
 import LandingPage from './pages/landing/landing.component';
 import PhotoGallery from 'pages/gallery/photoGallery.component';
 import About from 'pages/about/about.component';
+import Trips from 'pages/trips/trips.component';
 
 function App() {
 	const isDarkMode = useDarkMode();
@@ -33,6 +34,7 @@ function App() {
 						<Route path="/hausboot-rot" component={HausbootRot} />
 						<Route path="/hausboot-blau" component={HausbootBlau} />
 						<Route path="/floßboot" component={Floßboot} />
+						<Route path="/trips" component={Trips} />
 						<Route path="/booking" component={Booking} />
 						<Route path="/landing" component={LandingPage} />
 						<Route path="/contact" component={ContactPage} />

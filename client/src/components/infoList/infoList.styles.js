@@ -32,16 +32,15 @@ export const InfoWrapper = styled.div`
 		}
 	}
 	.driver-license {
-		&:before {
-			content: '⚠️';
-			font-size: 25px;
-			margin-right: 10px;
-		@media screen and (max-width: 900px) {
-			font-size: 1em;
-		}
-		}
-		@media screen and (max-width: 900px) {
-			font-size: 0.6em;
+		display: flex;
+		align-items: center;
+		.warning{
+			font-size: 2em;
+			margin-right: 0.5em;
+
+			@media screen and (max-width: 600px) {
+				font-size: 1.6em;
+			}
 		}
 	}
 `;

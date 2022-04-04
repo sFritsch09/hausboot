@@ -345,7 +345,7 @@ const PriceListComp = ({
 												inputProps={{ 'aria-label': 'day checkbox' }}
 											/>
 										}
-										label="Montag bis Freitag"
+										label="Montag bis Donnerstag"
 									/>
 								</div>
 								<IconButton aria-label="remove" onClick={handleRemoveMultiDay}>
@@ -597,7 +597,7 @@ const PriceListComp = ({
 						</PriceListItem>
 						<PriceListItem className="border" active={price.dayPrice2 === dayPrice2}>
 							<div className="week">
-								<span className="item">Montag bis Freitag pro Tag</span>
+								<span className="item">Montag bis Donnerstag pro Tag</span>
 							</div>
 							{dayPrice && <PriceListSeason>{dayPrice},- Euro</PriceListSeason>}
 							<PriceListSeason>{dayPrice2},- Euro</PriceListSeason>

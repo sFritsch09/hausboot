@@ -12,7 +12,13 @@ const cards = [
 	},
 	{ id: 1, name: 'Christian', question: 'Wie hat dir der Ort gefallen?', answer: 'answer2' },
 	{ id: 2, name: 'Thomas', question: 'Was fandest du am schönsten?', answer: 'answer3' },
-	{ id: 3, name: 'Stefan', question: 'Wie hat dir deine Tour gefallen?', answer: 'answer4' },
+	{
+		id: 3,
+		name: 'Stefan',
+		question: 'Wie hat dir deine Tour gefallen?',
+		answer:
+			'So nah und so intensiv habe ich noch nie Natur spüren können wie auf diesem Hausboot Trip!',
+	},
 ];
 
 const LayoutCards = () => {

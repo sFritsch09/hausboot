@@ -65,8 +65,11 @@ const InfoListComp = ({ infoArray, infoArray2, infoListArray, goToBooking, place
 						<span className="week-sub">{infoListArray.lowSeason}</span>
 					</React.Fragment>
 					<span className="driver-license" style={{ marginBottom: '3em' }}>
-						Ein Führerschein wird nicht benötigt, da das Hausboot mit einem 15 PS Motor betrieben
-						wird und dieser Führerscheinfrei ist.
+						<div className="warning">⚠️</div>
+						<div>
+							Ein Führerschein wird nicht benötigt, da das Hausboot mit einem 15 PS Motor betrieben
+							wird und dieser Führerscheinfrei ist.
+						</div>
 					</span>
 					{place && (
 						<InfoPlace>

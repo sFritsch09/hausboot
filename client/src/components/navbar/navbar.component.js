@@ -67,6 +67,9 @@ const Navbar = () => {
 					<NavItem>
 						<NavLink to="/booking">Hausboote</NavLink>
 					</NavItem>
+					<NavItem>
+						<NavLink to="/trips">Touren</NavLink>
+					</NavItem>
 
 					<NavItem>
 						<NavLink to="/gallery">Fotogalerie</NavLink>
