@@ -2,6 +2,7 @@ version: '3.5'
 services:
   db:
     container_name: Hausboot-Database
+    build: ./api
     image: postgres:14.2-alpine
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
