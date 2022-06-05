@@ -27,8 +27,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
+      - name: permission
         run: sudo chown -R $USER:$USER ${{ github.workspace }}
+
+      - uses: actions/checkout@v2
         name: checkout
 
       - name: create-json
