@@ -13,6 +13,7 @@ WORKDIR /app
 
 # copy the package.json files from local machine to the workdir in container
 COPY package*.json ./
+COPY prisma ./
 
 # run npm install in our local machine
 RUN npm install
