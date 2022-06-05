@@ -19,7 +19,11 @@ jobs:
     env:
       GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID2 }}
       REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
+      REACT_APP_USERNAME: ${{ secrets.REACT_APP_USERNAME }}
+      REACT_APP_PASSWORD: ${{ secrets.REACT_APP_PASSWORD }}
       MAILP: ${{ secrets.MAILP }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

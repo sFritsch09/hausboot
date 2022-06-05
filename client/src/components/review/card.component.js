@@ -8,10 +8,23 @@ const cards = [
 		id: 0,
 		name: 'Manuel',
 		question: 'Wie fandest du die Ausstattung?',
-		answer: 'answer1 for testing',
+		answer:
+			'Es ist ein zweites Zuhause, bequeme Betten, Kühlschrank, Radio, Grill, Geschirr... Einfach alles was man braucht',
 	},
-	{ id: 1, name: 'Christian', question: 'Wie hat dir der Ort gefallen?', answer: 'answer2' },
-	{ id: 2, name: 'Thomas', question: 'Was fandest du am schönsten?', answer: 'answer3' },
+	{
+		id: 1,
+		name: 'Christian',
+		question: 'Wie hat dir der Ort gefallen?',
+		answer:
+			'Die Natur ist wirklich atemberaubend, Brandenburg ist für mich die Karibik Deutschlands',
+	},
+	{
+		id: 2,
+		name: 'Thomas',
+		question: 'Was fandest du am schönsten?',
+		answer:
+			'Zusammen mit meinen Brüdern ein paar Bier anstoßen und gemütlich durch die Kanäle tuckern',
+	},
 	{
 		id: 3,
 		name: 'Stefan',

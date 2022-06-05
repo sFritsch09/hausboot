@@ -26,6 +26,13 @@ const Paypal = ({ product, bookingState, bookingPrice }) => {
 			.post('/api/mail/booking', { data: bookingState, price: bookingPrice })
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));
+		// add to database
+		axios
+			.post('/api/history', {
+				data: { name: bookingState.name, email: bookingState.email, price: bookingPrice },
+			})
+			.then((res) => console.log(res.data))
+			.catch((err) => console.log(err));
 	}, [history, bookingState, bookingPrice]);
 
 	const [{ isPending }] = usePayPalScriptReducer();
