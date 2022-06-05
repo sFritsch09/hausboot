@@ -100,7 +100,6 @@ const About = () => {
 				<AboutContact>
 					<AboutContactHeader>
 						<h1>Kontakt</h1>
-						<h2>{process.env.REACT_APP_PAYPAL_ID1}</h2>
 					</AboutContactHeader>
 					<div>
 						<ReactIcon src={linkedInLogo} />
