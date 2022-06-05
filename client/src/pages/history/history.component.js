@@ -36,7 +36,7 @@ const History = () => {
 	return (
 		<div className="main">
 			<HistoryContainer>
-				<h1>History</h1>
+				<h1 style={{ marginBottom: '1em' }}>History</h1>
 				<ThemeProvider theme={theme}>
 					<TableContainer component={Paper}>
 						<Table sx={{ minWidth: 650 }} aria-label="simple table">

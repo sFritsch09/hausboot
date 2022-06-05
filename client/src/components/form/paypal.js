@@ -29,7 +29,9 @@ const Paypal = ({ product, bookingState, bookingPrice }) => {
 		// add to database
 		axios
 			.post('/api/history', {
-				data: { name: bookingState.name, email: bookingState.email, price: bookingPrice },
+				name: bookingState.name,
+				email: bookingState.email,
+				price: bookingPrice,
 			})
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));
