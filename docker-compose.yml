@@ -8,7 +8,6 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=prisma
-      - DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@Hausboot-Database:5432/prisma"
     ports:
       - '5432:5432'
     volumes:
@@ -23,7 +22,7 @@ services:
       args:
         GOOGLE_CALENDAR_ID: ${GOOGLE_CALENDAR_ID}
         MAILP: ${MAILP}
-        DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@Hausboot-Database:5432/prisma
+        DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/prisma
     ports:
       - '3100:3100'
   client:
