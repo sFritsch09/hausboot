@@ -46,6 +46,7 @@ const port = process.env.PORT || 3100;
 app.listen(port, (error) => {
 	if (error) throw error;
 	console.log('Server running on port ' + port);
+	console.log('db: ', process.env.DATABASE_URL);
 });
 
 app.get('/api', (req, res) => {

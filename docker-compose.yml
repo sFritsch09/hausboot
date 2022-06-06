@@ -13,8 +13,8 @@ services:
       - db:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d
   api:
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
     container_name: Hausboot-Api
     build:
       context: ./api
