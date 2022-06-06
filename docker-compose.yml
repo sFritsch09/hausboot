@@ -21,7 +21,7 @@ services:
       args:
         GOOGLE_CALENDAR_ID: ${GOOGLE_CALENDAR_ID}
         MAILP: ${MAILP}
-        DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/prisma
+        DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/prisma?connect_timeout=300
     ports:
       - '3100:3100'
   client:

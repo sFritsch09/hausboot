@@ -45,7 +45,7 @@ jobs:
       - name: Build containers
         run: |
           docker-compose up -d --build --force-recreate
-          docker system prune -a
+          docker system prune -a -f
 
       - name: List images
         run: docker image ls
