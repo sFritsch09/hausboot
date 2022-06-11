@@ -19,6 +19,7 @@ COPY prisma ./
 
 # run npm install in our local machine
 RUN npm install
+RUN npx prisma generate
 
 
 # copy the generated modules and all other files to the container
