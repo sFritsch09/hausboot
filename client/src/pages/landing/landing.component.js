@@ -18,7 +18,7 @@ const LandingPage = () => {
 			<BookedContainer>
 				<BookedWrapper>
 					<GifWrapper
-						src={'https://hausbootprod.blob.core.windows.net/hausboot-images/Titanic.gif'}
+						src={'https://hausboot.fra1.digitaloceanspaces.com/Titanic.gif'}
 						alt="Nice gif!"
 						style={{ margin: '10px' }}
 					/>

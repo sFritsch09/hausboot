@@ -8,8 +8,7 @@ const Trips = () => {
 			<CardContainer>
 				<CardWrapper
 					to={{
-						pathname:
-							'https://hausbootprod.blob.core.windows.net/hausboot-images/Tour WentowseeNeu.pdf',
+						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20WentowseeNeu.pdf',
 					}}
 					target="_blank"
 				>
@@ -20,8 +19,7 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname:
-							'https://hausbootprod.blob.core.windows.net/hausboot-images/Tour StolpseeNeu.pdf',
+						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20StolpseeNeu.pdf',
 					}}
 					target="_blank"
 				>
@@ -32,8 +30,7 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname:
-							'https://hausbootprod.blob.core.windows.net/hausboot-images/Tour KuhwallseeNeu.pdf',
+						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20KuhwallseeNeu.pdf',
 					}}
 					target="_blank"
 				>
@@ -44,8 +41,7 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname:
-							'https://hausbootprod.blob.core.windows.net/hausboot-images/Tour GudelackseeNeu.pdf',
+						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20GudelackseeNeu.pdf',
 					}}
 					target="_blank"
 				>
@@ -56,8 +52,7 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname:
-							'https://hausbootprod.blob.core.windows.net/hausboot-images/Tour WerbellinseeNeu.pdf',
+						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20WerbellinseeNeu.pdf',
 					}}
 					target="_blank"
 				>

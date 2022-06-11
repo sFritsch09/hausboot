@@ -206,7 +206,7 @@ export const AboutImageWrapper = styled.div`
 	margin-bottom: 2em;
 `;
 export const AboutImage = styled.div`
-	background-image: url('https://hausbootprod.blob.core.windows.net/hausboot-images/Me03.JPG');
+	background-image: url('https://hausboot.fra1.digitaloceanspaces.com/Me03.JPG');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 50% 20%;

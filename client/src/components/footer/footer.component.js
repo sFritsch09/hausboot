@@ -73,7 +73,7 @@ const Footer = () => {
 											target="_blank"
 											to={{
 												pathname:
-													'https://hausbootprod.blob.core.windows.net/hausboot-images/AGB Boot Saison 2022.pdf',
+													'https://hausboot.fra1.digitaloceanspaces.com/AGB%20Boot%20Saison%202022.pdf',
 											}}
 										>
 											{sec}

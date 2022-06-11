@@ -43,29 +43,19 @@ const HomePage = () => {
 						<Imgage
 							imageSrc={
 								size.width < 900
-									? 'https://hausbootprod.blob.core.windows.net/hausboot-images/home-mobile.jpg'
-									: 'https://hausbootprod.blob.core.windows.net/hausboot-images/hompage-blau.jpg'
+									? 'https://hausboot.fra1.digitaloceanspaces.com/home-mobile.jpg'
+									: 'https://hausboot.fra1.digitaloceanspaces.com/hompage-blau.jpg'
 							}
 						/>
 					</div>
 					<div>
-						<Imgage
-							imageSrc={
-								'https://hausbootprod.blob.core.windows.net/hausboot-images/View-river2.jpg'
-							}
-						/>
+						<Imgage imageSrc={'https://hausboot.fra1.digitaloceanspaces.com/View-river2.jpg'} />
 					</div>
 					<div>
-						<Imgage
-							imageSrc={'https://hausbootprod.blob.core.windows.net/hausboot-images/View-pond.jpg'}
-						/>
+						<Imgage imageSrc={'https://hausboot.fra1.digitaloceanspaces.com/View-pond.jpg'} />
 					</div>
 					<div>
-						<Imgage
-							imageSrc={
-								'https://hausbootprod.blob.core.windows.net/hausboot-images/View-sluice.jpg'
-							}
-						/>
+						<Imgage imageSrc={'https://hausboot.fra1.digitaloceanspaces.com/View-sluice.jpg'} />
 					</div>
 				</Slider>
 			</SliderWrapper>
