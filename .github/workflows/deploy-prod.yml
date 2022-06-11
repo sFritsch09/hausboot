@@ -30,8 +30,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: permission
-        run: sudo chown -R $USER:$USER ${{ github.workspace }}
+      # - name: permission
+      #   run: sudo chown -R $USER:$USER ${{ github.workspace }}
 
       - uses: actions/checkout@v2
         name: checkout
