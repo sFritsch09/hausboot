@@ -8,6 +8,7 @@ async function main() {
 			name: 'Sebastian Fritsch',
 			email: 'sfritsch09@gmail.com',
 			price: 20,
+			bookingDate: '25.06.2022 - 03.07.2022',
 		},
 	});
 	console.log('Created new entry: ', newEntry);
