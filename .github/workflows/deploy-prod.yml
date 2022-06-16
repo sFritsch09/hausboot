@@ -23,7 +23,7 @@ jobs:
       REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY2 }}
       REACT_APP_USERNAME: ${{ secrets.REACT_APP_USERNAME }}
       REACT_APP_PASSWORD: ${{ secrets.REACT_APP_PASSWORD }}
-      REACT_APP_PAYPAL_ID1: ${{ secrets.REACT_APP_PAYPAL_ID1 }}
+      REACT_APP_PAYPAL_ID: ${{ secrets.REACT_APP_PAYPAL_ID }}
       MAILP: ${{ secrets.MAILP }}
       POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}

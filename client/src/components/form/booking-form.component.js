@@ -167,7 +167,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		}
 	}, [state.arrivalDate, state.departureDate, floß, oneDay]);
 	const initialOptions = {
-		'client-id': process.env.REACT_APP_PAYPAL_ID1,
+		'client-id': process.env.REACT_APP_PAYPAL_ID,
 		'disable-funding': 'card',
 		locale: 'de_DE',
 	};
