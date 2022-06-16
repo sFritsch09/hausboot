@@ -32,7 +32,15 @@ const Paypal = ({ product, bookingState, bookingPrice }) => {
 				name: bookingState.name,
 				email: bookingState.email,
 				price: bookingPrice,
-				bookingDate: `${bookingState.arrivalDate} - ${bookingState.departureDate}`,
+				bookingDate: `${bookingState.arrivalDate.toLocaleDateString('de-DE', {
+					year: 'numeric',
+					month: '2-digit',
+					day: '2-digit',
+				})} - ${bookingState.departureDate.toLocaleDateString('de-DE', {
+					year: 'numeric',
+					month: '2-digit',
+					day: '2-digit',
+				})}`,
 			})
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));

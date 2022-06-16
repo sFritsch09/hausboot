@@ -47,6 +47,7 @@ const History = () => {
 									<TableCell align="right">Email</TableCell>
 									<TableCell align="right">Preis</TableCell>
 									<TableCell align="right">Datum</TableCell>
+									<TableCell align="right">Gebucht Am</TableCell>
 									<TableCell align="right">Last Update</TableCell>
 								</TableRow>
 							</TableHead>
@@ -59,6 +60,7 @@ const History = () => {
 										<TableCell align="right">{row.name}</TableCell>
 										<TableCell align="right">{row.email}</TableCell>
 										<TableCell align="right">{row.price} €</TableCell>
+										<TableCell align="right">{row.bookingDate}</TableCell>
 										<TableCell align="right">
 											{new Date(row.created_at).toLocaleDateString('de-DE', {
 												year: 'numeric',

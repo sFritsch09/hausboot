@@ -13,7 +13,7 @@ async function main() {
 	});
 	console.log('Created new entry: ', newEntry);
 
-	const allEntries = await prisma.bookins.findMany();
+	const allEntries = await prisma.bookings.findMany();
 	console.log('All entries: ');
 	console.dir(allEntries, { depth: null });
 }
