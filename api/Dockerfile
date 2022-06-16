@@ -19,11 +19,10 @@ COPY prisma ./
 
 # run npm install in our local machine
 RUN npm install
-RUN npx prisma generate
-
 
 # copy the generated modules and all other files to the container
 COPY . .
+RUN npx prisma generate
 
 # our app is running on port 5000 within the container, so need to expose it
 EXPOSE 3100

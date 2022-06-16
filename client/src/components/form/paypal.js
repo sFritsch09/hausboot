@@ -32,6 +32,7 @@ const Paypal = ({ product, bookingState, bookingPrice }) => {
 				name: bookingState.name,
 				email: bookingState.email,
 				price: bookingPrice,
+				bookingDate: `${bookingState.arrivalDate} - ${bookingState.departureDate}`,
 			})
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));

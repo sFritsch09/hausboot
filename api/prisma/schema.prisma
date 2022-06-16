@@ -12,6 +12,7 @@ model bookings {
   name String
   email String
   price Int
+  bookingDate String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
