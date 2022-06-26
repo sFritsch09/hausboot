@@ -23,12 +23,49 @@ import PrivateRoute from './PrivateRoute';
 import Login from 'pages/login/login.component';
 
 function App() {
+	const structuredData = {
+		'@context': 'http://schema.org/',
+		'@type': 'LocalBusiness',
+		name: 'Teichland Kapitäne',
+		image: 'https://hausboot.fra1.digitaloceanspaces.com/logo512.png',
+		priceRange: '€100-1800',
+		telephone: '015739100506',
+		url: 'https://xn--teichland-kapitne-4qb.de/',
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: ' Friedrich-Wilhelm-Str. 69',
+			addressLocality: 'Berlin',
+			addressRegion: 'Berlin',
+			postalCode: '12103',
+			addressCountry: 'Germany',
+		},
+		openingHoursSpecification: [
+			{
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+				opens: '09:00',
+				closes: '18:00',
+			},
+		],
+	};
+	const structuredData2 = {
+		'@context': 'http://schema.org/',
+		'@type': 'WebSite',
+		url: 'https://xn--teichland-kapitne-4qb.de/',
+		potentialAction: {
+			'@type': 'SearchAction',
+			target: 'teichland-kapitäne.de, Hausboot mieten, Oranienburg, Berlin{search_term_string}',
+			'query-input': 'required name=search_term_string',
+		},
+	};
 	const isDarkMode = useDarkMode();
 	useEffect(() => {
 		localStorage.setItem('theme', isDarkMode);
 	}, [isDarkMode]);
 	return (
 		<div className="page-container">
+			<script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+			<script type="application/ld+json">{JSON.stringify(structuredData2)}</script>
 			<ThemeProvider theme={isDarkMode ? theme : invertTheme}>
 				<div className="content-wrap">
 					<NavBar />

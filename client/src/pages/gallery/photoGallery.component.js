@@ -4,6 +4,7 @@ import Carousel, { Modal, ModalGateway } from 'react-images';
 import { photos } from './photos';
 import { GalleryContainer } from './photoGallery.styles';
 import UnderlinedMenu from 'components/underlinedMenu/underlinedMenu.component';
+import { Button } from 'components/navbar/navbar.styles';
 
 const PhotoGallery = () => {
 	const [selected, setSelected] = useState('Tour');
@@ -18,6 +19,25 @@ const PhotoGallery = () => {
 	const closeLightbox = () => {
 		setCurrentImage(0);
 		setViewerIsOpen(false);
+	};
+
+	const handleMore = () => {
+		if (selected === 'Tour') {
+			setSelected('Rot');
+		}
+		if (selected === 'Rot') {
+			setSelected('Blau');
+		}
+		if (selected === 'Blau') {
+			setSelected('Floß S');
+		}
+		if (selected === 'Floß S') {
+			setSelected('Floß L');
+		}
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 	};
 
 	const photoSwitch = (photo) =>
@@ -48,6 +68,19 @@ const PhotoGallery = () => {
 						</Modal>
 					) : null}
 				</ModalGateway>
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						width: '100%',
+						marginTop: '1em',
+					}}
+				>
+					<Button primary to="#" onClick={() => handleMore()}>
+						Mehr
+					</Button>
+				</div>
 			</GalleryContainer>
 		</div>
 	);
