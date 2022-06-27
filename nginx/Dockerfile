@@ -3,6 +3,7 @@ FROM nginx:stable
 
 ARG CERTBOT_EMAIL=admin@xn--teichland-kapitne-4qb.de
 ARG DOMAIN_LIST
+RUN mkdir -p /usr/share/certbot/www
 RUN  apt-get update \
      && apt-get install -y cron certbot python3-certbot-nginx bash wget \
      && certbot certonly --webroot --webroot-path /usr/share/certbot/www/ --agree-tos -m "${CERTBOT_EMAIL}" -n -d ${DOMAIN_LIST} \
