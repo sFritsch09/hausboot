@@ -65,6 +65,8 @@ function App() {
 	return (
 		<div className="page-container">
 			<ThemeProvider theme={isDarkMode ? theme : invertTheme}>
+				<script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+				<script type="application/ld+json">{JSON.stringify(structuredData2)}</script>
 				<div className="content-wrap">
 					<NavBar />
 					<GlobalStyle />
