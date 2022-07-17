@@ -4,6 +4,7 @@ import GlobalStyle, { theme, invertTheme } from './globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './components/hooks/DarkModeContext';
 import AuthProvider from './components/hooks/AuthContext';
+import CookieConsent from 'react-cookie-consent';
 
 import NavBar from './components/navbar/navbar.component';
 import Footer from './components/footer/footer.component';
@@ -65,6 +66,18 @@ function App() {
 	return (
 		<div className="page-container">
 			<ThemeProvider theme={isDarkMode ? theme : invertTheme}>
+				<CookieConsent
+					location="bottom"
+					acceptOnScroll={true}
+					acceptOnScrollPercentage={50}
+					buttonText="OK"
+					cookieName="hausboot-cookie"
+					style={{ background: '#2B373B' }}
+					buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
+					expires={150}
+				>
+					🍪 Wir benutzen nur das nötigste für die Performance.{' '}
+				</CookieConsent>
 				<script type="application/ld+json">{JSON.stringify(structuredData)}</script>
 				<script type="application/ld+json">{JSON.stringify(structuredData2)}</script>
 				<div className="content-wrap">
