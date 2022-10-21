@@ -88,6 +88,7 @@ const ReactDatePicker = ({ name, name2, booked, dayOnly }) => {
 					minDate={!dayOnly ? new Date() : dateValid}
 					excludeDates={bookedDates}
 					withPortal={isMobile}
+					inputMode="none"
 				/>
 				{meta.touched && meta.error ? <StyledErrorMessage>{meta.error}</StyledErrorMessage> : null}
 			</GroupContainer>
@@ -116,6 +117,7 @@ const ReactDatePicker = ({ name, name2, booked, dayOnly }) => {
 						maxDate={!dayOnly ? shouldDisableDates() : onlyDay()}
 						excludeDates={bookedDates}
 						withPortal={isMobile}
+						inputMode="none"
 					/>
 					{meta2.touched && meta2.error ? (
 						<StyledErrorMessage>{meta2.error}</StyledErrorMessage>
