@@ -40,7 +40,7 @@ services:
   djsicrip:
     container_name: DJSICRIP
     build: 
-      context: https://github.com/sFritsch09/djsicrip-next.git
+      context: https://github.com/sFritsch09/djsicrip-next.git#main
     ports:
       - '3001:3000'
   nginx:
