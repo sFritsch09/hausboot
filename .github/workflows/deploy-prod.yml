@@ -53,7 +53,7 @@ jobs:
 
       - name: Build containers
         run: |
-          docker kill Hausboot-Server
+         # docker kill Hausboot-Server
           docker-compose up -d --build --force-recreate
           docker system prune -a -f
 
