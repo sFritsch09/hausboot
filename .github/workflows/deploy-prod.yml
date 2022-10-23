@@ -44,12 +44,12 @@ jobs:
           json: ${{ secrets.GOOGLE_AUTH }}
           dir: '/api/'
 
-      - name: Clone djsicrip repository
-        uses: actions/checkout@v2
-        with:
-          repository: sFritsch09/djsicrip-next
-          path: .
-          ref: main
+      # - name: Clone djsicrip repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: sFritsch09/djsicrip-next
+      #     path: .
+      #     ref: main
 
       - name: Build containers
         run: |
