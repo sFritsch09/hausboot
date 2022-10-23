@@ -39,7 +39,7 @@ services:
       - '3000:3000'
   djsicrip:
     container_name: DJSICRIP
-    build: https://github.com/sFritsch09/djsicrip-next
+    build: https://github.com/sFritsch09/djsicrip-next.git
     ports:
       - '3001:3000'
   nginx:
