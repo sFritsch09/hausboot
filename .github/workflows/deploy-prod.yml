@@ -54,7 +54,7 @@ jobs:
       - name: Build containers
         run: |
           # docker kill Hausboot-Server
-          docker-compose -f ../hausboot/docker-compose.yml up -d --build --force-recreate
+          docker-compose up -d --build --force-recreate
           docker system prune -a -f
 
       - name: List images

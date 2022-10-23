@@ -37,12 +37,12 @@ services:
         REACT_APP_PAYPAL_ID: ${REACT_APP_PAYPAL_ID}
     ports:
       - '3000:3000'
-  djsicrip:
-    container_name: DJSICRIP
-    build:
-      context: .
-    ports:
-      - '3001:3000'
+  # djsicrip:
+  #   container_name: DJSICRIP
+  #   build:
+  #     context: .
+  #   ports:
+  #     - '3001:3000'
   nginx:
     depends_on:
       - api
