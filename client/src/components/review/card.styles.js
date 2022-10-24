@@ -248,5 +248,5 @@ export const Notify = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 `;

@@ -34,7 +34,7 @@ export const AboutContainer = styled.div`
 			}
 
 			h1 {
-				font-family: 'Poppins';
+				font-family: 'Open Sans';
 				color: ${(props) => props.theme.color};
 				font-size: 72px;
 				-webkit-animation: mainFadeIn 1.6s forwards;
@@ -88,7 +88,7 @@ export const AboutContainer = styled.div`
 				animation: secFadeIn 1.8s forwards;
 				animation-delay: 3s;
 				opacity: 0;
-				font-family: 'Lato';
+				font-family: 'Open Sans';
 				color: ${(props) => props.theme.color};
 				font-size: 28px;
 				text-transform: uppercase;
