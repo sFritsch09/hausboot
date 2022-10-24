@@ -65,8 +65,29 @@ export const YoutubeWrapper = styled.div`
 	padding: 2em;
 
 	.youtube {
-		max-width: 860px;
 		width: 100%;
 		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+`;
+
+export const Button = styled.button`
+	border-radius: 4px;
+	background: ${(props) => (props.primary ? props.theme.contrastColor : props.theme.Darkcolor)};
+	white-space: nowrap;
+	padding: ${({ big }) => (big ? '12px 64px' : '10px 20px')};
+	color: ${(props) => props.theme.color};
+	font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+	outline: none;
+	border: none;
+	cursor: pointer;
+	&:hover {
+		transition: all 0.3s ease-out;
+		color: ${(props) => props.theme.darkColor};
+		background: ${(props) => (props.primary ? props.theme.lightColor : props.theme.Darkcolor)};
+	}
+	@media screen and (max-width: 980px) {
+		width: 100%;
 	}
 `;

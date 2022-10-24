@@ -2,27 +2,20 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { SliderWrapper, Imgage, Angle, ReviewContainer, YoutubeWrapper } from './homepage.styles';
+import {
+	SliderWrapper,
+	Imgage,
+	Angle,
+	ReviewContainer,
+	YoutubeWrapper,
+	Button,
+} from './homepage.styles';
 import LayoutCards from '../../components/review/card.component';
-import YouTube from 'react-youtube';
 import useWindowSize from '../../components/hooks/useMobile';
 
 const HomePage = () => {
 	const size = useWindowSize();
 
-	const opts = {
-		width: '100%',
-		height: size.width < 900 ? '100%' : '450px',
-		playerVars: {
-			autoplay: 1,
-			utoplay: 1,
-			controls: 0,
-			rel: 0,
-			showinfo: 0,
-			mute: 1,
-			loop: 1,
-		},
-	};
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -62,7 +55,13 @@ const HomePage = () => {
 			<Angle />
 			<YoutubeWrapper>
 				<div className="youtube">
-					<YouTube videoId="j7-wyGGB1x0" opts={opts} />
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.youtube.com/watch?v=6FvqJDBY08g"
+					>
+						<Button primary={true}>Youtube</Button>
+					</a>
 				</div>
 			</YoutubeWrapper>
 			<ReviewContainer>
