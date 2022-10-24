@@ -6,10 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { DarkModeProvider } from './components/hooks/DarkModeContext';
 import ScrollToTop from 'components/scrollToTop.component';
+import FontStyles from './fontStyles';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
+			<FontStyles />
 			<ScrollToTop />
 			<DarkModeProvider>
 				<App />

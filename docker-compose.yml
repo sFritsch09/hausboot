@@ -53,8 +53,9 @@ services:
       network: host
       context: ./nginx
       args:
-        - CERTBOT_EMAIL=admin@xn--teichland-kapitne-4qb.de #replace with your own email
-        - DOMAIN_LIST=xn--teichland-kapitne-4qb.de,www.xn--teichland-kapitne-4qb.de,www.djsicrip.com,djsicrip.com #replace with your own domains
+        - CERTBOT_EMAIL=admin@xn--teichland-kapitne-4qb.de 
+        - DOMAIN_LIST=xn--teichland-kapitne-4qb.de,www.xn--teichland-kapitne-4qb.de
+        - DOMAIN_LIST2=djsicrip.com,www.djsicrip.com 
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - letsencrypt:/etc/letsencrypt
