@@ -13,7 +13,8 @@ const getEvents = (app) => {
 		const eventList = [];
 		const resp = await calendar.events.list({
 			calendarId: process.env.GOOGLE_CALENDAR_ID,
-			maxResults: 10,
+			timeMin: new Date().toISOString(),
+			maxResults: 30,
 			singleEvents: true,
 			orderBy: 'startTime',
 		});

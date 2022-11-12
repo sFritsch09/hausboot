@@ -7,18 +7,18 @@ const GlobalStyle = createGlobalStyle`
 	font-family: 'Montserrat', sans-serif !important;
 	font-weight: bold;
 
-	.main{
+	.main {
 		background-color: ${(props) => props.theme.darkColor};
 		color: ${(props) => props.theme.color};
 	}
 	
-	.page-container{
+	.page-container {
 		display: flex;
   		flex-direction: column;
   		min-height: 100vh;
 	}
 
-	.content-wrap{
+	.content-wrap {
 		flex: 1;
 	}
 }
