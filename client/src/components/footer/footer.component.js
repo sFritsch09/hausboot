@@ -73,7 +73,7 @@ const Footer = () => {
 											target="_blank"
 											to={{
 												pathname:
-													'https://hausboot.fra1.digitaloceanspaces.com/AGB%20Boot%20Saison%202022.pdf',
+													'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/ocdk3cid0fqvtvk/agb_boot_saison_2022_B5MZfx6kY3.pdf',
 											}}
 										>
 											{sec}

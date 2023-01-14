@@ -1,3 +1,2 @@
 .env
-docker-compose-azure.yml
 api/serviceGoogle.json

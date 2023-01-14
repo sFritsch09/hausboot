@@ -8,7 +8,8 @@ const Trips = () => {
 			<CardContainer>
 				<CardWrapper
 					to={{
-						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20WentowseeNeu.pdf',
+						pathname:
+							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_wentowsee_neu_4CWjPozz7w.pdf',
 					}}
 					target="_blank"
 				>
@@ -19,7 +20,8 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20StolpseeNeu.pdf',
+						pathname:
+							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_stolpsee_neu_4tuLV7BsKn.pdf',
 					}}
 					target="_blank"
 				>
@@ -30,7 +32,8 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20KuhwallseeNeu.pdf',
+						pathname:
+							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_kuhwallsee_neu_FqjQIfPdWx.pdf',
 					}}
 					target="_blank"
 				>
@@ -41,7 +44,8 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20GudelackseeNeu.pdf',
+						pathname:
+							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_gudelacksee_neu_MHDD8YiW6D.pdf',
 					}}
 					target="_blank"
 				>
@@ -52,7 +56,8 @@ const Trips = () => {
 				</CardWrapper>
 				<CardWrapper
 					to={{
-						pathname: 'https://hausboot.fra1.digitaloceanspaces.com/Tour%20WerbellinseeNeu.pdf',
+						pathname:
+							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_werbellinsee_rIQeoZMEN5.pdf',
 					}}
 					target="_blank"
 				>

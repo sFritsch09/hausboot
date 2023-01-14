@@ -28,7 +28,7 @@ const HausbootRot = () => {
 			'Informationsmaterial und Reiseunterlagen',
 		],
 		// insurance: [''],
-		season: '02.04. 2022 - 04.10.2022',
+		season: '26.05.2023 - 10.09.2023',
 	};
 
 	const equipS = [

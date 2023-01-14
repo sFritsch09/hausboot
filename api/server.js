@@ -33,6 +33,9 @@ require('./routes/sendMailConfirmation')(app);
 require('./routes/sendMailBooking')(app);
 require('./routes/sendMailContact')(app);
 
+app.get('/api', (req, res) => {
+	res.send('Hello from Hausboot Api!');
+});
 app.use((req, res) => {
 	res.status(404);
 	return res.json({
@@ -46,8 +49,4 @@ const port = process.env.PORT || 3100;
 app.listen(port, (error) => {
 	if (error) throw error;
 	console.log('Server running on port ' + port);
-});
-
-app.get('/api', (req, res) => {
-	res.send('Hello from Hausboot Api!');
 });

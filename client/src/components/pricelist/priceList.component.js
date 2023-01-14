@@ -324,7 +324,7 @@ const PriceListComp = ({
 	return (
 		<div>
 			<PriceListContainer>
-				<PriceListTitle>Preisliste 2022</PriceListTitle>
+				<PriceListTitle>Preisliste 2023</PriceListTitle>
 				<span className="padding">Von Juli bis August nur Wochenweise buchbar!</span>
 				<span className="padding">
 					Wähle zur vollständigen Berechnung das zutreffende aus (kann je nach Verbrauch abweichen):{' '}

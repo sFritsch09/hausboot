@@ -28,7 +28,8 @@ function App() {
 		'@context': 'http://schema.org/',
 		'@type': 'LocalBusiness',
 		name: 'Teichland Kapitäne',
-		image: 'https://hausboot.fra1.digitaloceanspaces.com/logo512.png',
+		image:
+			'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/1udbj06h91co2dc/logo512_IR7rs4ur6K.png',
 		priceRange: '€100-1800',
 		telephone: '015739100506',
 		url: 'https://xn--teichland-kapitne-4qb.de/',

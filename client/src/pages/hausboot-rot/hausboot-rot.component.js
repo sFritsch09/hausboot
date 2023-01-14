@@ -34,8 +34,8 @@ const HausbootRot = () => {
 			'Haftungsreduzierung der Selbstbeteiligung auf 400 Euro 18,- Euro/Tag',
 			'Haftungsreduzierung der Selbstbeteiligung auf 100 Euro 22,- Euro/Tag',
 		],
-		mainSeason: '23.05.2022 - 10.09.2022 und 27.05.2023 - 10.09.2023',
-		lowSeason: '04.03.2022 - 22.05.2022 und 11.09.2023 - 26.05.2023 (ohne Himmelfahrt)',
+		mainSeason: '26.05.2023 - 10.09.2023',
+		lowSeason: '01.04.2023 - 25.05.2023 und 11.09.2023 - 25.05.2024 (ohne Himmelfahrt)',
 	};
 
 	const equip = [

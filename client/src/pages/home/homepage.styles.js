@@ -63,12 +63,10 @@ export const YoutubeWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 2em;
-
 	.youtube {
+		max-width: 860px;
 		width: 100%;
 		height: 100%;
-		display: flex;
-		justify-content: center;
 	}
 `;
 

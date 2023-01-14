@@ -2,20 +2,26 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import {
-	SliderWrapper,
-	Imgage,
-	Angle,
-	ReviewContainer,
-	YoutubeWrapper,
-	Button,
-} from './homepage.styles';
+import { SliderWrapper, Imgage, Angle, ReviewContainer, YoutubeWrapper } from './homepage.styles';
 import LayoutCards from '../../components/review/card.component';
 import useWindowSize from '../../components/hooks/useMobile';
+import YouTube from 'react-youtube';
 
 const HomePage = () => {
 	const size = useWindowSize();
-
+	const opts = {
+		width: '100%',
+		height: size.width < 900 ? '100%' : '450px',
+		playerVars: {
+			autoplay: 1,
+			utoplay: 1,
+			controls: 0,
+			rel: 0,
+			showinfo: 0,
+			mute: 1,
+			loop: 1,
+		},
+	};
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -36,32 +42,38 @@ const HomePage = () => {
 						<Imgage
 							imageSrc={
 								size.width < 900
-									? 'https://hausboot.fra1.digitaloceanspaces.com/home-mobile.jpg'
-									: 'https://hausboot.fra1.digitaloceanspaces.com/hompage-blau.jpg'
+									? 'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/home_mobile_tlqvYEoksj.jpg'
+									: 'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/hompage_blau_GnobqWxZTc.jpg'
 							}
 						/>
 					</div>
 					<div>
-						<Imgage imageSrc={'https://hausboot.fra1.digitaloceanspaces.com/View-river2.jpg'} />
+						<Imgage
+							imageSrc={
+								'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_river2_QFN3eMlPqh.jpg'
+							}
+						/>
 					</div>
 					<div>
-						<Imgage imageSrc={'https://hausboot.fra1.digitaloceanspaces.com/View-pond.jpg'} />
+						<Imgage
+							imageSrc={
+								'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_pond_AXgIVYoFyD.jpg'
+							}
+						/>
 					</div>
 					<div>
-						<Imgage imageSrc={'https://hausboot.fra1.digitaloceanspaces.com/View-sluice.jpg'} />
+						<Imgage
+							imageSrc={
+								'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_sluice_cN9gxBy1Js.jpg'
+							}
+						/>
 					</div>
 				</Slider>
 			</SliderWrapper>
 			<Angle />
 			<YoutubeWrapper>
 				<div className="youtube">
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.youtube.com/watch?v=6FvqJDBY08g"
-					>
-						<Button primary={true}>Youtube</Button>
-					</a>
+					<YouTube videoId="j7-wyGGB1x0" opts={opts} />
 				</div>
 			</YoutubeWrapper>
 			<ReviewContainer>

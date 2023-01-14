@@ -15,7 +15,7 @@ const typingVariant = {
 	station: {
 		opacity: 0,
 		transition: {
-			delayChildren: 0.5,
+			delayChildren: 0.1,
 			staggerChildren: 0.15,
 			staggerDirection: -1,
 		},
@@ -31,7 +31,7 @@ const dotVariant = {
 	bounce: (i) => ({
 		y: -3,
 		opacity: 1,
-		transition: { ease: 'easeOut', duration: 0.35, yoyo: i },
+		transition: { ease: 'easeOut', duration: 0.25, yoyo: i },
 	}),
 };
 

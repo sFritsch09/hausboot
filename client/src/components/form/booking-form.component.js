@@ -102,8 +102,8 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		const week = daysBetween.filter((day) => ![0, 6, 5].includes(day.getDay()));
 		const Season = () => {
 			if (
-				new Date('2022-05-23') <= new Date(state.arrivalDate) &&
-				new Date('2022-09-10') >= new Date(state.arrivalDate)
+				new Date('2023-05-26') <= new Date(state.arrivalDate) &&
+				new Date('2023-09-10') >= new Date(state.arrivalDate)
 			) {
 				return 'Hauptsaison';
 			} else {
