@@ -24,7 +24,11 @@ const Login = () => {
 			password: password,
 		};
 		setAuthData(data);
-		history.push('/history');
+		if (name === 'Carsten') {
+			history.push('/carsten');
+		} else {
+			history.push('/history');
+		}
 	};
 
 	return (

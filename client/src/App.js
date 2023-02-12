@@ -22,6 +22,7 @@ import Trips from 'pages/trips/trips.component';
 import History from 'pages/history/history.component';
 import PrivateRoute from './PrivateRoute';
 import Login from 'pages/login/login.component';
+import Carsten from 'pages/carsten/carsten.component';
 
 function App() {
 	const structuredData = {
@@ -98,6 +99,7 @@ function App() {
 						<Route path="/about" component={About} />
 						<AuthProvider>
 							<Route path="/login" component={Login} />
+							<PrivateRoute path="/carsten" component={Carsten} />
 							<PrivateRoute path="/history" component={History} />
 						</AuthProvider>
 					</Switch>
