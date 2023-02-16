@@ -32,6 +32,7 @@ const PriceListComp = ({
 	weekPrice2,
 	weekendWeekPrice,
 	weekendWeekPrice2,
+	noWeeklyBook,
 }) => {
 	const initState = {
 		dayPrice: 0,
@@ -325,7 +326,9 @@ const PriceListComp = ({
 		<div>
 			<PriceListContainer>
 				<PriceListTitle>Preisliste 2023</PriceListTitle>
-				<span className="padding">Von Juli bis August nur Wochenweise buchbar!</span>
+				{!noWeeklyBook && (
+					<span className="padding">Von Juli bis August nur Wochenweise buchbar!</span>
+				)}
 				<span className="padding">
 					Wähle zur vollständigen Berechnung das zutreffende aus (kann je nach Verbrauch abweichen):{' '}
 				</span>

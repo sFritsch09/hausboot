@@ -63,7 +63,7 @@ const BookingForm = ({ hausboot, booked, floß }) => {
 		name: '',
 		email: '',
 		phone: '',
-		person: !floß ? '1' : '',
+		person: '1',
 		child: '0',
 		dog: '0',
 		arrivalDate: new Date(),

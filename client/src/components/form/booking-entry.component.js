@@ -11,7 +11,6 @@ import { Container, FormTitle, FormWrapper } from './booking-form.styles';
 import { useCallback } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-// import ReactDOM from 'react-dom';
 
 const FORM_VALIDATION = Yup.object().shape({
 	name: Yup.string().required('Required'),
@@ -31,6 +30,7 @@ const FORM_VALIDATION = Yup.object().shape({
 		.min(Yup.ref('arrivalDate'), 'Das Abreisedatum muss höher sein als das Anreisedatum.'),
 	color: Yup.string().required('Required'),
 	type: Yup.string(),
+	dayOnly: Yup.boolean(),
 	// termsOfService: Yup.boolean()
 	// 	.oneOf([true], 'The terms and conditions must be accepted.')
 	// 	.required('The terms and conditions must be accepted.'),
@@ -44,9 +44,7 @@ const FORM_VALIDATION2 = Yup.object().shape({
 		.min(10000, 'Die Nummer muss mind. 6-stellig sein.')
 		.typeError('Bitte eine Nummer angeben.')
 		.required('Required'),
-	// person: Yup.string().required('Required'),
-	// child: Yup.string().required('Required'),
-	dog: Yup.string().required('Required'),
+	person: Yup.string().required('Required'),
 	arrivalDate: Yup.date().required('Required'),
 	departureDate: Yup.date(),
 	color: Yup.string().required('Required'),
@@ -65,7 +63,7 @@ const BookingEntry = () => {
 		name: '',
 		email: '',
 		phone: '',
-		person: '',
+		person: '1',
 		child: '0',
 		dog: '0',
 		arrivalDate: new Date(),

@@ -121,7 +121,7 @@ const HausbootRot = () => {
 	};
 
 	const getAllDates = () => {
-		var arr = [];
+		let arr = [];
 		for (var i in startDate) {
 			let dateRange = getDaysArray(new Date(startDate[i]), new Date(endDate[i]));
 			arr.push(dateRange.map((date) => date));
@@ -129,12 +129,12 @@ const HausbootRot = () => {
 		return arr;
 	};
 	const getAllDatesL = () => {
-		var arr = [];
-		for (var i in startDate) {
+		let arrL = [];
+		for (var i in startDateL) {
 			let dateRange = getDaysArray(new Date(startDateL[i]), new Date(endDateL[i]));
-			arr.push(dateRange.map((date) => date));
+			arrL.push(dateRange.map((date) => date));
 		}
-		return arr;
+		return arrL;
 	};
 
 	const AllDates = getAllDates();
@@ -189,6 +189,7 @@ const HausbootRot = () => {
 				dayPrice2={200}
 				weekPrice2={750}
 				weekendWeekPrice2={450}
+				noWeeklyBook
 			/>
 			<BookingContainer>
 				<CalendarWrapper>
