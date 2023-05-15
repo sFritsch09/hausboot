@@ -73,7 +73,7 @@ const Footer = () => {
 											target="_blank"
 											to={{
 												pathname:
-													'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/ocdk3cid0fqvtvk/agb_boot_saison_2022_B5MZfx6kY3.pdf',
+													'https://pb.techchase.de/api/files/cqrcvtuakl65aun/ocdk3cid0fqvtvk/agb_boot_saison_2022_B5MZfx6kY3.pdf',
 											}}
 										>
 											{sec}

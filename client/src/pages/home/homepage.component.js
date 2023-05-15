@@ -42,29 +42,29 @@ const HomePage = () => {
 						<Imgage
 							imageSrc={
 								size.width < 900
-									? 'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/home_mobile_tlqvYEoksj.jpg'
-									: 'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/hompage_blau_GnobqWxZTc.jpg'
+									? 'https://pb.techchase.de/api/files/cqrcvtuakl65aun/hswidntcx0etl03/home_mobile_tlqvYEoksj.jpg'
+									: 'https://pb.techchase.de/api/files/cqrcvtuakl65aun/hswidntcx0etl03/hompage_blau_GnobqWxZTc.jpg'
 							}
 						/>
 					</div>
 					<div>
 						<Imgage
 							imageSrc={
-								'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_river2_QFN3eMlPqh.jpg'
+								'https://pb.techchase.de/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_river2_QFN3eMlPqh.jpg'
 							}
 						/>
 					</div>
 					<div>
 						<Imgage
 							imageSrc={
-								'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_pond_AXgIVYoFyD.jpg'
+								'https://pb.techchase.de/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_pond_AXgIVYoFyD.jpg'
 							}
 						/>
 					</div>
 					<div>
 						<Imgage
 							imageSrc={
-								'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_sluice_cN9gxBy1Js.jpg'
+								'https://pb.techchase.de/api/files/cqrcvtuakl65aun/hswidntcx0etl03/view_sluice_cN9gxBy1Js.jpg'
 							}
 						/>
 					</div>

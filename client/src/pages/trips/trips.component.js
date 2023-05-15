@@ -9,7 +9,7 @@ const Trips = () => {
 				<CardWrapper
 					to={{
 						pathname:
-							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_wentowsee_neu_4CWjPozz7w.pdf',
+							'https://pb.techchase.de/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_wentowsee_neu_4CWjPozz7w.pdf',
 					}}
 					target="_blank"
 				>
@@ -21,7 +21,7 @@ const Trips = () => {
 				<CardWrapper
 					to={{
 						pathname:
-							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_stolpsee_neu_4tuLV7BsKn.pdf',
+							'https://pb.techchase.de/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_stolpsee_neu_4tuLV7BsKn.pdf',
 					}}
 					target="_blank"
 				>
@@ -33,7 +33,7 @@ const Trips = () => {
 				<CardWrapper
 					to={{
 						pathname:
-							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_kuhwallsee_neu_FqjQIfPdWx.pdf',
+							'https://pb.techchase.de/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_kuhwallsee_neu_FqjQIfPdWx.pdf',
 					}}
 					target="_blank"
 				>
@@ -45,7 +45,7 @@ const Trips = () => {
 				<CardWrapper
 					to={{
 						pathname:
-							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_gudelacksee_neu_MHDD8YiW6D.pdf',
+							'https://pb.techchase.de/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_gudelacksee_neu_MHDD8YiW6D.pdf',
 					}}
 					target="_blank"
 				>
@@ -57,7 +57,7 @@ const Trips = () => {
 				<CardWrapper
 					to={{
 						pathname:
-							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_werbellinsee_rIQeoZMEN5.pdf',
+							'https://pb.techchase.de/api/files/cqrcvtuakl65aun/kf9idtt0nnmb07z/tour_werbellinsee_rIQeoZMEN5.pdf',
 					}}
 					target="_blank"
 				>

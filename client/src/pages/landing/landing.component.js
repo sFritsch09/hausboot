@@ -19,7 +19,7 @@ const LandingPage = () => {
 				<BookedWrapper>
 					<GifWrapper
 						src={
-							'https://pb.djsicrip.com/api/files/cqrcvtuakl65aun/1udbj06h91co2dc/titanic_sYV3d5jmjm.gif'
+							'https://pb.techchase.de/api/files/cqrcvtuakl65aun/1udbj06h91co2dc/titanic_sYV3d5jmjm.gif'
 						}
 						alt="Nice gif!"
 						style={{ margin: '10px' }}
